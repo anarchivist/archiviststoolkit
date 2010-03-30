@@ -2105,10 +2105,15 @@ public class EADExport {
             barcode = instance.getBarcode();
 
             Container container1 = new Container();
-            /*if (StringHelper.isNotEmpty(barcode))
-                container1.setLabel(barcode); */
 
-            container1.setLabel(instanceType);
+            // if barcode is present place it in the label
+            if (StringHelper.isNotEmpty(barcode)) {
+                String label = instanceType + " (" + barcode + ")";
+                container1.setLabel(label);
+            } else {
+                container1.setLabel(instanceType);
+            }
+
             container1.setId(parentId);
 
             if (null != type)

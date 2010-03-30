@@ -125,6 +125,7 @@ public class UpgradeDatabaseBackgroundResultCreator extends DeferredWizardResult
 
                 for (Upgrade step : upgradeSteps) {
                     progress.setProgress("Running Final Initialization Code", initialStep, totalNumberOfSteps);
+                    step.setResultProgressHandle(progress, initialStep, totalNumberOfSteps);
 
                     if (step.runPostDBInitializationCode()) {
                         //initialStep += step.getNumberOfSteps(); don't increment cause this leads to an error
@@ -135,6 +136,7 @@ public class UpgradeDatabaseBackgroundResultCreator extends DeferredWizardResult
 
                     // run any sql code that need to run after hibernate has been initialized
                     if (step.runPostDBInitializationSQLCode(conn)) {
+                        progress.setProgress("Finnished Initialization Code", initialStep, totalNumberOfSteps);
                         conn.commit();
                     } else {
                         progress.failed(step.getErrorString(), false);

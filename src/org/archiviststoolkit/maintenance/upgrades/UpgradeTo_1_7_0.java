@@ -30,6 +30,7 @@ import org.hibernate.LockMode;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.security.NoSuchAlgorithmException;
 import java.io.UnsupportedEncodingException;
 
@@ -74,20 +75,38 @@ public class UpgradeTo_1_7_0 extends Upgrade {
             HashMap<String,String> metsIDs = new HashMap<String,String>();
             String metsID;
 
-            for (Object o : access.findAllLongSession(LockMode.READ)) {
+            Collection digitalObjects = access.findAllLongSession(LockMode.READ);
+            int totalCount = digitalObjects.size();
+            int count = 1;
+
+            for (Object o : digitalObjects) {
                 digitalObject = (DigitalObjects) o;
+
+                // for debug purposes print out the digital object being processed
+                String progressMessage = "Updating Digital Object : " + count + " of " + totalCount + " ( ID = " + digitalObject.getIdentifier() + " )";
+                progress.setProgress("Updating Digital Object (ID:" + digitalObject.getIdentifier() + ")", count, totalCount);
+                count++;
 
                 // get the parent resource this digital object belongs to
                 ArchDescriptionDigitalInstances digitalInstance = digitalObject.getDigitalInstance();
                 if(digitalInstance != null) {
-                    Resources parentResource = access.findResourceByDigitalObject(digitalInstance);
+                    try {
+                        Resources parentResource = access.findResourceByDigitalObject(digitalInstance);
 
-                    // now update the repository
-                    setRepository(digitalObject, parentResource.getRepository());
+                        // now update the repository
+                        if(parentResource != null) {
+                            setRepository(digitalObject, parentResource.getRepository());
 
-                    // now set the parent resoure in the digital object instance to allow searching
-                    // by resource for digital objects
-                    digitalInstance.setParentResource(parentResource);
+                            // now set the parent resoure in the digital object instance to allow searching
+                            // by resource for digital objects
+                            digitalInstance.setParentResource(parentResource);
+                        }
+                    } catch (Exception e) { // lets handel any errors due to orphaned digital objects
+                        digitalObject.setDigitalInstance(null);
+
+                        System.out.println("Error processing Digital Object ID = " + digitalObject.getIdentifier() + "\n");
+                        e.printStackTrace();
+                    }
                 }
 
                 // modify the metId if is not unique
@@ -111,6 +130,11 @@ public class UpgradeTo_1_7_0 extends Upgrade {
 			setErrorString(e.getMessage());
 			return false;
 		} catch (SQLException e) {
+            setErrorString(e.getMessage());
+            e.printStackTrace();
+            return false;
+        } catch (Exception e) {
+            setErrorString(e.getMessage());
             e.printStackTrace();
             return false;
         }

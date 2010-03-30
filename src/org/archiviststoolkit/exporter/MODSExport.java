@@ -333,7 +333,7 @@ public class MODSExport {
             } else if (isNoteTitle(note, 
                                    "Immediate Source of Acquisition note")) {
                 NoteType noteM = obj.createNoteType();
-                noteM.setUtType("acquistion");
+                noteM.setUtType("acquisition");
                 noteM.setDisplayLabel(note.getTitle());
                 if(!(StringHelper.isNotEmpty(note.getTitle())))
                     noteM.setDisplayLabel(note.getType());

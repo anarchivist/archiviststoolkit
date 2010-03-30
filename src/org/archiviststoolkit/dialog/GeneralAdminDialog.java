@@ -346,7 +346,7 @@ public class GeneralAdminDialog extends JDialog implements ActionListener{
                         int size = deleteList.size();
                         for (DomainObject domainObject : deleteList) {
                             try {
-                                access.deleteLongSession(domainObject);
+                                access.deleteLongSession(domainObject, false);
                                 getContentTable().getEventList().remove(domainObject);
                                 if (getClazz() == Locations.class) {
                                     LocationsUtils.removeLocationToLookupList((Locations) domainObject);
