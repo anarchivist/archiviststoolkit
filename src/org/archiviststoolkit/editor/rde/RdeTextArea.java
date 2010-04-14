@@ -99,70 +99,70 @@ public class RdeTextArea extends RdePanel {
 
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-		// Generated using JFormDesigner non-commercial license
-		separator3 = new JSeparator();
-		label = new JLabel();
-		scrollPane1 = new JScrollPane();
-		textArea = ATBasicComponentFactory.createUnboundedTextArea();
-		CellConstraints cc = new CellConstraints();
+        // Generated using JFormDesigner non-commercial license
+        separator3 = new JSeparator();
+        label = new JLabel();
+        scrollPane1 = new JScrollPane();
+        textArea = ATBasicComponentFactory.createUnboundedTextArea();
+        CellConstraints cc = new CellConstraints();
 
-		//======== this ========
-		setBackground(new Color(200, 205, 232));
-		setLayout(new FormLayout(
-			new ColumnSpec[] {
-				FormFactory.DEFAULT_COLSPEC,
-				FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-				new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
-			},
-			new RowSpec[] {
-				new RowSpec(RowSpec.TOP, Sizes.DEFAULT, FormSpec.NO_GROW),
-				FormFactory.LINE_GAP_ROWSPEC,
-				new RowSpec(RowSpec.TOP, Sizes.DEFAULT, FormSpec.NO_GROW)
-			}));
+        //======== this ========
+        setBackground(new Color(200, 205, 232));
+        setLayout(new FormLayout(
+            new ColumnSpec[] {
+                FormFactory.DEFAULT_COLSPEC,
+                FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
+            },
+            new RowSpec[] {
+                new RowSpec(RowSpec.TOP, Sizes.DEFAULT, FormSpec.NO_GROW),
+                FormFactory.LINE_GAP_ROWSPEC,
+                new RowSpec(RowSpec.TOP, Sizes.DEFAULT, FormSpec.NO_GROW)
+            }));
 
-		//---- separator3 ----
-		separator3.setBackground(new Color(220, 220, 232));
-		separator3.setForeground(new Color(147, 131, 86));
-		separator3.setMinimumSize(new Dimension(1, 10));
-		separator3.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
-		separator3.setOpaque(true);
-		add(separator3, cc.xywh(1, 1, 3, 1, CellConstraints.DEFAULT, CellConstraints.CENTER));
+        //---- separator3 ----
+        separator3.setBackground(new Color(220, 220, 232));
+        separator3.setForeground(new Color(147, 131, 86));
+        separator3.setMinimumSize(new Dimension(1, 10));
+        separator3.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
+        separator3.setOpaque(true);
+        add(separator3, cc.xywh(1, 1, 3, 1, CellConstraints.DEFAULT, CellConstraints.CENTER));
 
-		//---- label ----
-		label.setText("Label");
-		label.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				labelMouseClicked(e);
-			}
-		});
-		add(label, cc.xy(1, 3));
+        //---- label ----
+        label.setText("Label");
+        label.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                labelMouseClicked(e);
+            }
+        });
+        add(label, cc.xy(1, 3));
 
-		//======== scrollPane1 ========
-		{
-			scrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        //======== scrollPane1 ========
+        {
+            scrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-			//---- textArea ----
-			textArea.setRows(4);
-			textArea.setLineWrap(true);
-			textArea.setWrapStyleWord(true);
-			textArea.addFocusListener(new FocusAdapter() {
-				@Override
-				public void focusGained(FocusEvent e) {
-					textAreaFocusGained(e);
-				}
-			});
-			scrollPane1.setViewportView(textArea);
-		}
-		add(scrollPane1, cc.xywh(3, 3, 1, 1, CellConstraints.FILL, CellConstraints.DEFAULT));
+            //---- textArea ----
+            textArea.setRows(4);
+            textArea.setLineWrap(true);
+            textArea.setWrapStyleWord(true);
+            textArea.addFocusListener(new FocusAdapter() {
+                @Override
+                public void focusGained(FocusEvent e) {
+                    textAreaFocusGained(e);
+                }
+            });
+            scrollPane1.setViewportView(textArea);
+        }
+        add(scrollPane1, cc.xywh(3, 3, 1, 1, CellConstraints.FILL, CellConstraints.DEFAULT));
 		// JFormDesigner - End of component initialization  //GEN-END:initComponents
 	}
 
 	// JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-	// Generated using JFormDesigner non-commercial license
-	private JSeparator separator3;
-	private JLabel label;
-	private JScrollPane scrollPane1;
-	private JTextArea textArea;
+    // Generated using JFormDesigner non-commercial license
+    private JSeparator separator3;
+    private JLabel label;
+    private JScrollPane scrollPane1;
+    private JTextArea textArea;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
 }

@@ -1,5 +1,5 @@
 /*
- * Archivists' Toolkit(TM) Copyright © 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.  
+ * Archivists' Toolkit(TM) Copyright ï¿½ 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.  
  * All rights reserved. 
  *	
  * This software is free. You can redistribute it and / or modify it under the terms of the Educational Community License (ECL) 
@@ -148,88 +148,88 @@ public class RdeExtentFields extends RdePanel {
 
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-		// Generated using JFormDesigner non-commercial license
-		separator3 = new JSeparator();
-		label_extentNumber = new JLabel();
-		extentNumber = ATBasicComponentFactory.createUnboundDoubleField();
-		label_extentMeasurement = new JLabel();
-		extentMeasurement = new JComboBox();
-		CellConstraints cc = new CellConstraints();
+        // Generated using JFormDesigner non-commercial license
+        separator3 = new JSeparator();
+        label_extentNumber = new JLabel();
+        extentNumber = ATBasicComponentFactory.createUnboundDoubleField();
+        label_extentMeasurement = new JLabel();
+        extentMeasurement = new JComboBox();
+        CellConstraints cc = new CellConstraints();
 
-		//======== this ========
-		setBackground(new Color(200, 205, 232));
-		setLayout(new FormLayout(
-			new ColumnSpec[] {
-				new ColumnSpec(ColumnSpec.LEFT, Sizes.DEFAULT, FormSpec.NO_GROW),
-				FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-				FormFactory.DEFAULT_COLSPEC,
-				FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-				FormFactory.DEFAULT_COLSPEC,
-				FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-				FormFactory.DEFAULT_COLSPEC,
-				FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-				new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
-			},
-			new RowSpec[] {
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.LINE_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC
-			}));
+        //======== this ========
+        setBackground(new Color(200, 205, 232));
+        setLayout(new FormLayout(
+            new ColumnSpec[] {
+                new ColumnSpec(ColumnSpec.LEFT, Sizes.DEFAULT, FormSpec.NO_GROW),
+                FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                FormFactory.DEFAULT_COLSPEC,
+                FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                FormFactory.DEFAULT_COLSPEC,
+                FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                FormFactory.DEFAULT_COLSPEC,
+                FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
+            },
+            new RowSpec[] {
+                FormFactory.DEFAULT_ROWSPEC,
+                FormFactory.LINE_GAP_ROWSPEC,
+                FormFactory.DEFAULT_ROWSPEC
+            }));
 
-		//---- separator3 ----
-		separator3.setBackground(new Color(220, 220, 232));
-		separator3.setForeground(new Color(147, 131, 86));
-		separator3.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
-		add(separator3, cc.xywh(1, 1, 9, 1));
+        //---- separator3 ----
+        separator3.setBackground(new Color(220, 220, 232));
+        separator3.setForeground(new Color(147, 131, 86));
+        separator3.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
+        add(separator3, cc.xywh(1, 1, 9, 1));
 
-		//---- label_extentNumber ----
-		label_extentNumber.setText("Extent Number");
-		label_extentNumber.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				label_extentNumberMouseClicked(e);
-			}
-		});
-		add(label_extentNumber, cc.xy(1, 3));
+        //---- label_extentNumber ----
+        label_extentNumber.setText("Extent Number");
+        label_extentNumber.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                label_extentNumberMouseClicked(e);
+            }
+        });
+        add(label_extentNumber, cc.xy(1, 3));
 
-		//---- extentNumber ----
-		extentNumber.setColumns(5);
-		extentNumber.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusGained(FocusEvent e) {
-				extentNumberFocusGained(e);
-			}
-		});
-		add(extentNumber, cc.xywh(3, 3, 1, 1, CellConstraints.LEFT, CellConstraints.DEFAULT));
+        //---- extentNumber ----
+        extentNumber.setColumns(5);
+        extentNumber.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                extentNumberFocusGained(e);
+            }
+        });
+        add(extentNumber, cc.xywh(3, 3, 1, 1, CellConstraints.LEFT, CellConstraints.DEFAULT));
 
-		//---- label_extentMeasurement ----
-		label_extentMeasurement.setText("Extent Measurement");
-		label_extentMeasurement.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				label_extentMeasurementMouseClicked(e);
-			}
-		});
-		add(label_extentMeasurement, cc.xy(5, 3));
+        //---- label_extentMeasurement ----
+        label_extentMeasurement.setText("Extent Measurement");
+        label_extentMeasurement.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                label_extentMeasurementMouseClicked(e);
+            }
+        });
+        add(label_extentMeasurement, cc.xy(5, 3));
 
-		//---- extentMeasurement ----
-		extentMeasurement.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusGained(FocusEvent e) {
-				extentMeasurementFocusGained(e);
-			}
-		});
-		add(extentMeasurement, cc.xywh(7, 3, 1, 1, CellConstraints.LEFT, CellConstraints.DEFAULT));
+        //---- extentMeasurement ----
+        extentMeasurement.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                extentMeasurementFocusGained(e);
+            }
+        });
+        add(extentMeasurement, cc.xywh(7, 3, 1, 1, CellConstraints.LEFT, CellConstraints.DEFAULT));
 		// JFormDesigner - End of component initialization  //GEN-END:initComponents
 	}
 
 
 	// JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-	// Generated using JFormDesigner non-commercial license
-	private JSeparator separator3;
-	private JLabel label_extentNumber;
-	private JFormattedTextField extentNumber;
-	private JLabel label_extentMeasurement;
-	private JComboBox extentMeasurement;
+    // Generated using JFormDesigner non-commercial license
+    private JSeparator separator3;
+    private JLabel label_extentNumber;
+    private JFormattedTextField extentNumber;
+    private JLabel label_extentMeasurement;
+    private JComboBox extentMeasurement;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
 }

@@ -1,5 +1,5 @@
 /**
- * Archivists' Toolkit(TM) Copyright © 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
+ * Archivists' Toolkit(TM) Copyright ï¿½ 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
  * All rights reserved.
  *
  * This software is free. You can redistribute it and / or modify it under the terms of the Educational Community License (ECL)
@@ -38,6 +38,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.Level;
 
 import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
 import javax.swing.text.JTextComponent;
 import javax.swing.text.DefaultEditorKit;
 import java.util.Date;
@@ -101,13 +102,35 @@ public final class Main {
 		Toolkit.getDefaultToolkit().addAWTEventListener(new MyAWTListener(), AWTEvent.MOUSE_EVENT_MASK);
 		Toolkit.getDefaultToolkit().addAWTEventListener(new StartupKeyListener(), AWTEvent.KEY_EVENT_MASK);
 
-		UIDefaults uiDefaults = UIManager.getDefaults();
-		uiDefaults.put("TextArea.background", Color.white);
-
 		//get user preferences
 		UserPreferences userPrefs = UserPreferences.getInstance();
 		userPrefs.populateFromPreferences();
 
+        // set properties of UI components including fonts
+        UIDefaults uiDefaults = UIManager.getDefaults();
+        uiDefaults.put("TextArea.background", Color.white);
+
+        Font userFont =  userPrefs.getFont();
+
+        // see if to use the default font
+        if(userFont == null) { // use the old default font
+            userFont = new Font("Trebuchet MS", Font.PLAIN, 13);   
+        }
+
+        // if font is not null 
+        if(userFont != null) {
+            UIManager.put("TextField.font", new FontUIResource(userFont));
+            UIManager.put("TextArea.font", new FontUIResource(userFont));
+            UIManager.put("PasswordField.font", new FontUIResource(userFont));
+            UIManager.put("Tree.font", new FontUIResource(userFont));
+            UIManager.put("Table.font", new FontUIResource(userFont));
+            UIManager.put("Label.font", new FontUIResource(userFont));
+            UIManager.put("ComboBox.font", new FontUIResource(userFont));
+            UIManager.put("ComboBoxItem.font", new FontUIResource(userFont));
+            //UIManager.put("TableHeader.font", new FontUIResource(userFont));
+        }
+
+        // now see if to bybass login
 		Boolean skipLogon = false;
 		if (args.length > 0) {
 			if (args[0].equalsIgnoreCase("bypassLogin")) {

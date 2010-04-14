@@ -1,5 +1,5 @@
 /**
- * Archivists' Toolkit(TM) Copyright © 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
+ * Archivists' Toolkit(TM) Copyright ï¿½ 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
  * All rights reserved.
  *
  * This software is free. You can redistribute it and / or modify it under the terms of the Educational Community License (ECL)
@@ -76,83 +76,80 @@ public class AccessionsLocationsFields extends DomainEditorFields {
 
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-		// Generated using JFormDesigner non-commercial license
-		label_subjectTerm = new JLabel();
-		note = ATBasicComponentFactory.createTextField(detailsModel.getModel(AccessionsLocations.PROPERTYNAME_NOTE));
-		label_subjectTermType = new JLabel();
-		scrollPane1 = new JScrollPane();
-		locationTextArea = new JTextArea();
-		changeLocationButton = new JButton();
-		CellConstraints cc = new CellConstraints();
+        // Generated using JFormDesigner non-commercial license
+        label_subjectTerm = new JLabel();
+        note = ATBasicComponentFactory.createTextField(detailsModel.getModel(AccessionsLocations.PROPERTYNAME_NOTE));
+        label_subjectTermType = new JLabel();
+        scrollPane1 = new JScrollPane();
+        locationTextArea = new JTextArea();
+        changeLocationButton = new JButton();
+        CellConstraints cc = new CellConstraints();
 
-		//======== this ========
-		setBorder(Borders.DLU4_BORDER);
-		setBackground(new Color(234, 201, 250));
-		setOpaque(false);
-		setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
-		setLayout(new FormLayout(
-			new ColumnSpec[] {
-				FormFactory.DEFAULT_COLSPEC,
-				FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-				new ColumnSpec("max(default;400px):grow")
-			},
-			new RowSpec[] {
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.LINE_GAP_ROWSPEC,
-				new RowSpec(RowSpec.TOP, Sizes.DEFAULT, FormSpec.NO_GROW),
-				FormFactory.LINE_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC
-			}));
+        //======== this ========
+        setBorder(Borders.DLU4_BORDER);
+        setBackground(new Color(234, 201, 250));
+        setOpaque(false);
+        setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
+        setLayout(new FormLayout(
+            new ColumnSpec[] {
+                FormFactory.DEFAULT_COLSPEC,
+                FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                new ColumnSpec("max(default;400px):grow")
+            },
+            new RowSpec[] {
+                FormFactory.DEFAULT_ROWSPEC,
+                FormFactory.LINE_GAP_ROWSPEC,
+                new RowSpec(RowSpec.TOP, Sizes.DEFAULT, FormSpec.NO_GROW),
+                FormFactory.LINE_GAP_ROWSPEC,
+                FormFactory.DEFAULT_ROWSPEC
+            }));
 
-		//---- label_subjectTerm ----
-		label_subjectTerm.setText("Note/Container Info");
-		label_subjectTerm.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
-		ATFieldInfo.assignLabelInfo(label_subjectTerm, Accessions.class, AccessionsLocations.PROPERTYNAME_NOTE);
-		add(label_subjectTerm, cc.xy(1, 1));
+        //---- label_subjectTerm ----
+        label_subjectTerm.setText("Note/Container Info");
+        label_subjectTerm.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
+        ATFieldInfo.assignLabelInfo(label_subjectTerm, Accessions.class, AccessionsLocations.PROPERTYNAME_NOTE);
+        add(label_subjectTerm, cc.xy(1, 1));
+        add(note, cc.xy(3, 1));
 
-		//---- note ----
-		note.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
-		add(note, cc.xy(3, 1));
+        //---- label_subjectTermType ----
+        label_subjectTermType.setText("Location");
+        label_subjectTermType.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
+        ATFieldInfo.assignLabelInfo(label_subjectTermType, Accessions.class, AccessionsLocations.PROPERTYNAME_LOCATION);
+        add(label_subjectTermType, cc.xy(1, 3));
 
-		//---- label_subjectTermType ----
-		label_subjectTermType.setText("Location");
-		label_subjectTermType.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
-		ATFieldInfo.assignLabelInfo(label_subjectTermType, Accessions.class, AccessionsLocations.PROPERTYNAME_LOCATION);
-		add(label_subjectTermType, cc.xy(1, 3));
+        //======== scrollPane1 ========
+        {
+            scrollPane1.setBorder(null);
+            scrollPane1.setOpaque(false);
 
-		//======== scrollPane1 ========
-		{
-			scrollPane1.setBorder(null);
-			scrollPane1.setOpaque(false);
+            //---- locationTextArea ----
+            locationTextArea.setRows(3);
+            locationTextArea.setOpaque(false);
+            locationTextArea.setEditable(false);
+            locationTextArea.setLineWrap(true);
+            locationTextArea.setWrapStyleWord(true);
+            scrollPane1.setViewportView(locationTextArea);
+        }
+        add(scrollPane1, cc.xy(3, 3));
 
-			//---- locationTextArea ----
-			locationTextArea.setRows(3);
-			locationTextArea.setOpaque(false);
-			locationTextArea.setEditable(false);
-			locationTextArea.setLineWrap(true);
-			locationTextArea.setWrapStyleWord(true);
-			scrollPane1.setViewportView(locationTextArea);
-		}
-		add(scrollPane1, cc.xy(3, 3));
-
-		//---- changeLocationButton ----
-		changeLocationButton.setText("Change Location");
-		changeLocationButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				changeLocationButtonActionPerformed();
-			}
-		});
-		add(changeLocationButton, cc.xywh(3, 5, 1, 1, CellConstraints.CENTER, CellConstraints.DEFAULT));
+        //---- changeLocationButton ----
+        changeLocationButton.setText("Change Location");
+        changeLocationButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                changeLocationButtonActionPerformed();
+            }
+        });
+        add(changeLocationButton, cc.xywh(3, 5, 1, 1, CellConstraints.CENTER, CellConstraints.DEFAULT));
 		// JFormDesigner - End of component initialization  //GEN-END:initComponents
 	}
 
 	// JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-	// Generated using JFormDesigner non-commercial license
-	private JLabel label_subjectTerm;
-	public JTextField note;
-	private JLabel label_subjectTermType;
-	private JScrollPane scrollPane1;
-	private JTextArea locationTextArea;
-	private JButton changeLocationButton;
+    // Generated using JFormDesigner non-commercial license
+    private JLabel label_subjectTerm;
+    public JTextField note;
+    private JLabel label_subjectTermType;
+    private JScrollPane scrollPane1;
+    private JTextArea locationTextArea;
+    private JButton changeLocationButton;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
 }

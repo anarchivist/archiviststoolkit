@@ -353,9 +353,6 @@ public class ResourceComponentsFields extends ArchDescriptionFields {
                         label_otherLevel.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                         ATFieldInfo.assignLabelInfo(label_otherLevel, ResourcesComponents.class, ResourcesComponents.PROPERTYNAME_OTHER_LEVEL);
                         panel3.add(label_otherLevel, cc.xywh(1, 3, 1, 1, CellConstraints.FILL, CellConstraints.DEFAULT));
-
-                        //---- resourcesOtherLevel ----
-                        resourcesOtherLevel.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                         panel3.add(resourcesOtherLevel, cc.xywh(3, 3, 3, 1));
 
                         //---- label_resourcesTitle ----
@@ -373,7 +370,6 @@ public class ResourceComponentsFields extends ArchDescriptionFields {
                             resourcesTitle.setRows(4);
                             resourcesTitle.setLineWrap(true);
                             resourcesTitle.setWrapStyleWord(true);
-                            resourcesTitle.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                             scrollPane42.setViewportView(resourcesTitle);
                         }
                         panel3.add(scrollPane42, cc.xywh(1, 7, 5, 1));
@@ -463,9 +459,6 @@ public class ResourceComponentsFields extends ArchDescriptionFields {
                                 label_resourcesDateExpression.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                                 ATFieldInfo.assignLabelInfo(label_resourcesDateExpression, ResourcesComponents.class, ResourcesComponents.PROPERTYNAME_DATE_EXPRESSION);
                                 panel36.add(label_resourcesDateExpression, cc.xy(1, 1));
-
-                                //---- resourcesDateExpression ----
-                                resourcesDateExpression.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                                 panel36.add(resourcesDateExpression, cc.xy(3, 1));
                             }
                             panel35.add(panel36, cc.xywh(1, 1, 9, 1));
@@ -483,7 +476,6 @@ public class ResourceComponentsFields extends ArchDescriptionFields {
 
                             //---- resourcesDateBegin ----
                             resourcesDateBegin.setColumns(4);
-                            resourcesDateBegin.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                             panel35.add(resourcesDateBegin, cc.xy(5, 5));
 
                             //---- label_resourcesDateEnd ----
@@ -494,7 +486,6 @@ public class ResourceComponentsFields extends ArchDescriptionFields {
 
                             //---- resourcesDateEnd ----
                             resourcesDateEnd.setColumns(4);
-                            resourcesDateEnd.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                             panel35.add(resourcesDateEnd, new CellConstraints(9, 5, 1, 1, CellConstraints.FILL, CellConstraints.DEFAULT, new Insets( 0, 0, 0, 5)));
 
                             //---- BulkDatesLabel ----
@@ -510,7 +501,6 @@ public class ResourceComponentsFields extends ArchDescriptionFields {
 
                             //---- resourcesBulkDateBegin ----
                             resourcesBulkDateBegin.setColumns(4);
-                            resourcesBulkDateBegin.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                             panel35.add(resourcesBulkDateBegin, cc.xy(5, 9));
 
                             //---- label_resourcesBulkDateEnd ----
@@ -521,7 +511,6 @@ public class ResourceComponentsFields extends ArchDescriptionFields {
 
                             //---- resourcesBulkDateEnd ----
                             resourcesBulkDateEnd.setColumns(4);
-                            resourcesBulkDateEnd.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                             panel35.add(resourcesBulkDateEnd, new CellConstraints(9, 9, 1, 1, CellConstraints.FILL, CellConstraints.DEFAULT, new Insets( 0, 0, 0, 5)));
                         }
                         panel34.add(panel35, cc.xy(1, 1));
@@ -579,7 +568,6 @@ public class ResourceComponentsFields extends ArchDescriptionFields {
                             //---- resourcesLanguageNote ----
                             resourcesLanguageNote.setRows(4);
                             resourcesLanguageNote.setWrapStyleWord(true);
-                            resourcesLanguageNote.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                             scrollPane423.setViewportView(resourcesLanguageNote);
                         }
                         panel23.add(scrollPane423, new CellConstraints(1, 3, 1, 1, CellConstraints.DEFAULT, CellConstraints.DEFAULT, new Insets( 0, 10, 0, 0)));
@@ -630,7 +618,6 @@ public class ResourceComponentsFields extends ArchDescriptionFields {
 
                         //---- subdivisionIdentifier ----
                         subdivisionIdentifier.setColumns(5);
-                        subdivisionIdentifier.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                         panel1.add(subdivisionIdentifier, cc.xywh(3, 1, 1, 1, CellConstraints.FILL, CellConstraints.DEFAULT));
                     }
                     panel10.add(panel1, cc.xy(1, 1));
@@ -680,7 +667,6 @@ public class ResourceComponentsFields extends ArchDescriptionFields {
                             panel5.add(label_resourcesExtentNumber, cc.xy(2, 3));
 
                             //---- resourcesExtentNumber ----
-                            resourcesExtentNumber.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                             resourcesExtentNumber.setColumns(5);
                             panel5.add(resourcesExtentNumber, cc.xy(4, 3));
 
@@ -703,7 +689,6 @@ public class ResourceComponentsFields extends ArchDescriptionFields {
                                 //---- resourcesExtentDescription ----
                                 resourcesExtentDescription.setRows(4);
                                 resourcesExtentDescription.setWrapStyleWord(true);
-                                resourcesExtentDescription.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                                 scrollPane422.setViewportView(resourcesExtentDescription);
                             }
                             panel5.add(scrollPane422, cc.xywh(2, 7, 5, 1));
@@ -748,7 +733,6 @@ public class ResourceComponentsFields extends ArchDescriptionFields {
                             //======== scrollPane4 ========
                             {
                                 scrollPane4.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-                                scrollPane4.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
 
                                 //---- instancesTable ----
                                 instancesTable.setPreferredScrollableViewportSize(new Dimension(200, 75));

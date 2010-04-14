@@ -1,5 +1,5 @@
 /**
- * Archivists' Toolkit(TM) Copyright © 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
+ * Archivists' Toolkit(TM) Copyright ï¿½ 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
  * All rights reserved.
  *
  * This software is free. You can redistribute it and / or modify it under the terms of the Educational Community License (ECL)
@@ -100,195 +100,194 @@ public class JiraReportDialog extends ATBasicDialog {
 
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-		// Generated using JFormDesigner non-commercial license
-		dialogPane = new JPanel();
-		contentPanel = new JPanel();
-		panel2 = new JPanel();
-		label3 = new JLabel();
-		label4 = new JLabel();
-		label1 = new JLabel();
-		summary = new JTextField();
-		label2 = new JLabel();
-		scrollPane1 = new JScrollPane();
-		detailedDescription = new JTextArea();
-		panel1 = new JPanel();
-		label5 = new JLabel();
-		emailAddress = new JTextField();
-		label6 = new JLabel();
-		fullName = new JTextField();
-		buttonBar = new JPanel();
-		cancelButton = new JButton();
-		sendButton = new JButton();
-		CellConstraints cc = new CellConstraints();
+        // Generated using JFormDesigner non-commercial license
+        dialogPane = new JPanel();
+        contentPanel = new JPanel();
+        panel2 = new JPanel();
+        label3 = new JLabel();
+        label4 = new JLabel();
+        label1 = new JLabel();
+        summary = new JTextField();
+        label2 = new JLabel();
+        scrollPane1 = new JScrollPane();
+        detailedDescription = new JTextArea();
+        panel1 = new JPanel();
+        label5 = new JLabel();
+        emailAddress = new JTextField();
+        label6 = new JLabel();
+        fullName = new JTextField();
+        buttonBar = new JPanel();
+        cancelButton = new JButton();
+        sendButton = new JButton();
+        CellConstraints cc = new CellConstraints();
 
-		//======== this ========
-		setModal(true);
-		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-		Container contentPane = getContentPane();
-		contentPane.setLayout(new BorderLayout());
+        //======== this ========
+        setModal(true);
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        Container contentPane = getContentPane();
+        contentPane.setLayout(new BorderLayout());
 
-		//======== dialogPane ========
-		{
-			dialogPane.setBorder(Borders.DIALOG_BORDER);
-			dialogPane.setBackground(new Color(200, 205, 232));
-			dialogPane.setLayout(new BorderLayout());
+        //======== dialogPane ========
+        {
+            dialogPane.setBorder(Borders.DIALOG_BORDER);
+            dialogPane.setBackground(new Color(200, 205, 232));
+            dialogPane.setLayout(new BorderLayout());
 
-			//======== contentPanel ========
-			{
-				contentPanel.setOpaque(false);
-				contentPanel.setLayout(new FormLayout(
-					ColumnSpec.decodeSpecs("max(default;600px):grow"),
-					new RowSpec[] {
-						FormFactory.DEFAULT_ROWSPEC,
-						FormFactory.UNRELATED_GAP_ROWSPEC,
-						FormFactory.DEFAULT_ROWSPEC,
-						FormFactory.LINE_GAP_ROWSPEC,
-						FormFactory.DEFAULT_ROWSPEC,
-						FormFactory.LINE_GAP_ROWSPEC,
-						FormFactory.DEFAULT_ROWSPEC,
-						FormFactory.LINE_GAP_ROWSPEC,
-						FormFactory.DEFAULT_ROWSPEC,
-						FormFactory.LINE_GAP_ROWSPEC,
-						FormFactory.DEFAULT_ROWSPEC
-					}));
+            //======== contentPanel ========
+            {
+                contentPanel.setOpaque(false);
+                contentPanel.setLayout(new FormLayout(
+                    ColumnSpec.decodeSpecs("max(default;600px):grow"),
+                    new RowSpec[] {
+                        FormFactory.DEFAULT_ROWSPEC,
+                        FormFactory.UNRELATED_GAP_ROWSPEC,
+                        FormFactory.DEFAULT_ROWSPEC,
+                        FormFactory.LINE_GAP_ROWSPEC,
+                        FormFactory.DEFAULT_ROWSPEC,
+                        FormFactory.LINE_GAP_ROWSPEC,
+                        FormFactory.DEFAULT_ROWSPEC,
+                        FormFactory.LINE_GAP_ROWSPEC,
+                        FormFactory.DEFAULT_ROWSPEC,
+                        FormFactory.LINE_GAP_ROWSPEC,
+                        FormFactory.DEFAULT_ROWSPEC
+                    }));
 
-				//======== panel2 ========
-				{
-					panel2.setOpaque(false);
-					panel2.setLayout(new FormLayout(
-						new ColumnSpec[] {
-							FormFactory.DEFAULT_COLSPEC,
-							FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-							FormFactory.DEFAULT_COLSPEC
-						},
-						RowSpec.decodeSpecs("default")));
+                //======== panel2 ========
+                {
+                    panel2.setOpaque(false);
+                    panel2.setLayout(new FormLayout(
+                        new ColumnSpec[] {
+                            FormFactory.DEFAULT_COLSPEC,
+                            FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                            FormFactory.DEFAULT_COLSPEC
+                        },
+                        RowSpec.decodeSpecs("default")));
 
-					//---- label3 ----
-					label3.setIcon(new ImageIcon(getClass().getResource("/org/archiviststoolkit/resources/images/bug.png")));
-					panel2.add(label3, cc.xy(1, 1));
+                    //---- label3 ----
+                    label3.setIcon(new ImageIcon(getClass().getResource("/org/archiviststoolkit/resources/images/bug.png")));
+                    panel2.add(label3, cc.xy(1, 1));
 
-					//---- label4 ----
-					label4.setText("Bug Reporter");
-					label4.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-					panel2.add(label4, cc.xywh(3, 1, 1, 1, CellConstraints.DEFAULT, CellConstraints.TOP));
-				}
-				contentPanel.add(panel2, cc.xy(1, 1));
+                    //---- label4 ----
+                    label4.setText("Bug Reporter");
+                    label4.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+                    panel2.add(label4, cc.xywh(3, 1, 1, 1, CellConstraints.DEFAULT, CellConstraints.TOP));
+                }
+                contentPanel.add(panel2, cc.xy(1, 1));
 
-				//---- label1 ----
-				label1.setText("Please enter a brief summary...");
-				label1.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
-				contentPanel.add(label1, cc.xy(1, 3));
-				contentPanel.add(summary, cc.xy(1, 5));
+                //---- label1 ----
+                label1.setText("Please enter a brief summary...");
+                label1.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
+                contentPanel.add(label1, cc.xy(1, 3));
+                contentPanel.add(summary, cc.xy(1, 5));
 
-				//---- label2 ----
-				label2.setText("...and a detailed description");
-				label2.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
-				contentPanel.add(label2, cc.xy(1, 7));
+                //---- label2 ----
+                label2.setText("...and a detailed description");
+                label2.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
+                contentPanel.add(label2, cc.xy(1, 7));
 
-				//======== scrollPane1 ========
-				{
-					scrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+                //======== scrollPane1 ========
+                {
+                    scrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-					//---- detailedDescription ----
-					detailedDescription.setRows(20);
-					detailedDescription.setLineWrap(true);
-					detailedDescription.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
-					scrollPane1.setViewportView(detailedDescription);
-				}
-				contentPanel.add(scrollPane1, cc.xy(1, 9));
+                    //---- detailedDescription ----
+                    detailedDescription.setRows(20);
+                    detailedDescription.setLineWrap(true);
+                    scrollPane1.setViewportView(detailedDescription);
+                }
+                contentPanel.add(scrollPane1, cc.xy(1, 9));
 
-				//======== panel1 ========
-				{
-					panel1.setOpaque(false);
-					panel1.setLayout(new FormLayout(
-						new ColumnSpec[] {
-							FormFactory.DEFAULT_COLSPEC,
-							FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-							new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
-						},
-						new RowSpec[] {
-							FormFactory.DEFAULT_ROWSPEC,
-							FormFactory.LINE_GAP_ROWSPEC,
-							FormFactory.DEFAULT_ROWSPEC
-						}));
+                //======== panel1 ========
+                {
+                    panel1.setOpaque(false);
+                    panel1.setLayout(new FormLayout(
+                        new ColumnSpec[] {
+                            FormFactory.DEFAULT_COLSPEC,
+                            FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                            new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
+                        },
+                        new RowSpec[] {
+                            FormFactory.DEFAULT_ROWSPEC,
+                            FormFactory.LINE_GAP_ROWSPEC,
+                            FormFactory.DEFAULT_ROWSPEC
+                        }));
 
-					//---- label5 ----
-					label5.setText("Email Address");
-					panel1.add(label5, cc.xy(1, 1));
-					panel1.add(emailAddress, cc.xy(3, 1));
+                    //---- label5 ----
+                    label5.setText("Email Address");
+                    panel1.add(label5, cc.xy(1, 1));
+                    panel1.add(emailAddress, cc.xy(3, 1));
 
-					//---- label6 ----
-					label6.setText("Full Name");
-					panel1.add(label6, cc.xy(1, 3));
-					panel1.add(fullName, cc.xy(3, 3));
-				}
-				contentPanel.add(panel1, cc.xy(1, 11));
-			}
-			dialogPane.add(contentPanel, BorderLayout.CENTER);
+                    //---- label6 ----
+                    label6.setText("Full Name");
+                    panel1.add(label6, cc.xy(1, 3));
+                    panel1.add(fullName, cc.xy(3, 3));
+                }
+                contentPanel.add(panel1, cc.xy(1, 11));
+            }
+            dialogPane.add(contentPanel, BorderLayout.CENTER);
 
-			//======== buttonBar ========
-			{
-				buttonBar.setBorder(Borders.BUTTON_BAR_GAP_BORDER);
-				buttonBar.setOpaque(false);
-				buttonBar.setLayout(new FormLayout(
-					new ColumnSpec[] {
-						FormFactory.GLUE_COLSPEC,
-						FormFactory.DEFAULT_COLSPEC,
-						FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-						FormFactory.DEFAULT_COLSPEC,
-						FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-						FormFactory.BUTTON_COLSPEC
-					},
-					RowSpec.decodeSpecs("pref")));
+            //======== buttonBar ========
+            {
+                buttonBar.setBorder(Borders.BUTTON_BAR_GAP_BORDER);
+                buttonBar.setOpaque(false);
+                buttonBar.setLayout(new FormLayout(
+                    new ColumnSpec[] {
+                        FormFactory.GLUE_COLSPEC,
+                        FormFactory.DEFAULT_COLSPEC,
+                        FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                        FormFactory.DEFAULT_COLSPEC,
+                        FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                        FormFactory.BUTTON_COLSPEC
+                    },
+                    RowSpec.decodeSpecs("pref")));
 
-				//---- cancelButton ----
-				cancelButton.setText("Cancel");
-				cancelButton.setOpaque(false);
-				cancelButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						cancelButtonActionPerformed(e);
-					}
-				});
-				buttonBar.add(cancelButton, cc.xy(4, 1));
+                //---- cancelButton ----
+                cancelButton.setText("Cancel");
+                cancelButton.setOpaque(false);
+                cancelButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        cancelButtonActionPerformed(e);
+                    }
+                });
+                buttonBar.add(cancelButton, cc.xy(4, 1));
 
-				//---- sendButton ----
-				sendButton.setText("Send");
-				sendButton.setOpaque(false);
-				sendButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						sendButtonActionPerformed(e);
-					}
-				});
-				buttonBar.add(sendButton, cc.xy(6, 1));
-			}
-			dialogPane.add(buttonBar, BorderLayout.SOUTH);
-		}
-		contentPane.add(dialogPane, BorderLayout.CENTER);
-		pack();
-		setLocationRelativeTo(getOwner());
+                //---- sendButton ----
+                sendButton.setText("Send");
+                sendButton.setOpaque(false);
+                sendButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        sendButtonActionPerformed(e);
+                    }
+                });
+                buttonBar.add(sendButton, cc.xy(6, 1));
+            }
+            dialogPane.add(buttonBar, BorderLayout.SOUTH);
+        }
+        contentPane.add(dialogPane, BorderLayout.CENTER);
+        pack();
+        setLocationRelativeTo(getOwner());
 		// JFormDesigner - End of component initialization  //GEN-END:initComponents
 	}
 
 	// JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-	// Generated using JFormDesigner non-commercial license
-	private JPanel dialogPane;
-	private JPanel contentPanel;
-	private JPanel panel2;
-	private JLabel label3;
-	private JLabel label4;
-	private JLabel label1;
-	private JTextField summary;
-	private JLabel label2;
-	private JScrollPane scrollPane1;
-	private JTextArea detailedDescription;
-	private JPanel panel1;
-	private JLabel label5;
-	private JTextField emailAddress;
-	private JLabel label6;
-	private JTextField fullName;
-	private JPanel buttonBar;
-	private JButton cancelButton;
-	private JButton sendButton;
+    // Generated using JFormDesigner non-commercial license
+    private JPanel dialogPane;
+    private JPanel contentPanel;
+    private JPanel panel2;
+    private JLabel label3;
+    private JLabel label4;
+    private JLabel label1;
+    private JTextField summary;
+    private JLabel label2;
+    private JScrollPane scrollPane1;
+    private JTextArea detailedDescription;
+    private JPanel panel1;
+    private JLabel label5;
+    private JTextField emailAddress;
+    private JLabel label6;
+    private JTextField fullName;
+    private JPanel buttonBar;
+    private JButton cancelButton;
+    private JButton sendButton;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
 
 	private String stackTrace = null;

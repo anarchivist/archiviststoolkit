@@ -1,5 +1,5 @@
 /**
- * Archivists' Toolkit(TM) Copyright © 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
+ * Archivists' Toolkit(TM) Copyright ï¿½ 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
  * All rights reserved.
  *
  * This software is free. You can redistribute it and / or modify it under the terms of the Educational Community License (ECL)
@@ -262,199 +262,196 @@ public class RDEScreenFields extends DomainEditorFields {
 
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-		// Generated using JFormDesigner non-commercial license
-		label_RDE_name = new JLabel();
-		rdeScreenName = ATBasicComponentFactory.createTextField(detailsModel.getModel(RDEScreen.PROPERTYNAME_NAME_RDE_SCREEN_NAME));
-		panel1 = new JPanel();
-		panel2 = new JPanel();
-		label2 = new JLabel();
-		label3 = new JLabel();
-		scrollPane2 = new JScrollPane();
-		options = new JList();
-		panel3 = new JPanel();
-		addButton = new JButton();
-		removeButton = new JButton();
-		moveUpButton = new JButton();
-		moveDownButton = new JButton();
-		scrollPane1 = new JScrollPane();
-		rdeScreenPanels = new DomainSortedTable(RDEScreenPanels.class);
-		label1 = new JLabel();
-		CellConstraints cc = new CellConstraints();
+        // Generated using JFormDesigner non-commercial license
+        label_RDE_name = new JLabel();
+        rdeScreenName = ATBasicComponentFactory.createTextField(detailsModel.getModel(RDEScreen.PROPERTYNAME_NAME_RDE_SCREEN_NAME));
+        panel1 = new JPanel();
+        panel2 = new JPanel();
+        label2 = new JLabel();
+        label3 = new JLabel();
+        scrollPane2 = new JScrollPane();
+        options = new JList();
+        panel3 = new JPanel();
+        addButton = new JButton();
+        removeButton = new JButton();
+        moveUpButton = new JButton();
+        moveDownButton = new JButton();
+        scrollPane1 = new JScrollPane();
+        rdeScreenPanels = new DomainSortedTable(RDEScreenPanels.class);
+        label1 = new JLabel();
+        CellConstraints cc = new CellConstraints();
 
-		//======== this ========
-		setBorder(Borders.DLU4_BORDER);
-		setOpaque(false);
-		setPreferredSize(new Dimension(800, 500));
-		setLayout(new FormLayout(
-			new ColumnSpec[] {
-				FormFactory.DEFAULT_COLSPEC,
-				FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-				new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
-			},
-			new RowSpec[] {
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.LINE_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.LINE_GAP_ROWSPEC,
-				new RowSpec(RowSpec.CENTER, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
-			}));
+        //======== this ========
+        setBorder(Borders.DLU4_BORDER);
+        setOpaque(false);
+        setPreferredSize(new Dimension(800, 500));
+        setLayout(new FormLayout(
+            new ColumnSpec[] {
+                FormFactory.DEFAULT_COLSPEC,
+                FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
+            },
+            new RowSpec[] {
+                FormFactory.DEFAULT_ROWSPEC,
+                FormFactory.LINE_GAP_ROWSPEC,
+                FormFactory.DEFAULT_ROWSPEC,
+                FormFactory.LINE_GAP_ROWSPEC,
+                new RowSpec(RowSpec.CENTER, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
+            }));
 
-		//---- label_RDE_name ----
-		label_RDE_name.setText("RDE Name");
-		label_RDE_name.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
-		ATFieldInfo.assignLabelInfo(label_RDE_name, RDEScreen.class, RDEScreen.PROPERTYNAME_NAME_RDE_SCREEN_NAME);
-		add(label_RDE_name, cc.xy(1, 1));
+        //---- label_RDE_name ----
+        label_RDE_name.setText("RDE Name");
+        label_RDE_name.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
+        ATFieldInfo.assignLabelInfo(label_RDE_name, RDEScreen.class, RDEScreen.PROPERTYNAME_NAME_RDE_SCREEN_NAME);
+        add(label_RDE_name, cc.xy(1, 1));
+        add(rdeScreenName, cc.xy(3, 1));
 
-		//---- rdeScreenName ----
-		rdeScreenName.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
-		add(rdeScreenName, cc.xy(3, 1));
+        //======== panel1 ========
+        {
+            panel1.setLayout(new FormLayout(
+                new ColumnSpec[] {
+                    FormFactory.DEFAULT_COLSPEC,
+                    FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                    FormFactory.DEFAULT_COLSPEC
+                },
+                RowSpec.decodeSpecs("")));
+        }
+        add(panel1, cc.xywh(1, 3, 3, 1));
 
-		//======== panel1 ========
-		{
-			panel1.setLayout(new FormLayout(
-				new ColumnSpec[] {
-					FormFactory.DEFAULT_COLSPEC,
-					FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-					FormFactory.DEFAULT_COLSPEC
-				},
-				RowSpec.decodeSpecs("")));
-		}
-		add(panel1, cc.xywh(1, 3, 3, 1));
+        //======== panel2 ========
+        {
+            panel2.setLayout(new FormLayout(
+                new ColumnSpec[] {
+                    new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
+                    FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                    FormFactory.DEFAULT_COLSPEC,
+                    FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                    new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
+                },
+                new RowSpec[] {
+                    FormFactory.DEFAULT_ROWSPEC,
+                    FormFactory.LINE_GAP_ROWSPEC,
+                    new RowSpec(RowSpec.TOP, Sizes.DEFAULT, FormSpec.NO_GROW),
+                    FormFactory.LINE_GAP_ROWSPEC,
+                    FormFactory.DEFAULT_ROWSPEC
+                }));
+            ((FormLayout)panel2.getLayout()).setColumnGroups(new int[][] {{1, 5}});
 
-		//======== panel2 ========
-		{
-			panel2.setLayout(new FormLayout(
-				new ColumnSpec[] {
-					new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
-					FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-					FormFactory.DEFAULT_COLSPEC,
-					FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-					new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
-				},
-				new RowSpec[] {
-					FormFactory.DEFAULT_ROWSPEC,
-					FormFactory.LINE_GAP_ROWSPEC,
-					new RowSpec(RowSpec.TOP, Sizes.DEFAULT, FormSpec.NO_GROW),
-					FormFactory.LINE_GAP_ROWSPEC,
-					FormFactory.DEFAULT_ROWSPEC
-				}));
-			((FormLayout)panel2.getLayout()).setColumnGroups(new int[][] {{1, 5}});
+            //---- label2 ----
+            label2.setText("Items to pick from");
+            panel2.add(label2, cc.xy(1, 1));
 
-			//---- label2 ----
-			label2.setText("Items to pick from");
-			panel2.add(label2, cc.xy(1, 1));
+            //---- label3 ----
+            label3.setText("Items picked");
+            panel2.add(label3, cc.xy(5, 1));
 
-			//---- label3 ----
-			label3.setText("Items picked");
-			panel2.add(label3, cc.xy(5, 1));
+            //======== scrollPane2 ========
+            {
 
-			//======== scrollPane2 ========
-			{
+                //---- options ----
+                options.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+                options.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        optionsMouseClicked(e);
+                    }
+                });
+                scrollPane2.setViewportView(options);
+            }
+            panel2.add(scrollPane2, cc.xywh(1, 3, 1, 3, CellConstraints.DEFAULT, CellConstraints.FILL));
 
-				//---- options ----
-				options.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-				options.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						optionsMouseClicked(e);
-					}
-				});
-				scrollPane2.setViewportView(options);
-			}
-			panel2.add(scrollPane2, cc.xywh(1, 3, 1, 3, CellConstraints.DEFAULT, CellConstraints.FILL));
+            //======== panel3 ========
+            {
+                panel3.setLayout(new FormLayout(
+                    ColumnSpec.decodeSpecs("default"),
+                    new RowSpec[] {
+                        FormFactory.DEFAULT_ROWSPEC,
+                        FormFactory.LINE_GAP_ROWSPEC,
+                        FormFactory.DEFAULT_ROWSPEC,
+                        FormFactory.LINE_GAP_ROWSPEC,
+                        FormFactory.DEFAULT_ROWSPEC,
+                        FormFactory.LINE_GAP_ROWSPEC,
+                        FormFactory.DEFAULT_ROWSPEC
+                    }));
 
-			//======== panel3 ========
-			{
-				panel3.setLayout(new FormLayout(
-					ColumnSpec.decodeSpecs("default"),
-					new RowSpec[] {
-						FormFactory.DEFAULT_ROWSPEC,
-						FormFactory.LINE_GAP_ROWSPEC,
-						FormFactory.DEFAULT_ROWSPEC,
-						FormFactory.LINE_GAP_ROWSPEC,
-						FormFactory.DEFAULT_ROWSPEC,
-						FormFactory.LINE_GAP_ROWSPEC,
-						FormFactory.DEFAULT_ROWSPEC
-					}));
+                //---- addButton ----
+                addButton.setText("Add ->");
+                addButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        addButtonActionPerformed();
+                    }
+                });
+                panel3.add(addButton, cc.xy(1, 1));
 
-				//---- addButton ----
-				addButton.setText("Add ->");
-				addButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						addButtonActionPerformed();
-					}
-				});
-				panel3.add(addButton, cc.xy(1, 1));
+                //---- removeButton ----
+                removeButton.setText("Remove");
+                removeButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        removeButtonActionPerformed();
+                    }
+                });
+                panel3.add(removeButton, cc.xy(1, 3));
 
-				//---- removeButton ----
-				removeButton.setText("Remove");
-				removeButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						removeButtonActionPerformed();
-					}
-				});
-				panel3.add(removeButton, cc.xy(1, 3));
+                //---- moveUpButton ----
+                moveUpButton.setText("Move Up");
+                moveUpButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        moveUpButtonActionPerformed();
+                    }
+                });
+                panel3.add(moveUpButton, cc.xy(1, 5));
 
-				//---- moveUpButton ----
-				moveUpButton.setText("Move Up");
-				moveUpButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						moveUpButtonActionPerformed();
-					}
-				});
-				panel3.add(moveUpButton, cc.xy(1, 5));
+                //---- moveDownButton ----
+                moveDownButton.setText("Move Down");
+                moveDownButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        moveDownButtonActionPerformed();
+                    }
+                });
+                panel3.add(moveDownButton, cc.xy(1, 7));
+            }
+            panel2.add(panel3, cc.xy(3, 3));
 
-				//---- moveDownButton ----
-				moveDownButton.setText("Move Down");
-				moveDownButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						moveDownButtonActionPerformed();
-					}
-				});
-				panel3.add(moveDownButton, cc.xy(1, 7));
-			}
-			panel2.add(panel3, cc.xy(3, 3));
+            //======== scrollPane1 ========
+            {
 
-			//======== scrollPane1 ========
-			{
+                //---- rdeScreenPanels ----
+                rdeScreenPanels.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        rdeScreenPanelsMouseClicked(e);
+                    }
+                });
+                scrollPane1.setViewportView(rdeScreenPanels);
+            }
+            panel2.add(scrollPane1, cc.xy(5, 3));
 
-				//---- rdeScreenPanels ----
-				rdeScreenPanels.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						rdeScreenPanelsMouseClicked(e);
-					}
-				});
-				scrollPane1.setViewportView(rdeScreenPanels);
-			}
-			panel2.add(scrollPane1, cc.xy(5, 3));
-
-			//---- label1 ----
-			label1.setText("Double click to set stickiness options");
-			panel2.add(label1, cc.xy(5, 5));
-		}
-		add(panel2, cc.xywh(1, 5, 3, 1, CellConstraints.DEFAULT, CellConstraints.FILL));
+            //---- label1 ----
+            label1.setText("Double click to set stickiness options");
+            panel2.add(label1, cc.xy(5, 5));
+        }
+        add(panel2, cc.xywh(1, 5, 3, 1, CellConstraints.DEFAULT, CellConstraints.FILL));
 		// JFormDesigner - End of component initialization  //GEN-END:initComponents
 	}
 
 	// JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-	// Generated using JFormDesigner non-commercial license
-	private JLabel label_RDE_name;
-	public JTextField rdeScreenName;
-	private JPanel panel1;
-	private JPanel panel2;
-	private JLabel label2;
-	private JLabel label3;
-	private JScrollPane scrollPane2;
-	private JList options;
-	private JPanel panel3;
-	private JButton addButton;
-	private JButton removeButton;
-	private JButton moveUpButton;
-	private JButton moveDownButton;
-	private JScrollPane scrollPane1;
-	private DomainSortedTable rdeScreenPanels;
-	private JLabel label1;
+    // Generated using JFormDesigner non-commercial license
+    private JLabel label_RDE_name;
+    public JTextField rdeScreenName;
+    private JPanel panel1;
+    private JPanel panel2;
+    private JLabel label2;
+    private JLabel label3;
+    private JScrollPane scrollPane2;
+    private JList options;
+    private JPanel panel3;
+    private JButton addButton;
+    private JButton removeButton;
+    private JButton moveUpButton;
+    private JButton moveDownButton;
+    private JScrollPane scrollPane1;
+    private DomainSortedTable rdeScreenPanels;
+    private JLabel label1;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
 
 	public final void setModel(final DomainObject model, InfiniteProgressPanel progressPanel) {

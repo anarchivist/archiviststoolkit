@@ -264,7 +264,6 @@ public class DigitalObjectTreeViewer extends DomainEditorFields implements Mouse
             resourceTitle.setEditable(false);
             resourceTitle.setOpaque(false);
             resourceTitle.setBorder(null);
-            resourceTitle.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
             panel3.add(resourceTitle, cc.xywh(3, 1, 1, 1, CellConstraints.FILL, CellConstraints.DEFAULT));
 
             //---- label3 ----
@@ -277,7 +276,6 @@ public class DigitalObjectTreeViewer extends DomainEditorFields implements Mouse
             resourceId.setEditable(false);
             resourceId.setOpaque(false);
             resourceId.setBorder(null);
-            resourceId.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
             panel3.add(resourceId, cc.xywh(7, 1, 1, 1, CellConstraints.FILL, CellConstraints.DEFAULT));
         }
         add(panel3, cc.xy(1, 1));

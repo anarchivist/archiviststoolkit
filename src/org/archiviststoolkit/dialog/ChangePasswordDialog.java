@@ -1,5 +1,5 @@
 /**
- * Archivists' Toolkit(TM) Copyright © 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
+ * Archivists' Toolkit(TM) Copyright ï¿½ 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
  * All rights reserved.
  *
  * This software is free. You can redistribute it and / or modify it under the terms of the Educational Community License (ECL)
@@ -118,89 +118,89 @@ public class ChangePasswordDialog extends ATBasicDialog {
 
         //======== dialogPane ========
         {
-        	dialogPane.setBorder(Borders.DIALOG_BORDER);
-        	dialogPane.setBackground(new Color(200, 205, 232));
-        	dialogPane.setLayout(new BorderLayout());
+            dialogPane.setBorder(Borders.DIALOG_BORDER);
+            dialogPane.setBackground(new Color(200, 205, 232));
+            dialogPane.setLayout(new BorderLayout());
 
-        	//======== contentPanel ========
-        	{
-        		contentPanel.setOpaque(false);
-        		contentPanel.setLayout(new FormLayout(
-        			new ColumnSpec[] {
-        				FormFactory.DEFAULT_COLSPEC,
-        				FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-        				new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
-        			},
-        			new RowSpec[] {
-        				FormFactory.DEFAULT_ROWSPEC,
-        				FormFactory.LINE_GAP_ROWSPEC,
-        				FormFactory.DEFAULT_ROWSPEC,
-        				FormFactory.LINE_GAP_ROWSPEC,
-        				FormFactory.DEFAULT_ROWSPEC
-        			}));
+            //======== contentPanel ========
+            {
+                contentPanel.setOpaque(false);
+                contentPanel.setLayout(new FormLayout(
+                    new ColumnSpec[] {
+                        FormFactory.DEFAULT_COLSPEC,
+                        FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                        new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
+                    },
+                    new RowSpec[] {
+                        FormFactory.DEFAULT_ROWSPEC,
+                        FormFactory.LINE_GAP_ROWSPEC,
+                        FormFactory.DEFAULT_ROWSPEC,
+                        FormFactory.LINE_GAP_ROWSPEC,
+                        FormFactory.DEFAULT_ROWSPEC
+                    }));
 
-        		//---- oldPasswordlabel ----
-        		oldPasswordlabel.setText("Old Password");
-        		contentPanel.add(oldPasswordlabel, cc.xy(1, 1));
+                //---- oldPasswordlabel ----
+                oldPasswordlabel.setText("Old Password");
+                contentPanel.add(oldPasswordlabel, cc.xy(1, 1));
 
-        		//---- oldPassword ----
-        		oldPassword.setColumns(15);
-        		contentPanel.add(oldPassword, cc.xy(3, 1));
+                //---- oldPassword ----
+                oldPassword.setColumns(15);
+                contentPanel.add(oldPassword, cc.xy(3, 1));
 
-        		//---- label2 ----
-        		label2.setText("New Password");
-        		contentPanel.add(label2, cc.xy(1, 3));
+                //---- label2 ----
+                label2.setText("New Password");
+                contentPanel.add(label2, cc.xy(1, 3));
 
-        		//---- newPassword1 ----
-        		newPassword1.setColumns(15);
-        		contentPanel.add(newPassword1, cc.xy(3, 3));
+                //---- newPassword1 ----
+                newPassword1.setColumns(15);
+                contentPanel.add(newPassword1, cc.xy(3, 3));
 
-        		//---- label3 ----
-        		label3.setText("Repeat New Password");
-        		contentPanel.add(label3, cc.xy(1, 5));
+                //---- label3 ----
+                label3.setText("Repeat New Password");
+                contentPanel.add(label3, cc.xy(1, 5));
 
-        		//---- newPassword2 ----
-        		newPassword2.setColumns(15);
-        		contentPanel.add(newPassword2, cc.xy(3, 5));
-        	}
-        	dialogPane.add(contentPanel, BorderLayout.CENTER);
+                //---- newPassword2 ----
+                newPassword2.setColumns(15);
+                contentPanel.add(newPassword2, cc.xy(3, 5));
+            }
+            dialogPane.add(contentPanel, BorderLayout.CENTER);
 
-        	//======== buttonBar ========
-        	{
-        		buttonBar.setBorder(Borders.BUTTON_BAR_GAP_BORDER);
-        		buttonBar.setOpaque(false);
-        		buttonBar.setLayout(new FormLayout(
-        			new ColumnSpec[] {
-        				FormFactory.GLUE_COLSPEC,
-        				FormFactory.DEFAULT_COLSPEC,
-        				FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-        				FormFactory.BUTTON_COLSPEC,
-        				FormFactory.RELATED_GAP_COLSPEC,
-        				FormFactory.BUTTON_COLSPEC
-        			},
-        			RowSpec.decodeSpecs("pref")));
+            //======== buttonBar ========
+            {
+                buttonBar.setBorder(Borders.BUTTON_BAR_GAP_BORDER);
+                buttonBar.setOpaque(false);
+                buttonBar.setLayout(new FormLayout(
+                    new ColumnSpec[] {
+                        FormFactory.GLUE_COLSPEC,
+                        FormFactory.DEFAULT_COLSPEC,
+                        FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                        FormFactory.BUTTON_COLSPEC,
+                        FormFactory.RELATED_GAP_COLSPEC,
+                        FormFactory.BUTTON_COLSPEC
+                    },
+                    RowSpec.decodeSpecs("pref")));
 
-        		//---- cancelButton ----
-        		cancelButton.setText("Cancel");
-        		cancelButton.setOpaque(false);
-        		cancelButton.addActionListener(new ActionListener() {
-        			public void actionPerformed(ActionEvent e) {
-        				cancelButtonActionPerformed(e);
-        			}
-        		});
-        		buttonBar.add(cancelButton, cc.xy(4, 1));
+                //---- cancelButton ----
+                cancelButton.setText("Cancel");
+                cancelButton.setOpaque(false);
+                cancelButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        cancelButtonActionPerformed(e);
+                    }
+                });
+                buttonBar.add(cancelButton, cc.xy(4, 1));
 
-        		//---- changePasswordButton ----
-        		changePasswordButton.setText("Change Password");
-        		changePasswordButton.setOpaque(false);
-        		changePasswordButton.addActionListener(new ActionListener() {
-        			public void actionPerformed(ActionEvent e) {
-        				changePasswordButtonActionPerformed(e);
-        			}
-        		});
-        		buttonBar.add(changePasswordButton, cc.xy(6, 1));
-        	}
-        	dialogPane.add(buttonBar, BorderLayout.SOUTH);
+                //---- changePasswordButton ----
+                changePasswordButton.setText("Change Password");
+                changePasswordButton.setOpaque(false);
+                changePasswordButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        changePasswordButtonActionPerformed(e);
+                    }
+                });
+                buttonBar.add(changePasswordButton, cc.xy(6, 1));
+            }
+            dialogPane.add(buttonBar, BorderLayout.SOUTH);
         }
         contentPane.add(dialogPane, BorderLayout.CENTER);
         pack();

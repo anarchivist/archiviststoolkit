@@ -1,5 +1,5 @@
 /**
- * Archivists' Toolkit(TM) Copyright © 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
+ * Archivists' Toolkit(TM) Copyright ï¿½ 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
  * All rights reserved.
  *
  * This software is free. You can redistribute it and / or modify it under the terms of the Educational Community License (ECL)
@@ -128,7 +128,6 @@ public class SubjectFields extends DomainEditorFields {
         add(label_subjectTerm, cc.xy(1, 1));
 
         //---- subjectTerm ----
-        subjectTerm.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         subjectTerm.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -145,7 +144,6 @@ public class SubjectFields extends DomainEditorFields {
 
         //---- subjectTermType ----
         subjectTermType.setOpaque(false);
-        subjectTermType.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         add(subjectTermType, cc.xywh(3, 3, 1, 1, CellConstraints.LEFT, CellConstraints.DEFAULT));
 
         //---- label_subjectSource ----
@@ -156,7 +154,6 @@ public class SubjectFields extends DomainEditorFields {
 
         //---- subjectSource ----
         subjectSource.setOpaque(false);
-        subjectSource.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         add(subjectSource, cc.xywh(3, 5, 1, 1, CellConstraints.LEFT, CellConstraints.DEFAULT));
 
         //---- label_subjectScopeNote ----
@@ -176,7 +173,6 @@ public class SubjectFields extends DomainEditorFields {
             subjectScopeNote.setLineWrap(true);
             subjectScopeNote.setTabSize(20);
             subjectScopeNote.setWrapStyleWord(true);
-            subjectScopeNote.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
             scrollPane1.setViewportView(subjectScopeNote);
         }
         add(scrollPane1, cc.xy(3, 7));

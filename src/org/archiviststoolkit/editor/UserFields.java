@@ -1,5 +1,5 @@
 /**
- * Archivists' Toolkit(TM) Copyright © 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
+ * Archivists' Toolkit(TM) Copyright ï¿½ 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
  * All rights reserved.
  *
  * This software is free. You can redistribute it and / or modify it under the terms of the Educational Community License (ECL)
@@ -103,37 +103,34 @@ public class UserFields extends DomainEditorFields {
         setOpaque(false);
         setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         setLayout(new FormLayout(
-        	new ColumnSpec[] {
-        		FormFactory.DEFAULT_COLSPEC,
-        		FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-        		new ColumnSpec("max(default;400px):grow")
-        	},
-        	new RowSpec[] {
-        		FormFactory.DEFAULT_ROWSPEC,
-        		FormFactory.LINE_GAP_ROWSPEC,
-        		FormFactory.DEFAULT_ROWSPEC,
-        		FormFactory.LINE_GAP_ROWSPEC,
-        		FormFactory.DEFAULT_ROWSPEC,
-        		FormFactory.LINE_GAP_ROWSPEC,
-        		FormFactory.DEFAULT_ROWSPEC,
-        		FormFactory.LINE_GAP_ROWSPEC,
-        		FormFactory.DEFAULT_ROWSPEC,
-        		FormFactory.LINE_GAP_ROWSPEC,
-        		FormFactory.DEFAULT_ROWSPEC,
-        		FormFactory.LINE_GAP_ROWSPEC,
-        		FormFactory.DEFAULT_ROWSPEC,
-        		FormFactory.LINE_GAP_ROWSPEC,
-        		FormFactory.DEFAULT_ROWSPEC
-        	}));
+            new ColumnSpec[] {
+                FormFactory.DEFAULT_COLSPEC,
+                FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                new ColumnSpec("max(default;400px):grow")
+            },
+            new RowSpec[] {
+                FormFactory.DEFAULT_ROWSPEC,
+                FormFactory.LINE_GAP_ROWSPEC,
+                FormFactory.DEFAULT_ROWSPEC,
+                FormFactory.LINE_GAP_ROWSPEC,
+                FormFactory.DEFAULT_ROWSPEC,
+                FormFactory.LINE_GAP_ROWSPEC,
+                FormFactory.DEFAULT_ROWSPEC,
+                FormFactory.LINE_GAP_ROWSPEC,
+                FormFactory.DEFAULT_ROWSPEC,
+                FormFactory.LINE_GAP_ROWSPEC,
+                FormFactory.DEFAULT_ROWSPEC,
+                FormFactory.LINE_GAP_ROWSPEC,
+                FormFactory.DEFAULT_ROWSPEC,
+                FormFactory.LINE_GAP_ROWSPEC,
+                FormFactory.DEFAULT_ROWSPEC
+            }));
 
         //---- label1 ----
         label1.setText("Username");
         label1.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         ATFieldInfo.assignLabelInfo(label1, Users.class, Users.PROPERTYNAME_USERNAME);
         add(label1, cc.xy(1, 1));
-
-        //---- userName ----
-        userName.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         add(userName, cc.xy(3, 1));
 
         //---- label13 ----
@@ -141,9 +138,6 @@ public class UserFields extends DomainEditorFields {
         label13.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         ATFieldInfo.assignLabelInfo(label13, Users.class, Users.PROPERTYNAME_FULL_NAME);
         add(label13, cc.xy(1, 3));
-
-        //---- fullName ----
-        fullName.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         add(fullName, cc.xy(3, 3));
 
         //---- label14 ----
@@ -152,9 +146,6 @@ public class UserFields extends DomainEditorFields {
         label14.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         ATFieldInfo.assignLabelInfo(label14, Users.class, Users.PROPERTYNAME_TITLE);
         add(label14, cc.xywh(1, 5, 1, 1, CellConstraints.DEFAULT, CellConstraints.CENTER));
-
-        //---- title ----
-        title.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         add(title, cc.xy(3, 5));
 
         //---- label15 ----
@@ -163,9 +154,6 @@ public class UserFields extends DomainEditorFields {
         label15.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         ATFieldInfo.assignLabelInfo(label15, Users.class, Users.PROPERTYNAME_DEPARTMENT);
         add(label15, cc.xywh(1, 7, 1, 1, CellConstraints.DEFAULT, CellConstraints.CENTER));
-
-        //---- department ----
-        department.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         add(department, cc.xy(3, 7));
 
         //---- label17 ----
@@ -174,9 +162,6 @@ public class UserFields extends DomainEditorFields {
         label17.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         ATFieldInfo.assignLabelInfo(label17, Users.class, Users.PROPERTYNAME_EMAIL);
         add(label17, cc.xywh(1, 9, 1, 1, CellConstraints.DEFAULT, CellConstraints.CENTER));
-
-        //---- email ----
-        email.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         add(email, cc.xy(3, 9));
 
         //---- label16 ----
@@ -188,7 +173,6 @@ public class UserFields extends DomainEditorFields {
 
         //---- accessClass ----
         accessClass.setColumns(3);
-        accessClass.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         add(accessClass, cc.xywh(3, 11, 1, 1, CellConstraints.LEFT, CellConstraints.DEFAULT));
 
         //---- label142 ----
@@ -208,9 +192,9 @@ public class UserFields extends DomainEditorFields {
         changePasswordButton.setOpaque(false);
         changePasswordButton.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         changePasswordButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		changePasswordButtonActionPerformed(e);
-        	}
+            public void actionPerformed(ActionEvent e) {
+                changePasswordButtonActionPerformed(e);
+            }
         });
         add(changePasswordButton, cc.xywh(3, 15, 1, 1, CellConstraints.LEFT, CellConstraints.DEFAULT));
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
