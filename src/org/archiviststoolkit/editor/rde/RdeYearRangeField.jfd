@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?> 
-<java version="1.6.0_04" class="java.beans.XMLDecoder"> 
+<java version="1.6.0_18" class="java.beans.XMLDecoder"> 
  <object class="com.jformdesigner.model.FormModel"> 
   <void property="contentType"> 
    <string>form/swing</string> 
@@ -156,6 +156,10 @@
           <string>JavaCodeGenerator.customCreateCode</string> 
           <string>ATBasicComponentFactory.createUnboundIntegerField(false);</string> 
          </void> 
+         <void method="setProperty"> 
+          <string>font.noCode</string> 
+          <boolean>true</boolean> 
+         </void> 
         </void> 
         <void method="addEvent"> 
          <object class="com.jformdesigner.model.FormEvent"> 
@@ -237,6 +241,10 @@
          <void method="setProperty"> 
           <string>JavaCodeGenerator.customCreateCode</string> 
           <string>ATBasicComponentFactory.createUnboundIntegerField(false);</string> 
+         </void> 
+         <void method="setProperty"> 
+          <string>font.noCode</string> 
+          <boolean>true</boolean> 
          </void> 
         </void> 
         <void method="addEvent"> 

@@ -1,5 +1,5 @@
 /**
- * Archivists' Toolkit(TM) Copyright © 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
+ * Archivists' Toolkit(TM) Copyright ï¿½ 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
  * All rights reserved.
  *
  * This software is free. You can redistribute it and / or modify it under the terms of the Educational Community License (ECL)
@@ -186,6 +186,14 @@ public class InitDatabaseBackgroundResultCreator extends DeferredWizardResult{
 		if (databaseType == SessionFactory.DATABASE_TYPE_MYSQL) {
 			String databaseUrl = SessionFactory.getDatabaseUrl();
 			String databaseName = databaseUrl.substring(databaseUrl.lastIndexOf("/") + 1);
+
+            // check to make sure the character encoding information is not part database name
+            // if it is then split string aprt to get just the name
+            if(databaseName.indexOf("?") != -1) {
+                String[] sa = databaseName.split("\\?");
+                databaseName = sa[0];
+            }
+
 			Class.forName(SessionFactory.getDriverClass());
 			Connection conn = DriverManager.getConnection(databaseUrl,
 					SessionFactory.getUserName(),

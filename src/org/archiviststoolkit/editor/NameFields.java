@@ -259,7 +259,6 @@ public class NameFields extends DomainEditorFields {
         sortNameDisplay.setEditable(false);
         sortNameDisplay.setBorder(null);
         sortNameDisplay.setForeground(new Color(0, 0, 102));
-        sortNameDisplay.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         sortNameDisplay.setSelectionColor(new Color(204, 0, 51));
         sortNameDisplay.setOpaque(false);
         add(sortNameDisplay, cc.xy(1, 1));
@@ -374,7 +373,6 @@ public class NameFields extends DomainEditorFields {
                         nameDescriptionNote.setRows(8);
                         nameDescriptionNote.setLineWrap(true);
                         nameDescriptionNote.setWrapStyleWord(true);
-                        nameDescriptionNote.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                         scrollPane2.setViewportView(nameDescriptionNote);
                     }
                     descriptionPanel.add(scrollPane2, cc.xy(3, 3));
@@ -394,7 +392,6 @@ public class NameFields extends DomainEditorFields {
                         nameCitation.setRows(8);
                         nameCitation.setLineWrap(true);
                         nameCitation.setWrapStyleWord(true);
-                        nameCitation.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                         scrollPane23.setViewportView(nameCitation);
                     }
                     descriptionPanel.add(scrollPane23, cc.xy(3, 5));
@@ -624,9 +621,6 @@ public class NameFields extends DomainEditorFields {
                 label_nameContactAddress3.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                 ATFieldInfo.assignLabelInfo(label_nameContactAddress3, Names.class, Names.PROPERTYNAME_SALUTATION);
                 contactInfoPanel.add(label_nameContactAddress3, cc.xy(1, 1));
-
-                //---- salutation ----
-                salutation.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                 contactInfoPanel.add(salutation, cc.xywh(3, 1, 9, 1));
 
                 //---- label_nameContactAddress1 ----
@@ -634,9 +628,6 @@ public class NameFields extends DomainEditorFields {
                 label_nameContactAddress1.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                 ATFieldInfo.assignLabelInfo(label_nameContactAddress1, Names.class, Names.PROPERTYNAME_CONTACT_ADDRESS_1);
                 contactInfoPanel.add(label_nameContactAddress1, cc.xy(1, 3));
-
-                //---- nameContactAddress1 ----
-                nameContactAddress1.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                 contactInfoPanel.add(nameContactAddress1, cc.xywh(3, 3, 9, 1));
 
                 //---- label_nameContactAddress2 ----
@@ -644,9 +635,6 @@ public class NameFields extends DomainEditorFields {
                 label_nameContactAddress2.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                 ATFieldInfo.assignLabelInfo(label_nameContactAddress2, Names.class, Names.PROPERTYNAME_CONTACT_ADDRESS_2);
                 contactInfoPanel.add(label_nameContactAddress2, cc.xy(1, 5));
-
-                //---- nameContactAddress2 ----
-                nameContactAddress2.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                 contactInfoPanel.add(nameContactAddress2, cc.xywh(3, 5, 9, 1));
 
                 //---- label_nameContactCity ----
@@ -654,9 +642,6 @@ public class NameFields extends DomainEditorFields {
                 label_nameContactCity.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                 ATFieldInfo.assignLabelInfo(label_nameContactCity, Names.class, Names.PROPERTYNAME_CONTACT_CITY);
                 contactInfoPanel.add(label_nameContactCity, cc.xy(1, 7));
-
-                //---- nameContactCity ----
-                nameContactCity.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                 contactInfoPanel.add(nameContactCity, cc.xy(3, 7));
 
                 //---- label_nameContactRegion ----
@@ -664,9 +649,6 @@ public class NameFields extends DomainEditorFields {
                 label_nameContactRegion.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                 ATFieldInfo.assignLabelInfo(label_nameContactRegion, Names.class, Names.PROPERTYNAME_CONTACT_REGION);
                 contactInfoPanel.add(label_nameContactRegion, cc.xy(5, 7));
-
-                //---- nameContactRegion ----
-                nameContactRegion.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                 contactInfoPanel.add(nameContactRegion, cc.xy(7, 7));
 
                 //---- label_nameContactMailCode ----
@@ -674,9 +656,6 @@ public class NameFields extends DomainEditorFields {
                 label_nameContactMailCode.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                 ATFieldInfo.assignLabelInfo(label_nameContactMailCode, Names.class, Names.PROPERTYNAME_CONTACT_MAIL_CODE);
                 contactInfoPanel.add(label_nameContactMailCode, cc.xy(9, 7));
-
-                //---- nameContactMailCode ----
-                nameContactMailCode.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                 contactInfoPanel.add(nameContactMailCode, cc.xy(11, 7));
 
                 //---- label_nameContactCountry ----
@@ -684,9 +663,6 @@ public class NameFields extends DomainEditorFields {
                 label_nameContactCountry.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                 ATFieldInfo.assignLabelInfo(label_nameContactCountry, Names.class, Names.PROPERTYNAME_CONTACT_COUNTRY);
                 contactInfoPanel.add(label_nameContactCountry, cc.xy(1, 9));
-
-                //---- nameContactCountry ----
-                nameContactCountry.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                 contactInfoPanel.add(nameContactCountry, cc.xywh(3, 9, 9, 1));
 
                 //---- label_nameContactPhone ----
@@ -694,9 +670,6 @@ public class NameFields extends DomainEditorFields {
                 label_nameContactPhone.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                 ATFieldInfo.assignLabelInfo(label_nameContactPhone, Names.class, Names.PROPERTYNAME_CONTACT_PHONE);
                 contactInfoPanel.add(label_nameContactPhone, cc.xy(1, 11));
-
-                //---- nameContactPhone ----
-                nameContactPhone.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                 contactInfoPanel.add(nameContactPhone, cc.xywh(3, 11, 5, 1));
 
                 //---- label_nameContactFax ----
@@ -704,9 +677,6 @@ public class NameFields extends DomainEditorFields {
                 label_nameContactFax.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                 ATFieldInfo.assignLabelInfo(label_nameContactFax, Names.class, Names.PROPERTYNAME_CONTACT_FAX);
                 contactInfoPanel.add(label_nameContactFax, cc.xy(9, 11));
-
-                //---- nameContactFax ----
-                nameContactFax.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                 contactInfoPanel.add(nameContactFax, cc.xy(11, 11));
 
                 //---- label_nameContactEmail ----
@@ -714,9 +684,6 @@ public class NameFields extends DomainEditorFields {
                 label_nameContactEmail.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                 ATFieldInfo.assignLabelInfo(label_nameContactEmail, Names.class, Names.PROPERTYNAME_CONTACT_EMAIL);
                 contactInfoPanel.add(label_nameContactEmail, cc.xy(1, 13));
-
-                //---- nameContactEmail ----
-                nameContactEmail.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                 contactInfoPanel.add(nameContactEmail, cc.xywh(3, 13, 9, 1));
 
                 //---- label_nameContactName ----
@@ -724,9 +691,6 @@ public class NameFields extends DomainEditorFields {
                 label_nameContactName.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                 ATFieldInfo.assignLabelInfo(label_nameContactName, Names.class, Names.PROPERTYNAME_CONTACT_NAME);
                 contactInfoPanel.add(label_nameContactName, cc.xy(1, 15));
-
-                //---- nameContactName ----
-                nameContactName.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                 contactInfoPanel.add(nameContactName, cc.xywh(3, 15, 9, 1));
 
                 //---- label_nameContactNotes ----

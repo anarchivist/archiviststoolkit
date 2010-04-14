@@ -142,7 +142,6 @@ public class ArchDescriptionNamesFields extends DomainEditorFields {
         sortNameDisplay.setEditable(false);
         sortNameDisplay.setBorder(null);
         sortNameDisplay.setForeground(new Color(0, 0, 102));
-        sortNameDisplay.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         sortNameDisplay.setSelectionColor(new Color(204, 0, 51));
         sortNameDisplay.setOpaque(false);
         add(sortNameDisplay, cc.xywh(1, 1, 3, 1));

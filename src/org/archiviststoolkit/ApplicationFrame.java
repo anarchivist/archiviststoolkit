@@ -33,6 +33,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 
 import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
 
 import org.archiviststoolkit.mydomain.*;
 import org.archiviststoolkit.importer.*;
@@ -56,6 +57,7 @@ import org.archiviststoolkit.report.RepositoryProfileProcessor;
 import org.archiviststoolkit.plugin.*;
 import org.ananas.mac.menu.ApplicationItemFactory;
 import org.ananas.mac.menu.ApplicationItem;
+import say.swing.JFontChooser;
 
 
 /**
@@ -174,6 +176,7 @@ public final class ApplicationFrame extends JFrame implements ActionListener {
 	private ConcreteAction admin_RepositoryProfile = null;
 	private ConcreteAction admin_RDE = null;
 	private ConcreteAction admin_RDE_DO = null;
+	private ConcreteAction admin_Font = null;
 
     /**
 	 * The tools menu action.
@@ -500,6 +503,9 @@ public final class ApplicationFrame extends JFrame implements ActionListener {
         admin_RDE_DO = new ConcreteAction("Configure Digital Objects Rapid Data Entry Screens");
 		admin_RDE_DO.addActionListener(this);
 
+        admin_Font = new ConcreteAction("Configure Font");
+		admin_Font.addActionListener(this);
+
         assessmentAction = new ConcreteAction("Assessment Records");
 		assessmentAction.addActionListener(this);
 	}
@@ -640,7 +646,11 @@ public final class ApplicationFrame extends JFrame implements ActionListener {
 		if (Users.doesCurrentUserHaveAccess(Users.ACCESS_CLASS_SUPERUSER)) {
 			setupMenu.add(admin_ConfigureApplication);
 		}
-		menuBar.add(setupMenu);
+
+        // add the menu to configure system font
+        setupMenu.add(admin_Font);
+
+        menuBar.add(setupMenu);
 
 		JMenu reportMenu = new JMenu("Reports");
 		reportMenu.setBackground(MENU_BAR_BACKGROUND_COLOR);
@@ -974,7 +984,34 @@ public final class ApplicationFrame extends JFrame implements ActionListener {
 				new ErrorDialog(this, "Error creating editor for NotesEtcTypes", e).showDialog();
 			}
 
-		} else if (actionEvent.getSource() == this.import_Subject) {
+		} else if (actionEvent.getSource() == this.admin_Font) {
+            // get the current font if any
+            UserPreferences userPref = UserPreferences.getInstance();
+            Font font = userPref.getFont();
+
+            JFontChooser fontChooser = new JFontChooser();
+
+            if(font != null) {
+                fontChooser.setSelectedFont(font);
+            }
+
+            // now if a font is selected set it
+            int result = fontChooser.showDialog(this);
+            if (result == JFontChooser.OK_OPTION) {
+                font = fontChooser.getSelectedFont();
+                userPref.setFont(font);
+                userPref.saveToPreferences();
+
+                // update the UI now
+                UIManager.put("TextField.font", new FontUIResource(font));
+                UIManager.put("TextArea.font", new FontUIResource(font));
+                UIManager.put("Tree.font", new FontUIResource(font));
+                UIManager.put("Table.font", new FontUIResource(font));
+
+                SwingUtilities.updateComponentTreeUI(this);
+            }
+
+        } else if (actionEvent.getSource() == this.import_Subject) {
 			ATFileChooser filechooser = new ATFileChooser();
 			filechooser.setSize(600, 400);
 

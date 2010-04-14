@@ -1,5 +1,5 @@
 /**
- * Archivists' Toolkit(TM) Copyright © 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
+ * Archivists' Toolkit(TM) Copyright ï¿½ 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
  * All rights reserved.
  *
  * This software is free. You can redistribute it and / or modify it under the terms of the Educational Community License (ECL)
@@ -114,9 +114,6 @@ public class ArchDescriptionAnalogInstancesFields extends DomainEditorFields {
         label_subjectSource5.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         ATFieldInfo.assignLabelInfo(label_subjectSource5, ArchDescriptionAnalogInstances.class, ArchDescriptionAnalogInstances.PROPERTYNAME_CONTAINER1_INDICATOR);
         add(label_subjectSource5, cc.xy(1, 3));
-
-        //---- containerLabel4 ----
-        containerLabel4.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         add(containerLabel4, cc.xy(3, 3));
 
         //---- label_subjectSource4 ----
@@ -124,9 +121,6 @@ public class ArchDescriptionAnalogInstancesFields extends DomainEditorFields {
         label_subjectSource4.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         ATFieldInfo.assignLabelInfo(label_subjectSource4, ArchDescriptionAnalogInstances.class, ArchDescriptionAnalogInstances.PROPERTYNAME_BARCODE);
         add(label_subjectSource4, cc.xy(1, 5));
-
-        //---- containerLabel3 ----
-        containerLabel3.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         add(containerLabel3, cc.xy(3, 5));
 
         //---- separator1 ----
@@ -150,9 +144,6 @@ public class ArchDescriptionAnalogInstancesFields extends DomainEditorFields {
         label_subjectSource6.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         ATFieldInfo.assignLabelInfo(label_subjectSource6, ArchDescriptionAnalogInstances.class, ArchDescriptionAnalogInstances.PROPERTYNAME_CONTAINER2_INDICATOR);
         add(label_subjectSource6, cc.xy(1, 11));
-
-        //---- containerLabel5 ----
-        containerLabel5.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         add(containerLabel5, cc.xy(3, 11));
 
         //---- separator3 ----
@@ -176,9 +167,6 @@ public class ArchDescriptionAnalogInstancesFields extends DomainEditorFields {
         label_subjectSource7.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         ATFieldInfo.assignLabelInfo(label_subjectSource7, ArchDescriptionAnalogInstances.class, ArchDescriptionAnalogInstances.PROPERTYNAME_CONTAINER3_INDICATOR);
         add(label_subjectSource7, cc.xy(1, 17));
-
-        //---- containerLabel6 ----
-        containerLabel6.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         add(containerLabel6, cc.xy(3, 17));
 
         //---- separator2 ----
@@ -196,7 +184,6 @@ public class ArchDescriptionAnalogInstancesFields extends DomainEditorFields {
         containerLabel2.setEditable(false);
         containerLabel2.setOpaque(false);
         containerLabel2.setBorder(null);
-        containerLabel2.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
         add(containerLabel2, cc.xy(3, 21));
 		// JFormDesigner - End of component initialization  //GEN-END:initComponents
 	}
