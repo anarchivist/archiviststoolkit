@@ -53,6 +53,9 @@ public interface ATPlugin {
     // plugin will be used embedded into an existing domain editor
     final String EMBEDDED_EDITOR_CATEGORY = "embedded";
 
+    // plugin will be used with the command line interface of the AT. This functionality will require additional code
+    final String CLI_CATEGORY = "cli";
+
     /*
     The list of editor types. They can be combined to specify a plugin that
     supports viewing and editing multiple type of records. For example, a
@@ -199,7 +202,7 @@ public interface ATPlugin {
     /*
     * Methods below this point are to be implemented by plugins which
     * are used as DomainObject Viewers and/or Editors. The are always
-    * called by the AT if the plugin cateogry is defined as a
+    * called by the AT if the plugin category is defined as a
     * viewer or editor
     */
     
@@ -207,7 +210,7 @@ public interface ATPlugin {
      * Method to return the type of domain objects this plugin can edit or
      * view. This method is used by plugins that are implemented as an editor
      * for one or more of the main domain objects such Names, Subjects,
-     * Accessions, Resuorces, and Digital Objects. Plugins that supports
+     * Accessions, Resources, and Digital Objects. Plugins that supports
      * the supports the viewing and/or editing of multiple record types
      * can be specify in the following manner: A plugin that supports viewing
      * and/or editing of Names, Subjects, and Digital Object Records
@@ -216,7 +219,7 @@ public interface ATPlugin {
      * If a plugin returns ALL_EDITOR it means it can view
      * and/or edit all main AT records.
      *
-     * @return The type or types of recors an editor/viewer plugin can open.
+     * @return The type or types of records an editor/viewer plugin can open.
      */
     public String getEditorType();
     
