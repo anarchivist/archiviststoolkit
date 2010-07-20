@@ -344,6 +344,44 @@ public class ATPluginFactory {
     }
 
     /**
+     * Method to get a list of embedded plugins that will be added as entries
+     * in the rapid data entry drop down menu
+     *
+     * @return An Arraylist containing any plugins found
+     */
+    public ArrayList<ATPlugin> getRapidDataEntryPlugins() {
+        String category = ATPlugin.EMBEDDED_EDITOR_CATEGORY;
+        String editorType = ATPlugin.RAPID_DATA_ENTRY_EDITOR;
+
+        ArrayList<ATPlugin> foundPlugins = new ArrayList<ATPlugin>();
+
+        try {
+            Iterator it = pluginManager.getRegistry().getPluginDescriptors().iterator();
+
+            while (it.hasNext()) {
+                PluginDescriptor pluginDescriptor = (PluginDescriptor) it.next();
+                String id = pluginDescriptor.getId();
+                ATPlugin plugin = (org.archiviststoolkit.plugin.ATPlugin) pluginManager.getPlugin(id);
+
+                String cat = plugin.getCategory();
+                String et = plugin.getEditorType();
+
+                // check to make sure that the plugin is of the right category and
+                // editor type and that it has a panel that can be embedded into
+                // the resource editor panel
+                if (cat.indexOf(category) != -1 && et.indexOf(editorType) != -1 &&
+                        plugin.getRapidDataEntryPlugins() != null) {
+                    foundPlugins.add(plugin);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return foundPlugins;
+    }
+
+    /**
      * Method to return an array list containing plugins of a certain editor type
      * and category
      *
@@ -383,7 +421,7 @@ public class ATPluginFactory {
     /**
      * Method to return any command line plugins
      *
-     * @return  ArrayList containing any command line plugins that were found
+     * @return ArrayList containing any command line plugins that were found
      */
     public ArrayList<ATPlugin> getCLIPlugins() {
         ArrayList<ATPlugin> foundPlugins = new ArrayList<ATPlugin>();
@@ -445,6 +483,7 @@ public class ATPluginFactory {
 
     /**
      * Method to set any command line parameters. This is only used by command line programs
+     *
      * @param cliParameters
      */
     public void setCliParameters(String[] cliParameters) {

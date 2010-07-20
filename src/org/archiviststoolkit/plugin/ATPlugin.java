@@ -13,21 +13,21 @@ import java.util.HashMap;
 /**
  * Archivists' Toolkit(TM) Copyright 2005-2009 Regents of the University of California, New York University, & Five Colleges, Inc.
  * All rights reserved.
- *
+ * <p/>
  * This software is free. You can redistribute it and / or modify it under the terms of the Educational Community License (ECL)
  * version 1.0 (http://www.opensource.org/licenses/ecl1.php)
- *
+ * <p/>
  * This software is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
  * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the ECL license for more details about permissions and limitations.
- *
- *
+ * <p/>
+ * <p/>
  * Archivists' Toolkit(TM)
  * http://www.archiviststoolkit.org
  * info@archiviststoolkit.org
- *
+ * <p/>
  * The simple plugin interface which all AT Plugins need to be implement in
  * order to be loaded into the AT
- * 
+ * <p/>
  * Created by IntelliJ IDEA.
  *
  * @author: Nathan Stevens
@@ -89,6 +89,9 @@ public interface ATPlugin {
     //plugin that can edit or view assessment records
     final String ASSESSMENT_EDITOR = "assessment";
 
+    //plugin that loads in the RDE drop down menu
+    final String RAPID_DATA_ENTRY_EDITOR = "rde";
+
     // plugin that can edit or view all the main AT records.
     final String ALL_EDITOR = "all";
 
@@ -103,7 +106,7 @@ public interface ATPlugin {
     /**
      * Method to return the name of the plugin. If the plugin category
      * is either import or default, this name appears in the menu
-     * 
+     *
      * @return Returns the plugin names
      */
     public String getName();
@@ -143,23 +146,33 @@ public interface ATPlugin {
     public void showPlugin(Dialog owner);
 
     /**
-     * Method to return a hasmap containing jpanels for plugins that are not
+     * Method to return a hashmap containing jpanels for plugins that are not
      * dialog or frames. This is used for plugins that are to be embedded
      * in a Domain Editor. The hasmap is keyed using the plugin names.
-     *
+     * <p/>
      * The format of the plugin name can also be used to specify the location
      * and whether to remove a planel already at that location.
-     *
+     * <p/>
      * Format to use is panel_name::location::yes, no, main
      * Examples >>
      * New Editor Panel::0::yes (replace panel at index zero with this one)
      * New Editor Panel::0::no (just insert the panel at zero)
      * New Editor Panel::0::main (In Subjects editor only remove all other
      * components in the panel and add this panel)
-     * 
+     *
      * @return The HashMap containing JPanels and their display name
      */
     public HashMap getEmbeddedPanels();
+
+    /**
+     * Method to return hashmap containing RDEPlugin objects which are listed
+     * under the RDE drop down menu in the resources editor. Such plugins
+     * may launch a dialog or may just execute the some logic agains the
+     * currently selected respurce component or resource record.
+     *
+     * @return The HashMap containing RDEPlugins and display names
+     */
+    public HashMap getRapidDataEntryPlugins();
 
     /**
      * Method to set the editor field. This is used by embeddable
@@ -191,21 +204,21 @@ public interface ATPlugin {
     public void doTask(String task);
 
     /**
-     * Method to get the list of specific task the plugin can perform. 
+     * Method to get the list of specific task the plugin can perform.
      * This task are displayed in submenus under either the import or
      * plugin menu.
      *
      * @return A list of task this plugin can perform
      */
     public String[] getTaskList();
-    
+
     /*
     * Methods below this point are to be implemented by plugins which
     * are used as DomainObject Viewers and/or Editors. The are always
     * called by the AT if the plugin category is defined as a
     * viewer or editor
     */
-    
+
     /**
      * Method to return the type of domain objects this plugin can edit or
      * view. This method is used by plugins that are implemented as an editor
@@ -222,12 +235,12 @@ public interface ATPlugin {
      * @return The type or types of records an editor/viewer plugin can open.
      */
     public String getEditorType();
-    
+
     /**
      * Method to set the domain model. This is always called by the AT
      *
      * @param domainObject The domain object
-     * @param monitor  The progress monitor
+     * @param monitor      The progress monitor
      */
     public void setModel(DomainObject domainObject, InfiniteProgressPanel monitor);
 
@@ -241,7 +254,7 @@ public interface ATPlugin {
     /**
      * Method to set the selected row of the calling table. This lets the
      * plugin know the current row selection
-     * 
+     *
      * @param selectedRow The selected row
      */
     public void setSelectedRow(int selectedRow);
