@@ -46,126 +46,126 @@ import ca.odell.glazedlists.swing.TableComparatorChooser;
  */
 public class LocationAssignmentAccessions extends JDialog {
 
-	public LocationAssignmentAccessions(Dialog owner, AccessionFields parentEditor) {
-		super(owner);
-		this.parentEditor = parentEditor;
-		initComponents();
+    public LocationAssignmentAccessions(Dialog owner, AccessionFields parentEditor) {
+        super(owner);
+        this.parentEditor = parentEditor;
+        initComponents();
 //		selectOnly = false;
-		selectPanel.setVisible(false);
-		dialogForLinking = true;
-		this.getRootPane().setDefaultButton(this.linkLocationButton);
-	}
+        selectPanel.setVisible(false);
+        dialogForLinking = true;
+        this.getRootPane().setDefaultButton(this.linkLocationButton);
+    }
 
-	public LocationAssignmentAccessions(Dialog owner) {
-		super(owner);
-		initComponents();
+    public LocationAssignmentAccessions(Dialog owner) {
+        super(owner);
+        initComponents();
 //		selectOnly = true;
 //		note.setVisible(false);
 //		noteContainerLabel.setVisible(false);
-		linkingPanel.setVisible(false);
-		dialogForLinking = false;
+        linkingPanel.setVisible(false);
+        dialogForLinking = false;
         locationLookupTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		this.getRootPane().setDefaultButton(this.linkLocationButton);
+        this.getRootPane().setDefaultButton(this.linkLocationButton);
     }
 
-	private void subjectLookupTableMouseClicked(MouseEvent e) {
-		if (e.getClickCount() == 2) {
-			addSelectedLocations();
-		}
-	}
+    private void subjectLookupTableMouseClicked(MouseEvent e) {
+        if (e.getClickCount() == 2) {
+            addSelectedLocations();
+        }
+    }
 
-	private void createLocationButtonActionPerformed(ActionEvent e) {
-		Accessions accessionsModel = (Accessions) parentEditor.getModel();
+    private void createLocationButtonActionPerformed(ActionEvent e) {
+        Accessions accessionsModel = (Accessions) parentEditor.getModel();
 
-		DomainEditor dialog = new LocationEditor(this);
-		dialog.setButtonListeners();
-		Locations instance = new Locations();
-		dialog.setModel(instance, null);
-		dialog.disableNavigationButtons();
-		if (dialog.showDialog() == javax.swing.JOptionPane.OK_OPTION) {
-			try {
-				DomainAccessObject access = DomainAccessObjectFactory.getInstance().getDomainAccessObject(Locations.class);
-				access.add(instance);
-				if (!dialogForLinking) {
-					setSelectedLocation(instance);
-					status = javax.swing.JOptionPane.OK_OPTION;
-					this.setVisible(false);
-				} else {
-					DomainObject link =  accessionsModel.addLocation(instance, note.getText());
-					parentEditor.getLocationsTable().addDomainObject(link);
-					initLookup();
-					note.setText("");
-					filterField.setText("");
-				}
+        DomainEditor dialog = new LocationEditor(this);
+        dialog.setButtonListeners();
+        Locations instance = new Locations();
+        dialog.setModel(instance, null);
+        dialog.disableNavigationButtons();
+        if (dialog.showDialog() == javax.swing.JOptionPane.OK_OPTION) {
+            try {
+                DomainAccessObject access = DomainAccessObjectFactory.getInstance().getDomainAccessObject(Locations.class);
+                access.add(instance);
+                if (!dialogForLinking) {
+                    setSelectedLocation(instance);
+                    status = javax.swing.JOptionPane.OK_OPTION;
+                    this.setVisible(false);
+                } else {
+                    DomainObject link = accessionsModel.addLocation(instance, note.getText());
+                    parentEditor.getLocationsTable().addDomainObject(link);
+                    initLookup();
+                    note.setText("");
+                    filterField.setText("");
+                }
                 LocationsUtils.addLocationToLookupList(instance);
 
             } catch (ConstraintViolationException persistenceException) {
-				JOptionPane.showMessageDialog(this, "Can't save, Duplicate record:" + instance);
-			} catch (PersistenceException persistenceException) {
-				if (persistenceException.getCause() instanceof ConstraintViolationException) {
-					JOptionPane.showMessageDialog(this, "Can't save, Duplicate record:" + instance);
-					return;
-				}
-				new ErrorDialog(
-						"Error saving new record.",
-						StringHelper.getStackTrace(persistenceException)).showDialog();
-			} catch (DuplicateLinkException e1) {
-				JOptionPane.showMessageDialog(this, e1.getMessage() + " is already linked to this record");
-			}
-		}
-	}
+                JOptionPane.showMessageDialog(this, "Can't save, Duplicate record:" + instance);
+            } catch (PersistenceException persistenceException) {
+                if (persistenceException.getCause() instanceof ConstraintViolationException) {
+                    JOptionPane.showMessageDialog(this, "Can't save, Duplicate record:" + instance);
+                    return;
+                }
+                new ErrorDialog(
+                        "Error saving new record.",
+                        StringHelper.getStackTrace(persistenceException)).showDialog();
+            } catch (DuplicateLinkException e1) {
+                JOptionPane.showMessageDialog(this, e1.getMessage() + " is already linked to this record");
+            }
+        }
+    }
 
-	private void doneButtonActionPerformed(ActionEvent e) {
-		status = javax.swing.JOptionPane.CANCEL_OPTION;
-		this.setVisible(false);
-	}
+    private void doneButtonActionPerformed(ActionEvent e) {
+        status = javax.swing.JOptionPane.CANCEL_OPTION;
+        this.setVisible(false);
+    }
 
-	public JButton getCreateLocationButton() {
-		return createLocationButton;
-	}
+    public JButton getCreateLocationButton() {
+        return createLocationButton;
+    }
 
-	public DomainSortableTable getLocationLookupTable() {
-		return locationLookupTable;
-	}
+    public DomainSortableTable getLocationLookupTable() {
+        return locationLookupTable;
+    }
 
-	public JTextField getFilterField() {
-		return filterField;
-	}
+    public JTextField getFilterField() {
+        return filterField;
+    }
 
-	public JButton getLinkLocationButton() {
-		return linkLocationButton;
-	}
+    public JButton getLinkLocationButton() {
+        return linkLocationButton;
+    }
 
-	private void linkLocationButtonActionPerformed() {
-		if (getLocationLookupTable().getSelectedRow() == -1) {
-			JOptionPane.showMessageDialog(this, "You must select a location to link");
-		} else {
-			addSelectedLocations();
-		}
-	}
+    private void linkLocationButtonActionPerformed() {
+        if (getLocationLookupTable().getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(this, "You must select a location to link");
+        } else {
+            addSelectedLocations();
+        }
+    }
 
-	private void selectButtonActionPerformed() {
-		if (getLocationLookupTable().getSelectedRow() == -1) {
-			JOptionPane.showMessageDialog(this, "You must select a location to link");
-		} else {
-			status = javax.swing.JOptionPane.OK_OPTION;
-			this.setVisible(false);
-		}
-	}
+    private void selectButtonActionPerformed() {
+        if (getLocationLookupTable().getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(this, "You must select a location to link");
+        } else {
+            status = javax.swing.JOptionPane.OK_OPTION;
+            this.setVisible(false);
+        }
+    }
 
-	public JButton getSelectButton() {
-		return selectButton;
-	}
+    public JButton getSelectButton() {
+        return selectButton;
+    }
 
-	private void locationLookupTableKeyTyped(KeyEvent e) {
-		if (e.getKeyChar() == KeyEvent.VK_ENTER) {
-			 linkLocationButtonActionPerformed();
-		}
+    private void locationLookupTableKeyTyped(KeyEvent e) {
+        if (e.getKeyChar() == KeyEvent.VK_ENTER) {
+            linkLocationButtonActionPerformed();
+        }
 
-	}
+    }
 
-	private void initComponents() {
-		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
+    private void initComponents() {
+        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner non-commercial license
         dialogPane = new JPanel();
         HeaderPanel = new JPanel();
@@ -210,26 +210,26 @@ public class LocationAssignmentAccessions extends JDialog {
                 HeaderPanel.setOpaque(false);
                 HeaderPanel.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                 HeaderPanel.setLayout(new FormLayout(
-                    new ColumnSpec[] {
-                        new ColumnSpec(Sizes.bounded(Sizes.MINIMUM, Sizes.dluX(100), Sizes.dluX(200))),
-                        new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
-                    },
-                    RowSpec.decodeSpecs("default")));
+                        new ColumnSpec[]{
+                                new ColumnSpec(Sizes.bounded(Sizes.MINIMUM, Sizes.dluX(100), Sizes.dluX(200))),
+                                new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
+                        },
+                        RowSpec.decodeSpecs("default")));
 
                 //======== mainHeaderPanel ========
                 {
                     mainHeaderPanel.setBackground(new Color(80, 69, 57));
                     mainHeaderPanel.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                     mainHeaderPanel.setLayout(new FormLayout(
-                        new ColumnSpec[] {
-                            FormFactory.RELATED_GAP_COLSPEC,
-                            new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
-                        },
-                        new RowSpec[] {
-                            FormFactory.RELATED_GAP_ROWSPEC,
-                            FormFactory.DEFAULT_ROWSPEC,
-                            FormFactory.RELATED_GAP_ROWSPEC
-                        }));
+                            new ColumnSpec[]{
+                                    FormFactory.RELATED_GAP_COLSPEC,
+                                    new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
+                            },
+                            new RowSpec[]{
+                                    FormFactory.RELATED_GAP_ROWSPEC,
+                                    FormFactory.DEFAULT_ROWSPEC,
+                                    FormFactory.RELATED_GAP_ROWSPEC
+                            }));
 
                     //---- mainHeaderLabel ----
                     mainHeaderLabel.setText("Main Header");
@@ -244,15 +244,15 @@ public class LocationAssignmentAccessions extends JDialog {
                     panel3.setBackground(new Color(66, 60, 111));
                     panel3.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                     panel3.setLayout(new FormLayout(
-                        new ColumnSpec[] {
-                            FormFactory.RELATED_GAP_COLSPEC,
-                            new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
-                        },
-                        new RowSpec[] {
-                            FormFactory.RELATED_GAP_ROWSPEC,
-                            FormFactory.DEFAULT_ROWSPEC,
-                            FormFactory.RELATED_GAP_ROWSPEC
-                        }));
+                            new ColumnSpec[]{
+                                    FormFactory.RELATED_GAP_COLSPEC,
+                                    new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
+                            },
+                            new RowSpec[]{
+                                    FormFactory.RELATED_GAP_ROWSPEC,
+                                    FormFactory.DEFAULT_ROWSPEC,
+                                    FormFactory.RELATED_GAP_ROWSPEC
+                            }));
 
                     //---- subHeaderLabel ----
                     subHeaderLabel.setText("Location Lookup");
@@ -269,24 +269,24 @@ public class LocationAssignmentAccessions extends JDialog {
                 contentPane.setBackground(new Color(231, 188, 251));
                 contentPane.setOpaque(false);
                 contentPane.setLayout(new FormLayout(
-                    new ColumnSpec[] {
-                        FormFactory.UNRELATED_GAP_COLSPEC,
-                        FormFactory.DEFAULT_COLSPEC,
-                        FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-                        new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
-                        FormFactory.UNRELATED_GAP_COLSPEC
-                    },
-                    new RowSpec[] {
-                        FormFactory.UNRELATED_GAP_ROWSPEC,
-                        FormFactory.DEFAULT_ROWSPEC,
-                        FormFactory.LINE_GAP_ROWSPEC,
-                        new RowSpec(RowSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
-                        FormFactory.LINE_GAP_ROWSPEC,
-                        FormFactory.DEFAULT_ROWSPEC,
-                        FormFactory.LINE_GAP_ROWSPEC,
-                        FormFactory.DEFAULT_ROWSPEC,
-                        FormFactory.UNRELATED_GAP_ROWSPEC
-                    }));
+                        new ColumnSpec[]{
+                                FormFactory.UNRELATED_GAP_COLSPEC,
+                                FormFactory.DEFAULT_COLSPEC,
+                                FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                                new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
+                                FormFactory.UNRELATED_GAP_COLSPEC
+                        },
+                        new RowSpec[]{
+                                FormFactory.UNRELATED_GAP_ROWSPEC,
+                                FormFactory.DEFAULT_ROWSPEC,
+                                FormFactory.LINE_GAP_ROWSPEC,
+                                new RowSpec(RowSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
+                                FormFactory.LINE_GAP_ROWSPEC,
+                                FormFactory.DEFAULT_ROWSPEC,
+                                FormFactory.LINE_GAP_ROWSPEC,
+                                FormFactory.DEFAULT_ROWSPEC,
+                                FormFactory.UNRELATED_GAP_ROWSPEC
+                        }));
 
                 //---- label1 ----
                 label1.setText("Filter:");
@@ -319,18 +319,18 @@ public class LocationAssignmentAccessions extends JDialog {
                 {
                     linkingPanel.setOpaque(false);
                     linkingPanel.setLayout(new FormLayout(
-                        ColumnSpec.decodeSpecs("default:grow"),
-                        new RowSpec[] {
-                            FormFactory.DEFAULT_ROWSPEC,
-                            FormFactory.LINE_GAP_ROWSPEC,
-                            FormFactory.DEFAULT_ROWSPEC,
-                            FormFactory.UNRELATED_GAP_ROWSPEC,
-                            FormFactory.DEFAULT_ROWSPEC,
-                            FormFactory.LINE_GAP_ROWSPEC,
-                            FormFactory.DEFAULT_ROWSPEC,
-                            FormFactory.LINE_GAP_ROWSPEC,
-                            FormFactory.DEFAULT_ROWSPEC
-                        }));
+                            ColumnSpec.decodeSpecs("default:grow"),
+                            new RowSpec[]{
+                                    FormFactory.DEFAULT_ROWSPEC,
+                                    FormFactory.LINE_GAP_ROWSPEC,
+                                    FormFactory.DEFAULT_ROWSPEC,
+                                    FormFactory.UNRELATED_GAP_ROWSPEC,
+                                    FormFactory.DEFAULT_ROWSPEC,
+                                    FormFactory.LINE_GAP_ROWSPEC,
+                                    FormFactory.DEFAULT_ROWSPEC,
+                                    FormFactory.LINE_GAP_ROWSPEC,
+                                    FormFactory.DEFAULT_ROWSPEC
+                            }));
 
                     //---- label3 ----
                     label3.setText("Double click on a Location to add it to the record.");
@@ -353,14 +353,14 @@ public class LocationAssignmentAccessions extends JDialog {
                         buttonBar.setBackground(new Color(231, 188, 251));
                         buttonBar.setOpaque(false);
                         buttonBar.setLayout(new FormLayout(
-                            new ColumnSpec[] {
-                                FormFactory.DEFAULT_COLSPEC,
-                                FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-                                FormFactory.BUTTON_COLSPEC,
-                                FormFactory.RELATED_GAP_COLSPEC,
-                                FormFactory.BUTTON_COLSPEC
-                            },
-                            RowSpec.decodeSpecs("pref")));
+                                new ColumnSpec[]{
+                                        FormFactory.DEFAULT_COLSPEC,
+                                        FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                                        FormFactory.BUTTON_COLSPEC,
+                                        FormFactory.RELATED_GAP_COLSPEC,
+                                        FormFactory.BUTTON_COLSPEC
+                                },
+                                RowSpec.decodeSpecs("pref")));
 
                         //---- linkLocationButton ----
                         linkLocationButton.setText("Link");
@@ -402,8 +402,8 @@ public class LocationAssignmentAccessions extends JDialog {
                 {
                     selectPanel.setOpaque(false);
                     selectPanel.setLayout(new FormLayout(
-                        "default:grow",
-                        "default"));
+                            "default:grow",
+                            "default"));
 
                     //======== buttonBar2 ========
                     {
@@ -411,12 +411,12 @@ public class LocationAssignmentAccessions extends JDialog {
                         buttonBar2.setBackground(new Color(231, 188, 251));
                         buttonBar2.setOpaque(false);
                         buttonBar2.setLayout(new FormLayout(
-                            new ColumnSpec[] {
-                                FormFactory.BUTTON_COLSPEC,
-                                FormFactory.RELATED_GAP_COLSPEC,
-                                FormFactory.BUTTON_COLSPEC
-                            },
-                            RowSpec.decodeSpecs("pref")));
+                                new ColumnSpec[]{
+                                        FormFactory.BUTTON_COLSPEC,
+                                        FormFactory.RELATED_GAP_COLSPEC,
+                                        FormFactory.BUTTON_COLSPEC
+                                },
+                                RowSpec.decodeSpecs("pref")));
 
                         //---- selectButton ----
                         selectButton.setText("Select");
@@ -447,10 +447,10 @@ public class LocationAssignmentAccessions extends JDialog {
         contentPane2.add(dialogPane, BorderLayout.CENTER);
         pack();
         setLocationRelativeTo(getOwner());
-		// JFormDesigner - End of component initialization  //GEN-END:initComponents
-	}
+        // JFormDesigner - End of component initialization  //GEN-END:initComponents
+    }
 
-	// JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner non-commercial license
     private JPanel dialogPane;
     private JPanel HeaderPanel;
@@ -476,74 +476,78 @@ public class LocationAssignmentAccessions extends JDialog {
     private JPanel buttonBar2;
     private JButton selectButton;
     private JButton cancelButton;
-	// JFormDesigner - End of variables declaration  //GEN-END:variables
+    // JFormDesigner - End of variables declaration  //GEN-END:variables
 
-	/**
-	 * The status of the editor.
-	 */
-	protected int status = 0;
-	FilterList textFilteredIssues;
-	EventTableModel lookupTableModel;
-	private AccessionFields parentEditor;
-//	private boolean selectOnly;
-	boolean dialogForLinking;
-	private Locations selectedLocation;
+    /**
+     * The status of the editor.
+     */
+    protected int status = 0;
+    FilterList textFilteredIssues;
+    EventTableModel lookupTableModel;
+    private AccessionFields parentEditor;
+    //	private boolean selectOnly;
+    boolean dialogForLinking;
+    private Locations selectedLocation;
 
-	public void setMainHeaderByClass(Class clazz) {
-		StandardEditor.setMainHeaderColorAndTextByClass(clazz, mainHeaderPanel, mainHeaderLabel);
-	}
+    public void setMainHeaderByClass(Class clazz) {
+        StandardEditor.setMainHeaderColorAndTextByClass(clazz, mainHeaderPanel, mainHeaderLabel);
+    }
 
-	public final int showDialog() {
+    public final int showDialog() {
 
-		this.pack();
-		initLookup();
-		setLocationRelativeTo(getOwner());
- 		this.setVisible(true);
+        this.pack();
+        initLookup();
+        setLocationRelativeTo(getOwner());
+        this.setVisible(true);
 
-		return (status);
-	}
+        return (status);
+    }
 
-	private void initLookup() {
-		SortedList sortedLocations = LocationsUtils.getLocationsGlazedList();
-		textFilteredIssues = new FilterList(sortedLocations, new TextComponentMatcherEditor(filterField, new DomainFilterator()));
-		lookupTableModel = new EventTableModel(textFilteredIssues, new DomainTableFormat(Locations.class));
-		locationLookupTable.setModel(lookupTableModel);
-		TableComparatorChooser tableSorter = new TableComparatorChooser(locationLookupTable, sortedLocations, true);
-		filterField.requestFocusInWindow();
-	}
+    private void initLookup() {
+        // update the location list from the database so that
+        // any edits made will show up correctly.
+        LocationsUtils.initLocationLookupList();
 
-	private void addSelectedLocations() {
-		if (!dialogForLinking) {
+        SortedList sortedLocations = LocationsUtils.getLocationsGlazedList();
+        textFilteredIssues = new FilterList(sortedLocations, new TextComponentMatcherEditor(filterField, new DomainFilterator()));
+        lookupTableModel = new EventTableModel(textFilteredIssues, new DomainTableFormat(Locations.class));
+        locationLookupTable.setModel(lookupTableModel);
+        TableComparatorChooser tableSorter = new TableComparatorChooser(locationLookupTable, sortedLocations, true);
+        filterField.requestFocusInWindow();
+    }
+
+    private void addSelectedLocations() {
+        if (!dialogForLinking) {
             int selectedRow = locationLookupTable.getSelectedRow();
-            Locations location = (Locations)lookupTableModel.getElementAt(selectedRow);
-			setSelectedLocation(location);
-			status = javax.swing.JOptionPane.OK_OPTION;
-			this.setVisible(false);
-		} else {
-			try {
+            Locations location = (Locations) lookupTableModel.getElementAt(selectedRow);
+            setSelectedLocation(location);
+            status = javax.swing.JOptionPane.OK_OPTION;
+            this.setVisible(false);
+        } else {
+            try {
                 int[] selectedRows = locationLookupTable.getSelectedRows();
                 Locations location;
-                for (int selectedRow: selectedRows) {
-                    location = (Locations)lookupTableModel.getElementAt(selectedRow);
+                for (int selectedRow : selectedRows) {
+                    location = (Locations) lookupTableModel.getElementAt(selectedRow);
                     Accessions accessionsModel = (Accessions) parentEditor.getModel();
-                    DomainObject link =  accessionsModel.addLocation(location, note.getText());
+                    DomainObject link = accessionsModel.addLocation(location, note.getText());
                     if (link != null) {
                         parentEditor.getLocationsTable().addDomainObject(link);
                     }
                 }
-				//set the record to dirty
-				ApplicationFrame.getInstance().setRecordDirty();
+                //set the record to dirty
+                ApplicationFrame.getInstance().setRecordDirty();
             } catch (DuplicateLinkException e) {
-				JOptionPane.showMessageDialog(this, e.getMessage() + " is already linked to this record");
-			}
-		}
-	}
+                JOptionPane.showMessageDialog(this, e.getMessage() + " is already linked to this record");
+            }
+        }
+    }
 
-	public Locations getSelectedLocation() {
-		return (Locations)lookupTableModel.getElementAt(locationLookupTable.getSelectedRow());
-	}
+    public Locations getSelectedLocation() {
+        return (Locations) lookupTableModel.getElementAt(locationLookupTable.getSelectedRow());
+    }
 
-	private void setSelectedLocation(Locations selectedLocation) {
-		this.selectedLocation = selectedLocation;
-	}
+    private void setSelectedLocation(Locations selectedLocation) {
+        this.selectedLocation = selectedLocation;
+    }
 }

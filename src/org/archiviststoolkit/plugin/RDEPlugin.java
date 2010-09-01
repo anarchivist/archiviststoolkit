@@ -21,11 +21,11 @@ import javax.swing.*;
  * http://www.archiviststoolkit.org
  * info@archiviststoolkit.org
  * <p/>
- *
+ * <p/>
  * This interface is implemented by rapid data entry plugins which are
  * loaded into the rapid data entry screen drop-down menu in resource
  * editor
- *
+ * <p/>
  * Created by IntelliJ IDEA.
  *
  * @author: Nathan Stevens
@@ -37,9 +37,9 @@ public interface RDEPlugin {
      * Method to set the domain model. This is always called when the plugin
      * are loaded
      *
-     * @param parentRecord The parent resource record
+     * @param parentRecord    The parent resource record
      * @param resourcesCommon This can either be a resource component or
-     * the parent resource record
+     *                        the parent resource record
      */
     public void setModel(Resources parentRecord, ResourcesCommon
             resourcesCommon);
