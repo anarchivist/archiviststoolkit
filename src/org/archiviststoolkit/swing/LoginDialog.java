@@ -1,5 +1,5 @@
 /**
- * Archivists' Toolkit(TM) Copyright © 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
+ * Archivists' Toolkit(TM) Copyright ï¿½ 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
  * All rights reserved.
  *
  * This software is free. You can redistribute it and / or modify it under the terms of the Educational Community License (ECL)
@@ -58,122 +58,122 @@ public class LoginDialog extends JDialog {
 
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-		// Generated using JFormDesigner non-commercial license
-		dialogPane = new JPanel();
-		contentPanel = new JPanel();
-		label1 = new JLabel();
-		userNameField = new JTextField();
-		label = new JLabel();
-		passwordField = new JPasswordField();
-		buttonBar = new JPanel();
-		selectServer = new JButton();
-		cancelButton = new JButton();
-		loginButton = new JButton();
-		CellConstraints cc = new CellConstraints();
+        // Generated using JFormDesigner non-commercial license
+        dialogPane = new JPanel();
+        contentPanel = new JPanel();
+        label1 = new JLabel();
+        userNameField = new JTextField();
+        label = new JLabel();
+        passwordField = new JPasswordField();
+        buttonBar = new JPanel();
+        selectServer = new JButton();
+        cancelButton = new JButton();
+        loginButton = new JButton();
+        CellConstraints cc = new CellConstraints();
 
-		//======== this ========
-		setModal(true);
-		Container contentPane = getContentPane();
-		contentPane.setLayout(new BorderLayout());
+        //======== this ========
+        setModal(true);
+        Container contentPane = getContentPane();
+        contentPane.setLayout(new BorderLayout());
 
-		//======== dialogPane ========
-		{
-			dialogPane.setBorder(Borders.DIALOG_BORDER);
-			dialogPane.setBackground(new Color(200, 205, 232));
-			dialogPane.setLayout(new BorderLayout());
+        //======== dialogPane ========
+        {
+            dialogPane.setBorder(Borders.DIALOG_BORDER);
+            dialogPane.setBackground(new Color(200, 205, 232));
+            dialogPane.setLayout(new BorderLayout());
 
-			//======== contentPanel ========
-			{
-				contentPanel.setOpaque(false);
-				contentPanel.setLayout(new FormLayout(
-					new ColumnSpec[] {
-						FormFactory.DEFAULT_COLSPEC,
-						FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-						new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
-					},
-					new RowSpec[] {
-						FormFactory.DEFAULT_ROWSPEC,
-						FormFactory.LINE_GAP_ROWSPEC,
-						FormFactory.DEFAULT_ROWSPEC
-					}));
+            //======== contentPanel ========
+            {
+                contentPanel.setOpaque(false);
+                contentPanel.setLayout(new FormLayout(
+                    new ColumnSpec[] {
+                        FormFactory.DEFAULT_COLSPEC,
+                        FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                        new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
+                    },
+                    new RowSpec[] {
+                        FormFactory.DEFAULT_ROWSPEC,
+                        FormFactory.LINE_GAP_ROWSPEC,
+                        FormFactory.DEFAULT_ROWSPEC
+                    }));
 
-				//---- label1 ----
-				label1.setText("Username");
-				contentPanel.add(label1, cc.xy(1, 1));
-				contentPanel.add(userNameField, cc.xy(3, 1));
+                //---- label1 ----
+                label1.setText("Username");
+                contentPanel.add(label1, cc.xy(1, 1));
+                contentPanel.add(userNameField, cc.xy(3, 1));
 
-				//---- label ----
-				label.setText("Password");
-				contentPanel.add(label, cc.xy(1, 3));
-				contentPanel.add(passwordField, cc.xy(3, 3));
-			}
-			dialogPane.add(contentPanel, BorderLayout.CENTER);
+                //---- label ----
+                label.setText("Password");
+                contentPanel.add(label, cc.xy(1, 3));
+                contentPanel.add(passwordField, cc.xy(3, 3));
+            }
+            dialogPane.add(contentPanel, BorderLayout.CENTER);
 
-			//======== buttonBar ========
-			{
-				buttonBar.setBorder(Borders.BUTTON_BAR_GAP_BORDER);
-				buttonBar.setOpaque(false);
-				buttonBar.setLayout(new FormLayout(
-					new ColumnSpec[] {
-						FormFactory.GLUE_COLSPEC,
-						FormFactory.DEFAULT_COLSPEC,
-						FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-						FormFactory.BUTTON_COLSPEC,
-						FormFactory.RELATED_GAP_COLSPEC,
-						FormFactory.BUTTON_COLSPEC
-					},
-					RowSpec.decodeSpecs("pref")));
+            //======== buttonBar ========
+            {
+                buttonBar.setBorder(Borders.BUTTON_BAR_GAP_BORDER);
+                buttonBar.setOpaque(false);
+                buttonBar.setLayout(new FormLayout(
+                    new ColumnSpec[] {
+                        FormFactory.GLUE_COLSPEC,
+                        FormFactory.DEFAULT_COLSPEC,
+                        FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                        FormFactory.BUTTON_COLSPEC,
+                        FormFactory.RELATED_GAP_COLSPEC,
+                        FormFactory.BUTTON_COLSPEC
+                    },
+                    RowSpec.decodeSpecs("pref")));
 
-				//---- selectServer ----
-				selectServer.setText("Select Server");
-				selectServer.setOpaque(false);
-				selectServer.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						selectServerActionPerformed(e);
-					}
-				});
-				buttonBar.add(selectServer, cc.xy(2, 1));
+                //---- selectServer ----
+                selectServer.setText("Select Server");
+                selectServer.setOpaque(false);
+                selectServer.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        selectServerActionPerformed(e);
+                    }
+                });
+                buttonBar.add(selectServer, cc.xy(2, 1));
 
-				//---- cancelButton ----
-				cancelButton.setText("Cancel");
-				cancelButton.setOpaque(false);
-				cancelButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						cancelButtonActionPerformed(e);
-					}
-				});
-				buttonBar.add(cancelButton, cc.xy(4, 1));
+                //---- cancelButton ----
+                cancelButton.setText("Cancel");
+                cancelButton.setOpaque(false);
+                cancelButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        cancelButtonActionPerformed(e);
+                    }
+                });
+                buttonBar.add(cancelButton, cc.xy(4, 1));
 
-				//---- loginButton ----
-				loginButton.setText("Login");
-				loginButton.setOpaque(false);
-				loginButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						loginButtonActionPerformed(e);
-					}
-				});
-				buttonBar.add(loginButton, cc.xy(6, 1));
-			}
-			dialogPane.add(buttonBar, BorderLayout.SOUTH);
-		}
-		contentPane.add(dialogPane, BorderLayout.CENTER);
-		pack();
-		setLocationRelativeTo(getOwner());
+                //---- loginButton ----
+                loginButton.setText("Login");
+                loginButton.setOpaque(false);
+                loginButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        loginButtonActionPerformed(e);
+                    }
+                });
+                buttonBar.add(loginButton, cc.xy(6, 1));
+            }
+            dialogPane.add(buttonBar, BorderLayout.SOUTH);
+        }
+        contentPane.add(dialogPane, BorderLayout.CENTER);
+        pack();
+        setLocationRelativeTo(getOwner());
 		// JFormDesigner - End of component initialization  //GEN-END:initComponents
 	}
 
 	// JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-	// Generated using JFormDesigner non-commercial license
-	private JPanel dialogPane;
-	private JPanel contentPanel;
-	private JLabel label1;
-	private JTextField userNameField;
-	private JLabel label;
-	private JPasswordField passwordField;
-	private JPanel buttonBar;
-	private JButton selectServer;
-	private JButton cancelButton;
-	private JButton loginButton;
+    // Generated using JFormDesigner non-commercial license
+    private JPanel dialogPane;
+    private JPanel contentPanel;
+    private JLabel label1;
+    private JTextField userNameField;
+    private JLabel label;
+    private JPasswordField passwordField;
+    private JPanel buttonBar;
+    private JButton selectServer;
+    private JButton cancelButton;
+    private JButton loginButton;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
 
 	protected int status = 0;

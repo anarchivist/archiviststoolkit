@@ -56,11 +56,14 @@ public final class SessionFactory {
 
     private static Logger logger = Logger.getLogger(SessionFactory.class.getPackage().getName());
 
-	public static final String DATABASE_TYPE_MYSQL = "MySQL";
-	public static final String DATABASE_TYPE_ORACLE = "Oracle";
-	public static final String DATABASE_TYPE_MICROSOFT_SQL_SERVER = "Microsoft SQL Server";
+    public static final String DATABASE_TYPE_MYSQL = "MySQL";
+    public static final String DATABASE_TYPE_ORACLE = "Oracle";
+    public static final String DATABASE_TYPE_MICROSOFT_SQL_SERVER = "Microsoft SQL Server";
 
-	/**
+    // setup a database type of Internal which is just an embedded hypersql
+    public static final String DATABASE_TYPE_INTERNAL = "Internal Database";
+
+    /**
      * Singleton instance handle.
      */
 
@@ -69,8 +72,8 @@ public final class SessionFactory {
     private static String databaseUrl;
     private static String userName;
     private static String password;
-	private static String driverClass;
-	private static String hibernateDialect;
+    private static String driverClass;
+    private static String hibernateDialect;
 
     private static String databaseType;
     private static Boolean updateStructure = false;
@@ -98,15 +101,16 @@ public final class SessionFactory {
             } else {
                 properties.setProperty("hibernate.connection.url", getDatabaseUrl());
             }
-			//deal with oracle specific settings
-			if (SessionFactory.databaseType.equals(DATABASE_TYPE_ORACLE)) {
-				properties.setProperty("hibernate.jdbc.batch_size", "0");
-				properties.setProperty("hibernate.jdbc.use_streams_for_binary", "true");
-				properties.setProperty("SetBigStringTryClob", "true");
-			}
-			properties.setProperty("hibernate.connection.username", getUserName());
+
+            //deal with oracle specific settings
+            if (SessionFactory.databaseType.equals(DATABASE_TYPE_ORACLE)) {
+                properties.setProperty("hibernate.jdbc.batch_size", "0");
+                properties.setProperty("hibernate.jdbc.use_streams_for_binary", "true");
+                properties.setProperty("SetBigStringTryClob", "true");
+            }
+            properties.setProperty("hibernate.connection.username", getUserName());
             properties.setProperty("hibernate.connection.password", getPassword());
-			properties.setProperty("hibernate.dialect", getHibernateDialect());
+            properties.setProperty("hibernate.dialect", getHibernateDialect());
             if (SessionFactory.updateStructure) {
                 properties.setProperty("hibernate.hbm2ddl.auto", "update");
             }
@@ -152,12 +156,12 @@ public final class SessionFactory {
         singleton = null;
     }
 
-	public StatelessSession openStatelessSession() {
-		return sessionFactory.openStatelessSession();
-	}
+    public StatelessSession openStatelessSession() {
+        return sessionFactory.openStatelessSession();
+    }
 
 
-	/**
+    /**
      * Used to create a new session from the preconfigured hibernate factory.
      *
      * @return the session which is opened
@@ -168,21 +172,21 @@ public final class SessionFactory {
         return openSession(null, null, false);
     }
 
-	public Session openSession(Interceptor interceptor, Boolean alwaysApplyFilters) {
-		return openSession(interceptor, null, alwaysApplyFilters);
-	}
+    public Session openSession(Interceptor interceptor, Boolean alwaysApplyFilters) {
+        return openSession(interceptor, null, alwaysApplyFilters);
+    }
 
-	public Session openSession(Interceptor interceptor) {
-		return openSession(interceptor, null, false);
-	}
+    public Session openSession(Interceptor interceptor) {
+        return openSession(interceptor, null, false);
+    }
 
     public Session openSession(Class clazz) {
         return openSession(null, clazz, false);
     }
 
-	public Session openSession(Interceptor interceptor, Class clazz) {
-		return openSession(interceptor, clazz, false);
-	}
+    public Session openSession(Interceptor interceptor, Class clazz) {
+        return openSession(interceptor, clazz, false);
+    }
 
     /**
      * Used to create a new session from the preconfigured hibernate factory.
@@ -297,23 +301,26 @@ public final class SessionFactory {
         SessionFactory.driverClass = driverClass;
     }
 
-	public static void setDatabaseType(String databaseType) throws UnsupportedDatabaseType {
+    public static void setDatabaseType(String databaseType) throws UnsupportedDatabaseType {
         SessionFactory.databaseType = databaseType;
         if (databaseType.equals(DATABASE_TYPE_MYSQL)) {
-			setDriverClass("com.mysql.jdbc.Driver");
-			setHibernateDialect("org.hibernate.dialect.MySQLInnoDBDialect");
-		} else if (databaseType.equals(DATABASE_TYPE_MICROSOFT_SQL_SERVER)) {
-			setDriverClass("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			setHibernateDialect("org.hibernate.dialect.SQLServerDialect");
-		} else if (databaseType.equals(DATABASE_TYPE_ORACLE)) {
-			setDriverClass("oracle.jdbc.OracleDriver");
-			setHibernateDialect("org.hibernate.dialect.Oracle10gDialect");
-		} else {
-			throw new UnsupportedDatabaseType(databaseType);
-		}
-	}
+            setDriverClass("com.mysql.jdbc.Driver");
+            setHibernateDialect("org.hibernate.dialect.MySQLInnoDBDialect");
+        } else if (databaseType.equals(DATABASE_TYPE_MICROSOFT_SQL_SERVER)) {
+            setDriverClass("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            setHibernateDialect("org.hibernate.dialect.SQLServerDialect");
+        } else if (databaseType.equals(DATABASE_TYPE_ORACLE)) {
+            setDriverClass("oracle.jdbc.OracleDriver");
+            setHibernateDialect("org.hibernate.dialect.Oracle10gDialect");
+        } else if (databaseType.equals(DATABASE_TYPE_INTERNAL)) {
+            setDriverClass("org.hsqldb.jdbcDriver");
+            setHibernateDialect("org.hibernate.dialect.HSQLDialect");
+        } else {
+            throw new UnsupportedDatabaseType(databaseType);
+        }
+    }
 
-	public static String getDatabaseUrl() {
+    public static String getDatabaseUrl() {
         return databaseUrl;
     }
 
@@ -325,30 +332,32 @@ public final class SessionFactory {
         return password;
     }
 
-	public static String getHibernateDialect() {
-		return hibernateDialect;
-	}
+    public static String getHibernateDialect() {
+        return hibernateDialect;
+    }
 
-	public static void setHibernateDialect(String hibernateDialect) {
-		SessionFactory.hibernateDialect = hibernateDialect;
-	}
+    public static void setHibernateDialect(String hibernateDialect) {
+        SessionFactory.hibernateDialect = hibernateDialect;
+    }
 
-	public static Vector<String> getDatabaseTypesList() {
-		return getDatabaseTypesList(false);
-	}
+    public static Vector<String> getDatabaseTypesList() {
+        return getDatabaseTypesList(false);
+    }
 
-	public static Vector<String> getDatabaseTypesList(boolean addBlankAtBeginning) {
-		Vector<String> returnVector = new Vector<String>();
-		returnVector.add(DATABASE_TYPE_MYSQL);
-		returnVector.add(DATABASE_TYPE_ORACLE);
-		returnVector.add(DATABASE_TYPE_MICROSOFT_SQL_SERVER);
+    public static Vector<String> getDatabaseTypesList(boolean addBlankAtBeginning) {
+        Vector<String> returnVector = new Vector<String>();
+        returnVector.add(DATABASE_TYPE_MYSQL);
+        returnVector.add(DATABASE_TYPE_ORACLE);
+        returnVector.add(DATABASE_TYPE_MICROSOFT_SQL_SERVER);
+        returnVector.add(DATABASE_TYPE_INTERNAL);
+
 //		returnVector.add("zBadDatabaseType");
-		Collections.sort(returnVector);
-		if (addBlankAtBeginning) {
-			returnVector.add(0,"");
-		}
-		return returnVector;
-	}
+        Collections.sort(returnVector);
+        if (addBlankAtBeginning) {
+            returnVector.add(0, "");
+        }
+        return returnVector;
+    }
 
     public static String getDatabaseType() {
         return databaseType;
