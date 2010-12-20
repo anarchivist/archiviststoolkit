@@ -104,8 +104,14 @@ public abstract class DomainEditorFields extends JPanel {
 		parent.add(textField, cellConstraints);
 	}
 
-	public void setBean(Object newBean) {
-		detailsModel.setBean(newBean);
+	public void setBean(final Object newBean) {
+        // call this in the swing dispatch thread to prevent any
+        // locking problems when using the spell checker highlighter
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                detailsModel.setBean(newBean);
+            }
+        });
 	}
 
 	/**

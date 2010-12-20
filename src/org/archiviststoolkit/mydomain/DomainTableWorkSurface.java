@@ -74,6 +74,10 @@ public class DomainTableWorkSurface implements WorkSurface, MouseListener, Actio
 
 	private boolean done;
 
+    // boolean to say when a record is being open. This is to prevent a bug
+    // ART-2331 "Illegal access to loading collection" from occurring
+    private boolean recordOpening = false;
+
   /**
    * Variable to see if to display the confirm dialog that comes up on save button press
    */
@@ -706,8 +710,17 @@ public class DomainTableWorkSurface implements WorkSurface, MouseListener, Actio
 
 	public final void onUpdate() {
 		selectedRow = this.getTable().getSelectedRow();
+
+        // check to see if the record is currently being
+        // opened. A bug will be thrown if we try an open the record twice
+        if(recordOpening) {
+            return;
+        }
+
 		if (selectedRow != -1) {
-			try {
+            recordOpening = true;
+
+            try {
 				access = DomainAccessObjectFactory.getInstance().getDomainAccessObject(clazz);
 
 				DomainObject domainObject = table.getFilteredList().get(selectedRow);
@@ -719,6 +732,7 @@ public class DomainTableWorkSurface implements WorkSurface, MouseListener, Actio
 				Thread backgroundWorker = new Thread(runnable);
 				backgroundWorker.start();
 			} catch (PersistenceException e) {
+                recordOpening = false;
 				new ErrorDialog(dialog, "Error updating record", e).showDialog();
 			}
 		} else {
@@ -1515,15 +1529,15 @@ public class DomainTableWorkSurface implements WorkSurface, MouseListener, Actio
 
 	class LookupWorkerRunnable implements Runnable {
 		private DomainObject domainObject;
+        private InfiniteProgressPanel monitor;
 
 		LookupWorkerRunnable(DomainObject domainObject) {
 			this.domainObject = domainObject;
 		}
 
 		public void run() {
-
-			InfiniteProgressPanel monitor = ATProgressUtil.createModalProgressMonitor(ApplicationFrame.getInstance(), 1000);
-			monitor.start("Loading Record...");
+			final InfiniteProgressPanel monitor = ATProgressUtil.createModalProgressMonitor(ApplicationFrame.getInstance(), 1000);
+            monitor.start("Loading Record ...");
 
             // see if to load a plugin editor instead of using the one built into the AT
             if(usePluginDomainEditor(monitor, domainObject)) {
@@ -1550,19 +1564,28 @@ public class DomainTableWorkSurface implements WorkSurface, MouseListener, Actio
 					System.out.println("Total: " + MyTimer.toString(ApplicationFrame.getInstance().getTimer().elapsedTimeMillis()) + "\n");
 				}
 				monitor.close();
+                recordOpening = false;
 			} catch (UnsupportedTableModelException e) {
 				monitor.close();
+                recordOpening = false;
 				new ErrorDialog("", e).showDialog();
 			} catch (LookupException e) {
 				monitor.close();
+                recordOpening = false;
 				new ErrorDialog("", e).showDialog();
 			} finally {
 				// to ensure that progress dlg is closed in case of any exception
 				monitor.close();
+                recordOpening = false;
 			}
-			finishOnUpdate();
-			//dialog.setModel(currentDomainObject, monitor);
-			//dialog.setRecordPositionText(selectedRow, table.getFilteredList().size());
+
+            // launch the GUI through the event dispatch thread to prevent
+            // any thread blocking when using the spell checker
+            SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    finishOnUpdate();
+                }
+            }); 
 		}
 	}
 

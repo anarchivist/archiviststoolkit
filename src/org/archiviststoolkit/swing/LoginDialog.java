@@ -193,6 +193,11 @@ public class LoginDialog extends JDialog {
 		return returnPassword;
 	}
 
+    public String getPasswordAsText() {
+        String password = new String(passwordField.getPassword());
+        return password;
+    }
+
 	public final int showDialog() {
 
 		//send to logger

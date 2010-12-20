@@ -120,6 +120,11 @@ public final class ApplicationFrame extends JFrame implements ActionListener {
 	public static String URL_DOWNLOAD = "http://www.archiviststoolkit.org/atDistribution/install.shtml";
 	public static SimpleDateFormat applicationDateFormat = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT);
 
+    // This specifies whether to enable the spell check function
+    // and highlighting. The default is to have it enable
+    public static boolean enableSpellCheck = true;
+    public static boolean enableSpellCheckHighlight = true;
+
 	private MyTimer timer;
 	private String startupLog;
 
@@ -177,6 +182,12 @@ public final class ApplicationFrame extends JFrame implements ActionListener {
 	private ConcreteAction admin_RDE = null;
 	private ConcreteAction admin_RDE_DO = null;
 	private ConcreteAction admin_Font = null;
+	private ConcreteAction admin_Spellcheck = null;
+	private ConcreteAction admin_SpellcheckHiglight = null;
+
+    // add the global checkbox menu item
+    private JCheckBoxMenuItem spellCheckMenuItem = null; // this needs to be global v
+    private JCheckBoxMenuItem spellCheckHighlightMenuItem = null; // this needs to be global v
 
     /**
 	 * The tools menu action.
@@ -226,7 +237,7 @@ public final class ApplicationFrame extends JFrame implements ActionListener {
 
 	private Hashtable<Class, DomainTableWorkSurface> worksurfaces = new Hashtable<Class, DomainTableWorkSurface>();
 
-	private ApplicationFrame() {
+    private ApplicationFrame() {
 		super();
 		atVersionNumber = resourceBundle.getString("archiviststoolkit.releasenumber");
 		String releaseType = resourceBundle.getString("archiviststoolkit.releaseType");
@@ -506,6 +517,9 @@ public final class ApplicationFrame extends JFrame implements ActionListener {
         admin_Font = new ConcreteAction("Configure Font");
 		admin_Font.addActionListener(this);
 
+        admin_Spellcheck = new ConcreteAction("Enable");
+        admin_SpellcheckHiglight = new ConcreteAction("Highlight");
+
         assessmentAction = new ConcreteAction("Assessment Records");
 		assessmentAction.addActionListener(this);
 	}
@@ -649,6 +663,22 @@ public final class ApplicationFrame extends JFrame implements ActionListener {
 
         // add the menu to configure system font
         setupMenu.add(admin_Font);
+
+        // add the submenu to enable or disable the spell check function
+        JMenu spellCheckMenu = new JMenu("Spell Check");
+
+        spellCheckMenuItem = new JCheckBoxMenuItem(admin_Spellcheck);
+        spellCheckMenuItem.setSelected(enableSpellCheck);
+        admin_Spellcheck.addActionListener(this);
+        spellCheckMenu.add(spellCheckMenuItem);
+
+        spellCheckHighlightMenuItem = new JCheckBoxMenuItem(admin_SpellcheckHiglight);
+        spellCheckHighlightMenuItem.setSelected(enableSpellCheckHighlight);
+        spellCheckHighlightMenuItem.setEnabled(enableSpellCheck);
+        admin_SpellcheckHiglight.addActionListener(this);
+        spellCheckMenu.add(spellCheckHighlightMenuItem);
+        
+        setupMenu.add(spellCheckMenu);
 
         menuBar.add(setupMenu);
 
@@ -1009,6 +1039,20 @@ public final class ApplicationFrame extends JFrame implements ActionListener {
                 UIManager.put("Table.font", new FontUIResource(font));
 
                 SwingUtilities.updateComponentTreeUI(this);
+            }
+
+        } else if (actionEvent.getSource() == this.admin_Spellcheck || actionEvent.getSource() == this.admin_SpellcheckHiglight) {
+            // get the user preferences and save the state check spell enable
+            UserPreferences userPref = UserPreferences.getInstance();
+            userPref.setEnableSpellCheck(spellCheckMenuItem.isSelected());
+            userPref.setEnableSpellCheckHighlight(spellCheckHighlightMenuItem.isSelected());
+            userPref.saveToPreferences();
+
+            // see whether to disable the highlighting check box
+            if(!spellCheckMenuItem.isSelected()) {
+                spellCheckHighlightMenuItem.setEnabled(false);
+            } else {
+                spellCheckHighlightMenuItem.setEnabled(true);
             }
 
         } else if (actionEvent.getSource() == this.import_Subject) {

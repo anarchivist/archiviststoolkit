@@ -157,11 +157,19 @@ public abstract class ResourcesCommon extends AccessionsResourcesCommon implemen
 
 	public Set getInstances(Class clazz) {
 		Set set = new HashSet();
-		for (ArchDescriptionInstances instance : this.getInstances()) {
-			if (clazz.getName().equals(instance.getClass().getName()))
-				set.add(instance);
-		}
-		return set;
+
+        // put this code in a try block as a work around for
+        // This JIRA issue (https://jira.nyu.edu/jira/browse/ART-2359)
+        try {
+		    for (ArchDescriptionInstances instance : this.getInstances()) {
+			    if (clazz.getName().equals(instance.getClass().getName()))
+				    set.add(instance);
+		    }
+        } catch(NullPointerException ne) {
+            ne.printStackTrace();
+        }
+
+        return set;
 	}
 
 	public void setInstances(Set<ArchDescriptionInstances> instances) {

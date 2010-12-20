@@ -222,26 +222,26 @@ public class UserPreferencesDialog extends JDialog {
                 HeaderPanel.setOpaque(false);
                 HeaderPanel.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                 HeaderPanel.setLayout(new FormLayout(
-                        new ColumnSpec[]{
-                                new ColumnSpec(Sizes.bounded(Sizes.MINIMUM, Sizes.dluX(100), Sizes.dluX(200))),
-                                new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
-                        },
-                        RowSpec.decodeSpecs("default")));
+                    new ColumnSpec[] {
+                        new ColumnSpec(Sizes.bounded(Sizes.MINIMUM, Sizes.dluX(100), Sizes.dluX(200))),
+                        new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
+                    },
+                    RowSpec.decodeSpecs("default")));
 
                 //======== panel2 ========
                 {
                     panel2.setBackground(new Color(80, 69, 57));
                     panel2.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                     panel2.setLayout(new FormLayout(
-                            new ColumnSpec[]{
-                                    FormFactory.RELATED_GAP_COLSPEC,
-                                    new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
-                            },
-                            new RowSpec[]{
-                                    FormFactory.RELATED_GAP_ROWSPEC,
-                                    FormFactory.DEFAULT_ROWSPEC,
-                                    FormFactory.RELATED_GAP_ROWSPEC
-                            }));
+                        new ColumnSpec[] {
+                            FormFactory.RELATED_GAP_COLSPEC,
+                            new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
+                        },
+                        new RowSpec[] {
+                            FormFactory.RELATED_GAP_ROWSPEC,
+                            FormFactory.DEFAULT_ROWSPEC,
+                            FormFactory.RELATED_GAP_ROWSPEC
+                        }));
 
                     //---- mainHeaderLabel ----
                     mainHeaderLabel.setText("Administration");
@@ -256,15 +256,15 @@ public class UserPreferencesDialog extends JDialog {
                     panel3.setBackground(new Color(66, 60, 111));
                     panel3.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
                     panel3.setLayout(new FormLayout(
-                            new ColumnSpec[]{
-                                    FormFactory.RELATED_GAP_COLSPEC,
-                                    new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
-                            },
-                            new RowSpec[]{
-                                    FormFactory.RELATED_GAP_ROWSPEC,
-                                    FormFactory.DEFAULT_ROWSPEC,
-                                    FormFactory.RELATED_GAP_ROWSPEC
-                            }));
+                        new ColumnSpec[] {
+                            FormFactory.RELATED_GAP_COLSPEC,
+                            new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
+                        },
+                        new RowSpec[] {
+                            FormFactory.RELATED_GAP_ROWSPEC,
+                            FormFactory.DEFAULT_ROWSPEC,
+                            FormFactory.RELATED_GAP_ROWSPEC
+                        }));
 
                     //---- subHeaderLabel ----
                     subHeaderLabel.setText("Connection Settings");
@@ -281,36 +281,36 @@ public class UserPreferencesDialog extends JDialog {
                 panel1.setOpaque(false);
                 panel1.setBorder(Borders.DIALOG_BORDER);
                 panel1.setLayout(new FormLayout(
-                        ColumnSpec.decodeSpecs("max(default;400px):grow"),
-                        new RowSpec[]{
-                                FormFactory.DEFAULT_ROWSPEC,
-                                FormFactory.LINE_GAP_ROWSPEC,
-                                FormFactory.DEFAULT_ROWSPEC
-                        }));
+                    ColumnSpec.decodeSpecs("max(default;400px):grow"),
+                    new RowSpec[] {
+                        FormFactory.DEFAULT_ROWSPEC,
+                        FormFactory.LINE_GAP_ROWSPEC,
+                        FormFactory.DEFAULT_ROWSPEC
+                    }));
 
                 //======== contentPanel ========
                 {
                     contentPanel.setBorder(new TitledBorder(null, "Database Properties", TitledBorder.LEADING, TitledBorder.TOP));
                     contentPanel.setOpaque(false);
                     contentPanel.setLayout(new FormLayout(
-                            new ColumnSpec[]{
-                                    new ColumnSpec(ColumnSpec.FILL, Sizes.MINIMUM, 0.1),
-                                    FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-                                    new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
-                            },
-                            new RowSpec[]{
-                                    FormFactory.DEFAULT_ROWSPEC,
-                                    FormFactory.LINE_GAP_ROWSPEC,
-                                    FormFactory.DEFAULT_ROWSPEC,
-                                    FormFactory.LINE_GAP_ROWSPEC,
-                                    FormFactory.DEFAULT_ROWSPEC,
-                                    FormFactory.LINE_GAP_ROWSPEC,
-                                    FormFactory.DEFAULT_ROWSPEC
-                            }));
+                        new ColumnSpec[] {
+                            new ColumnSpec(ColumnSpec.FILL, Sizes.MINIMUM, 0.1),
+                            FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                            new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
+                        },
+                        new RowSpec[] {
+                            FormFactory.DEFAULT_ROWSPEC,
+                            FormFactory.LINE_GAP_ROWSPEC,
+                            FormFactory.DEFAULT_ROWSPEC,
+                            FormFactory.LINE_GAP_ROWSPEC,
+                            FormFactory.DEFAULT_ROWSPEC,
+                            FormFactory.LINE_GAP_ROWSPEC,
+                            FormFactory.DEFAULT_ROWSPEC
+                        }));
 
                     //---- label1 ----
                     label1.setText("Connection URL");
-                    contentPanel.add(label1, new CellConstraints(1, 1, 1, 1, CellConstraints.FILL, CellConstraints.DEFAULT, new Insets(0, 5, 0, 0)));
+                    contentPanel.add(label1, new CellConstraints(1, 1, 1, 1, CellConstraints.FILL, CellConstraints.DEFAULT, new Insets( 0, 5, 0, 0)));
 
                     //---- connectionUrl ----
                     connectionUrl.setEditable(true);
@@ -319,21 +319,21 @@ public class UserPreferencesDialog extends JDialog {
                             updateConnectionUrlInformation();
                         }
                     });
-                    contentPanel.add(connectionUrl, new CellConstraints(3, 1, 1, 1, CellConstraints.DEFAULT, CellConstraints.DEFAULT, new Insets(0, 5, 0, 0)));
+                    contentPanel.add(connectionUrl, new CellConstraints(3, 1, 1, 1, CellConstraints.DEFAULT, CellConstraints.DEFAULT, new Insets( 0, 5, 0, 0)));
 
                     //---- label2 ----
                     label2.setText("Username");
-                    contentPanel.add(label2, new CellConstraints(1, 3, 1, 1, CellConstraints.DEFAULT, CellConstraints.DEFAULT, new Insets(0, 5, 0, 0)));
-                    contentPanel.add(userName, new CellConstraints(3, 3, 1, 1, CellConstraints.DEFAULT, CellConstraints.DEFAULT, new Insets(0, 5, 0, 0)));
+                    contentPanel.add(label2, new CellConstraints(1, 3, 1, 1, CellConstraints.DEFAULT, CellConstraints.DEFAULT, new Insets( 0, 5, 0, 0)));
+                    contentPanel.add(userName, new CellConstraints(3, 3, 1, 1, CellConstraints.DEFAULT, CellConstraints.DEFAULT, new Insets( 0, 5, 0, 0)));
 
                     //---- label3 ----
                     label3.setText("Password");
-                    contentPanel.add(label3, new CellConstraints(1, 5, 1, 1, CellConstraints.DEFAULT, CellConstraints.DEFAULT, new Insets(0, 5, 0, 0)));
-                    contentPanel.add(password, new CellConstraints(3, 5, 1, 1, CellConstraints.DEFAULT, CellConstraints.DEFAULT, new Insets(0, 5, 0, 0)));
+                    contentPanel.add(label3, new CellConstraints(1, 5, 1, 1, CellConstraints.DEFAULT, CellConstraints.DEFAULT, new Insets( 0, 5, 0, 0)));
+                    contentPanel.add(password, new CellConstraints(3, 5, 1, 1, CellConstraints.DEFAULT, CellConstraints.DEFAULT, new Insets( 0, 5, 0, 0)));
 
                     //---- label4 ----
                     label4.setText("Database Type");
-                    contentPanel.add(label4, new CellConstraints(1, 7, 1, 1, CellConstraints.DEFAULT, CellConstraints.DEFAULT, new Insets(0, 5, 0, 0)));
+                    contentPanel.add(label4, new CellConstraints(1, 7, 1, 1, CellConstraints.DEFAULT, CellConstraints.DEFAULT, new Insets( 0, 5, 0, 0)));
 
                     //---- databaseTypes ----
                     databaseTypes.setOpaque(false);
@@ -352,15 +352,15 @@ public class UserPreferencesDialog extends JDialog {
                     buttonBar.setBackground(new Color(231, 188, 251));
                     buttonBar.setOpaque(false);
                     buttonBar.setLayout(new FormLayout(
-                            new ColumnSpec[]{
-                                    FormFactory.GLUE_COLSPEC,
-                                    FormFactory.DEFAULT_COLSPEC,
-                                    FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-                                    FormFactory.BUTTON_COLSPEC,
-                                    FormFactory.RELATED_GAP_COLSPEC,
-                                    FormFactory.BUTTON_COLSPEC
-                            },
-                            RowSpec.decodeSpecs("pref")));
+                        new ColumnSpec[] {
+                            FormFactory.GLUE_COLSPEC,
+                            FormFactory.DEFAULT_COLSPEC,
+                            FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                            FormFactory.BUTTON_COLSPEC,
+                            FormFactory.RELATED_GAP_COLSPEC,
+                            FormFactory.BUTTON_COLSPEC
+                        },
+                        RowSpec.decodeSpecs("pref")));
 
                     //---- saveButton ----
                     saveButton.setText("Save");
