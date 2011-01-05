@@ -125,6 +125,11 @@ public final class ApplicationFrame extends JFrame implements ActionListener {
     public static boolean enableSpellCheck = true;
     public static boolean enableSpellCheckHighlight = true;
 
+    // boolean indicating whether the editor for a record is opened
+    // this is needed to fix a bug which doesn't allow dates and
+    // extent information to be save correctly
+    public static boolean editorOpen = false;
+
 	private MyTimer timer;
 	private String startupLog;
 

@@ -949,6 +949,8 @@ public class DomainTableWorkSurface implements WorkSurface, MouseListener, Actio
             return; // custom editor was used to view/edit this record so just return
         }
 
+        ApplicationFrame.editorOpen = true;
+
         Object instance = null;
         boolean done = false;
         boolean createNewInstance = true;
@@ -1084,6 +1086,8 @@ public class DomainTableWorkSurface implements WorkSurface, MouseListener, Actio
             }
         }
         dialog.setNewRecord(false);
+
+        ApplicationFrame.editorOpen = false;
 	}
 
 	private void addToPickers(DomainObject instance) {
@@ -1583,7 +1587,9 @@ public class DomainTableWorkSurface implements WorkSurface, MouseListener, Actio
             // any thread blocking when using the spell checker
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
+                    ApplicationFrame.editorOpen = true; // set to false to prevent update bug
                     finishOnUpdate();
+                    ApplicationFrame.editorOpen = false;
                 }
             }); 
 		}
@@ -1596,17 +1602,6 @@ public class DomainTableWorkSurface implements WorkSurface, MouseListener, Actio
      * @return The user feedback
      */
     private boolean openRecordReadOnly(RecordLocks recordLock) {
-        // TODO Uncomment this block of code once the read only mode has been solidify
-//        String message = "This record is already in use by " + recordLock.getUserName() + ".\nDo you want to open it in read only mode?";
-//
-//        int option = JOptionPane.showConfirmDialog(ApplicationFrame.getInstance(),
-//            message, "Record in Use", JOptionPane.YES_NO_OPTION);
-//
-//        if(option == JOptionPane.YES_OPTION) {
-//            return true;
-//        } else {
-//            return false;
-//        }
         String message = "This record is currently in use by " + recordLock.getUserName(); 
         JOptionPane.showMessageDialog(ApplicationFrame.getInstance(), message, "Record in Use", JOptionPane.ERROR_MESSAGE);
 

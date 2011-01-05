@@ -21,8 +21,8 @@
 package org.archiviststoolkit.swing;
 
 import com.inet.jortho.SpellChecker;
-import com.jgoodies.binding.formatter.EmptyNumberFormatter;
-import com.jgoodies.binding.formatter.EmptyDateFormatter;
+import com.jgoodies.validation.formatter.EmptyNumberFormatter;
+import com.jgoodies.validation.formatter.EmptyDateFormatter;
 import com.jgoodies.binding.PresentationModel;
 import com.jgoodies.binding.value.ValueModel;
 import com.jgoodies.binding.value.ComponentValueModel;
