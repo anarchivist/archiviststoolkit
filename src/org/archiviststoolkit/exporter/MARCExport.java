@@ -518,6 +518,10 @@ public class MARCExport {
             if (adrd.getNotesEtcType().getNotesEtcName().startsWith("Abstract") || adrd.getNotesEtcType().getNotesEtcName().startsWith("Scope and Contents note")) {
                 DataFieldType dataField = new DataFieldType();
                 dataField.setTag("520");
+                if (adrd.getNotesEtcType().getNotesEtcName().startsWith("Abstract"))
+                    dataField.setInd1("3");
+                else
+                    dataField.setInd1("2");
                 createSubFieldNote(dataField, "a", adrd);
                 if (dataField.getSubfield().size() > 0)
                     record.getDatafield().add(dataField);
