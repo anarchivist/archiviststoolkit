@@ -1458,6 +1458,9 @@ public class MARCExport {
         } else if (value.startsWith("Library of Congress Name Authority File")) {
             dataField.setInd2("0");
             return "0";
+        } else if (value.startsWith("NACO Authority File")) {
+            dataField.setInd2("0");
+            return "0";
         } else if (value.startsWith("LC subject headings for children's literature")) {
             dataField.setInd2("1");
             return "1";
