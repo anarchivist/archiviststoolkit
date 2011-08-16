@@ -163,9 +163,11 @@ public class ConnectionInformation extends WizardPage {
     // Method to setup connection information for internal database
     // This should not be changed
     private void databaseTypesActionPerformed() {
+        String currentURL = connectionUrl.getText();
         String database = databaseTypes.getSelectedItem().toString();
 
-        if (database.equals(SessionFactory.DATABASE_TYPE_INTERNAL)) {
+        if (database.equals(SessionFactory.DATABASE_TYPE_INTERNAL)
+                && !currentURL.contains("jdbc:hsqldb")) {
             String internalDBUrl = getInternalDatabaseUrl();
 
             if (internalDBUrl != null) {

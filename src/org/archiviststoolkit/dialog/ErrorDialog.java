@@ -1,5 +1,5 @@
 /**
- * Archivists' Toolkit(TM) Copyright © 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
+ * Archivists' Toolkit(TM) Copyright ï¿½ 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
  * All rights reserved.
  *
  * This software is free. You can redistribute it and / or modify it under the terms of the Educational Community License (ECL)
@@ -36,11 +36,6 @@ public class ErrorDialog extends JDialog {
 
 	public static final int DIALOG_TYPE_BOZO = 1;
 	public static final int DIALOG_TYPE_ERROR = 2;
-
-//    public ErrorDialog() {
-//        super();
-//        initComponents();
-//    }
 
 	public ErrorDialog(String errorMessage, String errorText) {
 		super();
@@ -160,7 +155,22 @@ public class ErrorDialog extends JDialog {
 	}
 
 	private void setDisplay(String errorMessage, String errorText, int errorDialogType) {
-		if (errorDialogType == DIALOG_TYPE_ERROR) {
+        // first check to see if the error text is not a JDBC connection exception
+        // if it is then only alert user of this and don't allow user to submit
+        // error report
+        if(errorText.contains("JDBCConnectionException")) {
+            String message = "Database connection has been lost due to a server timeout.\n\n" +
+                "Please RESTART the program to continue.  If the problem persists, consult your System Administrator.";
+
+            cardPanel.remove(contentPanel);
+            
+            ((CardLayout) cardPanel.getLayout()).show(cardPanel, "error");
+
+            this.label4.setText("Connection Interruption!");
+            this.errorMessage.setText(message);
+
+            submitBugReport.setVisible(false);
+        } else if (errorDialogType == DIALOG_TYPE_ERROR) {
 			((CardLayout) cardPanel.getLayout()).show(cardPanel, "error");
 			this.errorMessage.setText(errorMessage + "\n" + errorText);
 			submitBugReport.setVisible(false);
@@ -168,6 +178,8 @@ public class ErrorDialog extends JDialog {
 			this.errorMessageBozo.setText(errorMessage);
 			this.errorText.setText(errorText);
 		}
+
+        pack();
 	}
 
 	public ErrorDialog(Frame owner) {
@@ -218,225 +230,225 @@ public class ErrorDialog extends JDialog {
 
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-		// Generated using JFormDesigner non-commercial license
-		dialogPane = new JPanel();
-		cardPanel = new JPanel();
-		contentPanel = new JPanel();
-		panel2 = new JPanel();
-		label2 = new JLabel();
-		label1 = new JLabel();
-		errorMessageScrollPane2 = new JScrollPane();
-		errorMessageBozo = new JTextArea();
-		panel1 = new JPanel();
-		toggleDetails = new JToggleButton();
-		toggleDetailsLabel = new JLabel();
-		errorTextScrollPane = new JScrollPane();
-		errorText = new JTextArea();
-		errorPanel = new JPanel();
-		label3 = new JLabel();
-		label4 = new JLabel();
-		errorMessageScrollPane = new JScrollPane();
-		errorMessage = new JTextArea();
-		buttonBar = new JPanel();
-		submitBugReport = new JButton();
-		okButton = new JButton();
-		CellConstraints cc = new CellConstraints();
+        // Generated using JFormDesigner non-commercial license
+        dialogPane = new JPanel();
+        cardPanel = new JPanel();
+        contentPanel = new JPanel();
+        panel2 = new JPanel();
+        label2 = new JLabel();
+        label1 = new JLabel();
+        errorMessageScrollPane2 = new JScrollPane();
+        errorMessageBozo = new JTextArea();
+        panel1 = new JPanel();
+        toggleDetails = new JToggleButton();
+        toggleDetailsLabel = new JLabel();
+        errorTextScrollPane = new JScrollPane();
+        errorText = new JTextArea();
+        errorPanel = new JPanel();
+        label3 = new JLabel();
+        label4 = new JLabel();
+        errorMessageScrollPane = new JScrollPane();
+        errorMessage = new JTextArea();
+        buttonBar = new JPanel();
+        submitBugReport = new JButton();
+        okButton = new JButton();
+        CellConstraints cc = new CellConstraints();
 
-		//======== this ========
-		setModal(true);
-		Container contentPane = getContentPane();
-		contentPane.setLayout(new BorderLayout());
+        //======== this ========
+        setModal(true);
+        Container contentPane = getContentPane();
+        contentPane.setLayout(new BorderLayout());
 
-		//======== dialogPane ========
-		{
-			dialogPane.setBorder(Borders.DIALOG_BORDER);
-			dialogPane.setBackground(new Color(200, 205, 232));
-			dialogPane.setLayout(new BorderLayout());
+        //======== dialogPane ========
+        {
+            dialogPane.setBorder(Borders.DIALOG_BORDER);
+            dialogPane.setBackground(new Color(200, 205, 232));
+            dialogPane.setLayout(new BorderLayout());
 
-			//======== cardPanel ========
-			{
-				cardPanel.setOpaque(false);
-				cardPanel.setLayout(new CardLayout());
+            //======== cardPanel ========
+            {
+                cardPanel.setOpaque(false);
+                cardPanel.setLayout(new CardLayout());
 
-				//======== contentPanel ========
-				{
-					contentPanel.setOpaque(false);
-					contentPanel.setPreferredSize(new Dimension(682, 450));
-					contentPanel.setLayout(new FormLayout(
-						ColumnSpec.decodeSpecs("max(default;600px):grow"),
-						new RowSpec[] {
-							FormFactory.DEFAULT_ROWSPEC,
-							FormFactory.LINE_GAP_ROWSPEC,
-							FormFactory.DEFAULT_ROWSPEC,
-							FormFactory.LINE_GAP_ROWSPEC,
-							FormFactory.DEFAULT_ROWSPEC,
-							FormFactory.LINE_GAP_ROWSPEC,
-							new RowSpec(RowSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
-						}));
+                //======== contentPanel ========
+                {
+                    contentPanel.setOpaque(false);
+                    contentPanel.setPreferredSize(new Dimension(682, 450));
+                    contentPanel.setLayout(new FormLayout(
+                        ColumnSpec.decodeSpecs("max(default;600px):grow"),
+                        new RowSpec[] {
+                            FormFactory.DEFAULT_ROWSPEC,
+                            FormFactory.LINE_GAP_ROWSPEC,
+                            FormFactory.DEFAULT_ROWSPEC,
+                            FormFactory.LINE_GAP_ROWSPEC,
+                            FormFactory.DEFAULT_ROWSPEC,
+                            FormFactory.LINE_GAP_ROWSPEC,
+                            new RowSpec(RowSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
+                        }));
 
-					//======== panel2 ========
-					{
-						panel2.setOpaque(false);
-						panel2.setLayout(new FormLayout(
-							new ColumnSpec[] {
-								FormFactory.DEFAULT_COLSPEC,
-								FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-								FormFactory.DEFAULT_COLSPEC
-							},
-							RowSpec.decodeSpecs("default")));
+                    //======== panel2 ========
+                    {
+                        panel2.setOpaque(false);
+                        panel2.setLayout(new FormLayout(
+                            new ColumnSpec[] {
+                                FormFactory.DEFAULT_COLSPEC,
+                                FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                                FormFactory.DEFAULT_COLSPEC
+                            },
+                            RowSpec.decodeSpecs("default")));
 
-						//---- label2 ----
-						label2.setIcon(new ImageIcon(getClass().getResource("/org/archiviststoolkit/resources/images/bug.png")));
-						panel2.add(label2, cc.xy(1, 1));
+                        //---- label2 ----
+                        label2.setIcon(new ImageIcon(getClass().getResource("/org/archiviststoolkit/resources/images/bug.png")));
+                        panel2.add(label2, cc.xy(1, 1));
 
-						//---- label1 ----
-						label1.setText("An error has occured");
-						panel2.add(label1, cc.xywh(3, 1, 1, 1, CellConstraints.DEFAULT, CellConstraints.TOP));
-					}
-					contentPanel.add(panel2, cc.xy(1, 1));
+                        //---- label1 ----
+                        label1.setText("An error has occured");
+                        panel2.add(label1, cc.xywh(3, 1, 1, 1, CellConstraints.DEFAULT, CellConstraints.TOP));
+                    }
+                    contentPanel.add(panel2, cc.xy(1, 1));
 
-					//======== errorMessageScrollPane2 ========
-					{
-						errorMessageScrollPane2.setOpaque(false);
-						errorMessageScrollPane2.setBorder(null);
+                    //======== errorMessageScrollPane2 ========
+                    {
+                        errorMessageScrollPane2.setOpaque(false);
+                        errorMessageScrollPane2.setBorder(null);
 
-						//---- errorMessageBozo ----
-						errorMessageBozo.setBackground(new Color(200, 205, 232));
-						errorMessageBozo.setBorder(null);
-						errorMessageBozo.setLineWrap(true);
-						errorMessageBozo.setWrapStyleWord(true);
-						errorMessageBozo.setRows(2);
-						errorMessageBozo.setEditable(false);
-						errorMessageScrollPane2.setViewportView(errorMessageBozo);
-					}
-					contentPanel.add(errorMessageScrollPane2, cc.xy(1, 3));
+                        //---- errorMessageBozo ----
+                        errorMessageBozo.setBackground(new Color(200, 205, 232));
+                        errorMessageBozo.setBorder(null);
+                        errorMessageBozo.setLineWrap(true);
+                        errorMessageBozo.setWrapStyleWord(true);
+                        errorMessageBozo.setRows(2);
+                        errorMessageBozo.setEditable(false);
+                        errorMessageScrollPane2.setViewportView(errorMessageBozo);
+                    }
+                    contentPanel.add(errorMessageScrollPane2, cc.xy(1, 3));
 
-					//======== panel1 ========
-					{
-						panel1.setOpaque(false);
-						panel1.setLayout(new FormLayout(
-							new ColumnSpec[] {
-								FormFactory.DEFAULT_COLSPEC,
-								FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-								FormFactory.DEFAULT_COLSPEC
-							},
-							RowSpec.decodeSpecs("default")));
+                    //======== panel1 ========
+                    {
+                        panel1.setOpaque(false);
+                        panel1.setLayout(new FormLayout(
+                            new ColumnSpec[] {
+                                FormFactory.DEFAULT_COLSPEC,
+                                FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                                FormFactory.DEFAULT_COLSPEC
+                            },
+                            RowSpec.decodeSpecs("default")));
 
-						//---- toggleDetails ----
-						toggleDetails.setOpaque(false);
-						toggleDetails.setIcon(new ImageIcon(getClass().getResource("/org/archiviststoolkit/resources/images/toggleDown.png")));
-						toggleDetails.setBorder(null);
-						toggleDetails.setSelectedIcon(new ImageIcon(getClass().getResource("/org/archiviststoolkit/resources/images/toggleUp.png")));
-						toggleDetails.addActionListener(new ActionListener() {
-							public void actionPerformed(ActionEvent e) {
-								toggleDetailsActionPerformed();
-							}
-						});
-						panel1.add(toggleDetails, cc.xy(1, 1));
+                        //---- toggleDetails ----
+                        toggleDetails.setOpaque(false);
+                        toggleDetails.setIcon(new ImageIcon(getClass().getResource("/org/archiviststoolkit/resources/images/toggleDown.png")));
+                        toggleDetails.setBorder(null);
+                        toggleDetails.setSelectedIcon(new ImageIcon(getClass().getResource("/org/archiviststoolkit/resources/images/toggleUp.png")));
+                        toggleDetails.addActionListener(new ActionListener() {
+                            public void actionPerformed(ActionEvent e) {
+                                toggleDetailsActionPerformed();
+                            }
+                        });
+                        panel1.add(toggleDetails, cc.xy(1, 1));
 
-						//---- toggleDetailsLabel ----
-						toggleDetailsLabel.setText("Show Details");
-						panel1.add(toggleDetailsLabel, cc.xy(3, 1));
-					}
-					contentPanel.add(panel1, cc.xy(1, 5));
+                        //---- toggleDetailsLabel ----
+                        toggleDetailsLabel.setText("Show Details");
+                        panel1.add(toggleDetailsLabel, cc.xy(3, 1));
+                    }
+                    contentPanel.add(panel1, cc.xy(1, 5));
 
-					//======== errorTextScrollPane ========
-					{
-						errorTextScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+                    //======== errorTextScrollPane ========
+                    {
+                        errorTextScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-						//---- errorText ----
-						errorText.setRows(15);
-						errorText.setLineWrap(true);
-						errorText.setEditable(false);
-						errorTextScrollPane.setViewportView(errorText);
-					}
-					contentPanel.add(errorTextScrollPane, cc.xywh(1, 7, 1, 1, CellConstraints.DEFAULT, CellConstraints.FILL));
-				}
-				cardPanel.add(contentPanel, "bozo");
+                        //---- errorText ----
+                        errorText.setRows(15);
+                        errorText.setLineWrap(true);
+                        errorText.setEditable(false);
+                        errorTextScrollPane.setViewportView(errorText);
+                    }
+                    contentPanel.add(errorTextScrollPane, cc.xywh(1, 7, 1, 1, CellConstraints.DEFAULT, CellConstraints.FILL));
+                }
+                cardPanel.add(contentPanel, "bozo");
 
-				//======== errorPanel ========
-				{
-					errorPanel.setOpaque(false);
-					errorPanel.setLayout(new FormLayout(
-						new ColumnSpec[] {
-							FormFactory.DEFAULT_COLSPEC,
-							FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-							new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
-						},
-						new RowSpec[] {
-							FormFactory.DEFAULT_ROWSPEC,
-							FormFactory.LINE_GAP_ROWSPEC,
-							new RowSpec(RowSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
-						}));
+                //======== errorPanel ========
+                {
+                    errorPanel.setOpaque(false);
+                    errorPanel.setLayout(new FormLayout(
+                        new ColumnSpec[] {
+                            FormFactory.DEFAULT_COLSPEC,
+                            FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                            new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
+                        },
+                        new RowSpec[] {
+                            FormFactory.DEFAULT_ROWSPEC,
+                            FormFactory.LINE_GAP_ROWSPEC,
+                            new RowSpec(RowSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
+                        }));
 
-					//---- label3 ----
-					label3.setIcon(new ImageIcon(getClass().getResource("/org/archiviststoolkit/resources/images/error.png")));
-					errorPanel.add(label3, cc.xy(1, 1));
+                    //---- label3 ----
+                    label3.setIcon(new ImageIcon(getClass().getResource("/org/archiviststoolkit/resources/images/error.png")));
+                    errorPanel.add(label3, cc.xy(1, 1));
 
-					//---- label4 ----
-					label4.setText("An error has occured");
-					errorPanel.add(label4, cc.xywh(3, 1, 1, 1, CellConstraints.DEFAULT, CellConstraints.TOP));
+                    //---- label4 ----
+                    label4.setText("An error has occured");
+                    errorPanel.add(label4, cc.xywh(3, 1, 1, 1, CellConstraints.DEFAULT, CellConstraints.TOP));
 
-					//======== errorMessageScrollPane ========
-					{
-						errorMessageScrollPane.setOpaque(false);
-						errorMessageScrollPane.setBorder(null);
+                    //======== errorMessageScrollPane ========
+                    {
+                        errorMessageScrollPane.setOpaque(false);
+                        errorMessageScrollPane.setBorder(null);
 
-						//---- errorMessage ----
-						errorMessage.setBackground(new Color(200, 205, 232));
-						errorMessage.setBorder(null);
-						errorMessage.setLineWrap(true);
-						errorMessage.setWrapStyleWord(true);
-						errorMessage.setRows(6);
-						errorMessage.setEditable(false);
-						errorMessageScrollPane.setViewportView(errorMessage);
-					}
-					errorPanel.add(errorMessageScrollPane, cc.xywh(1, 3, 3, 1));
-				}
-				cardPanel.add(errorPanel, "error");
-			}
-			dialogPane.add(cardPanel, BorderLayout.CENTER);
+                        //---- errorMessage ----
+                        errorMessage.setBackground(new Color(200, 205, 232));
+                        errorMessage.setBorder(null);
+                        errorMessage.setLineWrap(true);
+                        errorMessage.setWrapStyleWord(true);
+                        errorMessage.setRows(4);
+                        errorMessage.setEditable(false);
+                        errorMessageScrollPane.setViewportView(errorMessage);
+                    }
+                    errorPanel.add(errorMessageScrollPane, cc.xywh(1, 3, 3, 1));
+                }
+                cardPanel.add(errorPanel, "error");
+            }
+            dialogPane.add(cardPanel, BorderLayout.CENTER);
 
-			//======== buttonBar ========
-			{
-				buttonBar.setBorder(Borders.BUTTON_BAR_GAP_BORDER);
-				buttonBar.setOpaque(false);
-				buttonBar.setLayout(new FormLayout(
-					new ColumnSpec[] {
-						FormFactory.GLUE_COLSPEC,
-						FormFactory.DEFAULT_COLSPEC,
-						FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-						FormFactory.DEFAULT_COLSPEC,
-						FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-						FormFactory.BUTTON_COLSPEC
-					},
-					RowSpec.decodeSpecs("pref")));
+            //======== buttonBar ========
+            {
+                buttonBar.setBorder(Borders.BUTTON_BAR_GAP_BORDER);
+                buttonBar.setOpaque(false);
+                buttonBar.setLayout(new FormLayout(
+                    new ColumnSpec[] {
+                        FormFactory.GLUE_COLSPEC,
+                        FormFactory.DEFAULT_COLSPEC,
+                        FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                        FormFactory.DEFAULT_COLSPEC,
+                        FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                        FormFactory.BUTTON_COLSPEC
+                    },
+                    RowSpec.decodeSpecs("pref")));
 
-				//---- submitBugReport ----
-				submitBugReport.setText("Submit Bug Report");
-				submitBugReport.setOpaque(false);
-				submitBugReport.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						submitBugReportActionPerformed(e);
-					}
-				});
-				buttonBar.add(submitBugReport, cc.xy(2, 1));
+                //---- submitBugReport ----
+                submitBugReport.setText("Submit Bug Report");
+                submitBugReport.setOpaque(false);
+                submitBugReport.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        submitBugReportActionPerformed(e);
+                    }
+                });
+                buttonBar.add(submitBugReport, cc.xy(2, 1));
 
-				//---- okButton ----
-				okButton.setText("OK");
-				okButton.setOpaque(false);
-				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						okButtonActionPerformed(e);
-					}
-				});
-				buttonBar.add(okButton, cc.xy(6, 1));
-			}
-			dialogPane.add(buttonBar, BorderLayout.SOUTH);
-		}
-		contentPane.add(dialogPane, BorderLayout.CENTER);
-		pack();
-		setLocationRelativeTo(getOwner());
+                //---- okButton ----
+                okButton.setText("OK");
+                okButton.setOpaque(false);
+                okButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        okButtonActionPerformed(e);
+                    }
+                });
+                buttonBar.add(okButton, cc.xy(6, 1));
+            }
+            dialogPane.add(buttonBar, BorderLayout.SOUTH);
+        }
+        contentPane.add(dialogPane, BorderLayout.CENTER);
+        pack();
+        setLocationRelativeTo(getOwner());
 		// JFormDesigner - End of component initialization  //GEN-END:initComponents
 		toggleDetails.setSelected(true);
 		toggleTextAndView();
@@ -448,28 +460,28 @@ public class ErrorDialog extends JDialog {
 	}
 
 	// JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-	// Generated using JFormDesigner non-commercial license
-	private JPanel dialogPane;
-	private JPanel cardPanel;
-	private JPanel contentPanel;
-	private JPanel panel2;
-	private JLabel label2;
-	private JLabel label1;
-	private JScrollPane errorMessageScrollPane2;
-	private JTextArea errorMessageBozo;
-	private JPanel panel1;
-	private JToggleButton toggleDetails;
-	private JLabel toggleDetailsLabel;
-	private JScrollPane errorTextScrollPane;
-	private JTextArea errorText;
-	private JPanel errorPanel;
-	private JLabel label3;
-	private JLabel label4;
-	private JScrollPane errorMessageScrollPane;
-	private JTextArea errorMessage;
-	private JPanel buttonBar;
-	private JButton submitBugReport;
-	private JButton okButton;
+    // Generated using JFormDesigner non-commercial license
+    private JPanel dialogPane;
+    private JPanel cardPanel;
+    private JPanel contentPanel;
+    private JPanel panel2;
+    private JLabel label2;
+    private JLabel label1;
+    private JScrollPane errorMessageScrollPane2;
+    private JTextArea errorMessageBozo;
+    private JPanel panel1;
+    private JToggleButton toggleDetails;
+    private JLabel toggleDetailsLabel;
+    private JScrollPane errorTextScrollPane;
+    private JTextArea errorText;
+    private JPanel errorPanel;
+    private JLabel label3;
+    private JLabel label4;
+    private JScrollPane errorMessageScrollPane;
+    private JTextArea errorMessage;
+    private JPanel buttonBar;
+    private JButton submitBugReport;
+    private JButton okButton;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
 
 	private Throwable throwable = null;

@@ -116,6 +116,9 @@ public final class Main {
         if(userPrefs.getEnableSpellCheck()) {
             mainFrame.enableSpellCheck = loadSpellCheckerDictionary();
             mainFrame.enableSpellCheckHighlight = userPrefs.getEnableSpellCheckHighlighting();
+        } else if(userPrefs.getSpellCheckSet()) {
+            // user wants to disable spell check functionality
+            mainFrame.enableSpellCheck = false;
         }
 
         // set properties of UI components including fonts
@@ -317,7 +320,7 @@ public final class Main {
 		Users user;
 
         // try loading any authentication plugin. this plugin would do authentication
-        // through LDPA for example
+        // through LDAP for example
         ATPlugin authPlugin = org.archiviststoolkit.plugin.ATPluginFactory.getInstance().getAuthenticationPlugin();
 
         int returnStatus;

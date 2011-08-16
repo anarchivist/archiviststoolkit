@@ -305,7 +305,8 @@ public final class SessionFactory {
         SessionFactory.databaseType = databaseType;
         if (databaseType.equals(DATABASE_TYPE_MYSQL)) {
             setDriverClass("com.mysql.jdbc.Driver");
-            setHibernateDialect("org.hibernate.dialect.MySQLInnoDBDialect");
+            //setHibernateDialect("org.hibernate.dialect.MySQLInnoDBDialect");
+            setHibernateDialect("org.hibernate.dialect.MySQL5InnoDBDialect");
         } else if (databaseType.equals(DATABASE_TYPE_MICROSOFT_SQL_SERVER)) {
             setDriverClass("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             setHibernateDialect("org.hibernate.dialect.SQLServerDialect");
