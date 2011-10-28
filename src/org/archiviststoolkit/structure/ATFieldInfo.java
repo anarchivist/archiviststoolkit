@@ -1,5 +1,5 @@
 /**
- * Archivists' Toolkit(TM) Copyright © 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
+ * Archivists' Toolkit(TM) Copyright ï¿½ 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
  * All rights reserved.
  *
  * This software is free. You can redistribute it and / or modify it under the terms of the Educational Community License (ECL)
@@ -175,12 +175,18 @@ public class ATFieldInfo implements Comparable {
 			TreeSet<DatabaseFields> fieldsByTable;
 			for (Object o : access.findAll(LockMode.READ)) {
 				table = (DatabaseTables) o;
-				tableName = table.getClazz().getSimpleName();
-				tableByTableNameLookup.put(tableName, table);
-				tableList.add(tableName);
-				fieldsByTable = new TreeSet<DatabaseFields>();
-				fieldsByTableLookup.put(tableName, fieldsByTable);
-				addFieldInfo(table, fieldsByTable);
+
+                // need to check the class name to make sure we don't try
+                // to load any classes which are none core AT 2.0
+                String className = table.getClassName();
+                if(className.contains("org.archiviststoolkit")) {
+				    tableName = table.getClazz().getSimpleName();
+				    tableByTableNameLookup.put(tableName, table);
+				    tableList.add(tableName);
+				    fieldsByTable = new TreeSet<DatabaseFields>();
+				    fieldsByTableLookup.put(tableName, fieldsByTable);
+				    addFieldInfo(table, fieldsByTable);
+                }
 			}
 
 		} catch (LookupException e) {

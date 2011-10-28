@@ -1,5 +1,5 @@
 /**
- * Archivists' Toolkit(TM) Copyright © 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
+ * Archivists' Toolkit(TM) Copyright ï¿½ 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
  * All rights reserved.
  *
  * This software is free. You can redistribute it and / or modify it under the terms of the Educational Community License (ECL)
@@ -41,6 +41,8 @@ public class DatabaseConnectionUtils {
     private static String errorString = "";
 
     private static final String CONNECTION_INFO_FILENAME = "atdbinfo.txt";
+
+    private static String databaseVersionString = "";
 
     public static Boolean testDbConnection() {
 
@@ -96,17 +98,27 @@ public class DatabaseConnectionUtils {
         int updateVersion = databaseVersion.getUpdateVersion();
 
         if (databaseVersion != null) {
+            // set the database version
+            databaseVersionString = majorVersion + "." + minorVersion + "." + updateVersion;
+
             Integer compareVersion = Constants.compareVersions(versionString,
                     majorVersion,
                     minorVersion,
                     updateVersion);
             if (calledFrom.equals(DatabaseConnectionUtils.CHECK_VERSION_FROM_MAIN)) {
                 if (compareVersion == Constants.VERSION_LESS) {
+                    /**
                     VersionMismatch dialog = new VersionMismatch("AT version " + versionString
                             + " will not work with this database. This database is using version "
                             + majorVersion + "." + minorVersion + "." + updateVersion + ".", Constants.VERSION_LESS);
                     dialog.showDialog();
-                    return false;
+                     */
+
+                    // to allow the AT to work with database that have been extended
+                    // for derivative of the AT, then ignore the version mismatch if the
+                    // database is at a greater version. Doing this is only valid
+                    // if the data model of the derivative is a superset of the AT data model
+                    return true;
                 } else if (compareVersion == Constants.VERSION_GREATER) {
                     VersionMismatch dialog = new VersionMismatch("AT version " + versionString
                             + " will not work with this database. This database is using version "
@@ -261,15 +273,10 @@ public class DatabaseConnectionUtils {
         String dummySQL = "SELECT Constants.majorVersion, Constants.minorVersion, Constants.updateVersion FROM Constants";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(dummySQL);
-//		rs.next();
-//		return new DatabaseVersion(rs.getInt(1), rs.getInt(2), rs.getInt(3));
+
         if (rs.next()) {
             return new DatabaseVersion(rs.getInt(1), rs.getInt(2), rs.getInt(3));
-//            if (rs.isLast()) {
-//                return new DatabaseVersion(rs.getInt(1), rs.getInt(2), rs.getInt(3));
-//            } else {
-//                return null;
-//            }
+
         } else {
             return null;
         }
@@ -355,6 +362,15 @@ public class DatabaseConnectionUtils {
     }
 
     /**
+     * Method to return the database version string to print to the about dialog
+     *
+     * @return
+     */
+    public static String getDatabaseVersionString() {
+        return databaseVersionString;
+    }
+
+    /**
      * Method to save database connection information to a tab delimited
      * text file in the user's home directory.
      *
@@ -395,5 +411,7 @@ public class DatabaseConnectionUtils {
         } catch (IOException e) { // just print the stack trace for now
             e.printStackTrace();
         }
+
+
     }
 }

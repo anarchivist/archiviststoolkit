@@ -1339,6 +1339,7 @@ public final class ApplicationFrame extends JFrame implements ActionListener {
 		returnString += "\nOS Version: " + System.getProperty("os.version");
 		returnString += "\nPlatform: " + System.getProperty("os.arch");
 		returnString += "\nDatabase: " + UserPreferences.getInstance().getDatabaseUrl();
+        returnString += "\nDatabase Version: " + DatabaseConnectionUtils.getDatabaseVersionString();
 
 		return returnString;
 	}

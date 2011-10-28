@@ -29,6 +29,7 @@ import javax.swing.*;
 import com.jgoodies.forms.factories.*;
 import com.jgoodies.forms.layout.*;
 import org.archiviststoolkit.mydomain.*;
+import org.archiviststoolkit.structure.DatabaseTables;
 import org.archiviststoolkit.swing.*;
 import org.archiviststoolkit.model.*;
 import org.archiviststoolkit.util.StringHelper;
@@ -552,11 +553,35 @@ public class GeneralAdminDialog extends JDialog implements ActionListener{
             resultSet = getAssessmentsResultSet(resultSet, false);
         }
 
+        // Need to call method which will remove none AT classes from result set
+        if(clazz == DatabaseTables.class) {
+            cleanDatabaseTableNames(resultSet);
+        }
+
         getContentTable().updateCollection(resultSet);
 	}
 
     /**
-     * Method to resturn the result for Assessment records which contains
+     * This method is used to remove any none core AT table names from
+     * returned results. Not doing so will result in an error when user tries
+     * to open up the record
+     *
+     * @param resultSet
+     */
+    private void cleanDatabaseTableNames(Collection resultSet) {
+        ArrayList results = new ArrayList(resultSet);
+
+        // now go through list and remove any none AT database tables
+        for (Iterator iterator = results.iterator(); iterator.hasNext();) {
+            DatabaseTables databaseTable = (DatabaseTables) iterator.next();
+            if (!databaseTable.getClassName().contains("org.archiviststoolkit")) {
+                resultSet.remove(databaseTable);
+            }
+        }
+    }
+
+    /**
+     * Method to return the result for Assessment records which contains
      * AssessmentsSearchResult object instead of Assessments.
      * @param resultSet The collection containing Assessments objects
      * @param removeInActive boolean specifying whether to allow inatice records to be displayed in table

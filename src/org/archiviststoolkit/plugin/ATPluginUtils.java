@@ -14,7 +14,7 @@ import java.util.Collection;
 import java.awt.*;
 
 /**
- * Archivists' Toolkit(TM) Copyright © 2005-2009 Regents of the University of California, New York University, & Five Colleges, Inc.
+ * Archivists' Toolkit(TM) Copyright ï¿½ 2005-2009 Regents of the University of California, New York University, & Five Colleges, Inc.
  * All rights reserved.
  *
  * This software is free. You can redistribute it and / or modify it under the terms of the Educational Community License (ECL)
@@ -91,7 +91,7 @@ public class ATPluginUtils {
             DomainAccessObject access =
                     DomainAccessObjectFactory.getInstance().getDomainAccessObject(ATPluginData.class);
             access.getLongSession();
-            access.updateLongSession(pluginData);
+            access.updateLongSession(pluginData, false);
         } catch(Exception e) {
             e.printStackTrace();
             throw new Exception("Error Saving Plugin Data to Database ...");

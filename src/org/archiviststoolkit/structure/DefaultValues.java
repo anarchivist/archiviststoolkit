@@ -1,5 +1,5 @@
 /**
- * Archivists' Toolkit(TM) Copyright © 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
+ * Archivists' Toolkit(TM) Copyright ï¿½ 2005-2007 Regents of the University of California, New York University, & Five Colleges, Inc.
  * All rights reserved.
  *
  * This software is free. You can redistribute it and / or modify it under the terms of the Educational Community License (ECL)
@@ -93,6 +93,14 @@ public class DefaultValues  extends DomainObject {
 
 			for (Object o : access.findAll(LockMode.READ)) {
 				defaultValue = (DefaultValues) o;
+
+                // check to the table class name to make sure only AT related default values
+                // values are loaded
+                String className = defaultValue.getAtField().getDatabaseTable().getClassName();
+                if(!className.contains("org.archiviststoolkit")) {
+                    continue;
+                }
+
 				repository = defaultValue.getRepository();
 				tableLookup = repositoryDefaultValues.get(repository);
 				if (tableLookup == null) {
