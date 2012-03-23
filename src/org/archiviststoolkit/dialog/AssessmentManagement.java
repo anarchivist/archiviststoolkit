@@ -20,17 +20,14 @@ package org.archiviststoolkit.dialog;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Collection;
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.*;
 import java.sql.SQLException;
 import javax.swing.*;
 
 import com.jgoodies.forms.factories.*;
 import com.jgoodies.forms.layout.*;
+import org.archiviststoolkit.model.*;
 import org.archiviststoolkit.mydomain.*;
-import org.archiviststoolkit.model.Assessments;
-import org.archiviststoolkit.model.AssessmentsSearchResult;
 import org.archiviststoolkit.swing.*;
 import org.archiviststoolkit.report.ReportUtils;
 import org.archiviststoolkit.report.ReportDestinationProperties;
@@ -106,6 +103,9 @@ public class AssessmentManagement extends GeneralAdminDialog implements ActionLi
                         DomainAccessObject access = null;
                         try {
                             access = DomainAccessObjectFactory.getInstance().getDomainAccessObject(clazz);
+
+                            // open log session since it may have been closed
+                            access.getLongSession();
                         } catch (PersistenceException e1) {
                             new ErrorDialog("Error deleting records", StringHelper.getStackTrace(e1)).showDialog();
                         }
@@ -224,7 +224,7 @@ public class AssessmentManagement extends GeneralAdminDialog implements ActionLi
 	}
 
     /**
-     * Performes searching on assessment records
+     * Performs searching on assessment records
      */
     private void searchActionPerformed() {
         final DomainAccessObject access = new DomainAccessObjectImpl(clazz);
@@ -232,11 +232,11 @@ public class AssessmentManagement extends GeneralAdminDialog implements ActionLi
         if (searchDialog.showDialog() == javax.swing.JOptionPane.OK_OPTION) {
             Thread performer = new Thread(new Runnable() {
                 public void run() {
-                    InfiniteProgressPanel monitor = ATProgressUtil.createModalProgressMonitor(ApplicationFrame.getInstance(), 0);
+                    InfiniteProgressPanel monitor = ATProgressUtil.createModalProgressMonitor(getThisAsJDialog(), 0);
                     monitor.start("Performing search...");
                     try {
                         Collection results = access.findByQueryEditorLongSession(searchDialog, monitor);
-                        updateListWithNewResultSet(results);
+                        updateListWithNewResultSet(monitor, results);
                         monitor.close();
                     } catch (LookupException e) {
                         monitor.close();
@@ -256,9 +256,9 @@ public class AssessmentManagement extends GeneralAdminDialog implements ActionLi
      * @param resultSet The new result to update the table with
      */
 
-    protected synchronized void updateListWithNewResultSet(Collection resultSet) {
+    protected synchronized void updateListWithNewResultSet(InfiniteProgressPanel monitor, Collection resultSet) {
         // create assessment search objects now
-        final Collection newResultSet = getAssessmentsResultSet(resultSet, true);
+        final Collection newResultSet = getAssessmentsResultSet(monitor, resultSet, true);
 
         // update the content table with any results that were found
 		if (!SwingUtilities.isEventDispatchThread()) {
@@ -271,10 +271,136 @@ public class AssessmentManagement extends GeneralAdminDialog implements ActionLi
 	}
 
     /**
-     * Method to refesh the records displayed in the contentTable
+     * Method to refresh the records displayed in the contentTable
      */
     private void refreshActionPerformed() {
-        findAll();
+        Thread performer = new Thread(new Runnable() {
+                public void run() {
+
+                findAll();
+
+                }
+        });
+        performer.start();
+    }
+
+    protected void findAll() {
+        // disable the list all button
+        button2.setEnabled(false);
+
+        // get the progress monitor which allows for canceling
+        InfiniteProgressPanel monitor = ATProgressUtil.createModalProgressMonitor(getThisAsJDialog(), 1000, true);
+        monitor.start("Loading Assessment Records ...");
+
+        DomainAccessObject access = null;
+        try {
+            access = DomainAccessObjectFactory.getInstance().getDomainAccessObject(clazz);
+
+        } catch (PersistenceException e) {
+            monitor.close();
+            new ErrorDialog("Error finding all records", e).showDialog();
+            return;
+        }
+
+        Collection resultSet = null;
+
+        try {
+            if (sortField == null) {
+                resultSet = access.findAllLongSession();
+            } else {
+                resultSet = access.findAllLongSession(sortField);
+            }
+        } catch (LookupException e) {
+            monitor.close();
+            new ErrorDialog("Error finding all records", e).showDialog();
+            return;
+        }
+
+        // if the class is an Assessment class the we need to create the results now
+        if(!resultSet.isEmpty()) {
+            getContentTable().updateCollection(getAssessmentsResultSet(monitor, resultSet, false));
+        }
+
+        // re-enable the "List All" button and close the monitor
+        monitor.close();
+        button2.setEnabled(true);
+	}
+
+    /**
+     * Method to return the result for Assessment records which contains
+     * AssessmentsSearchResult object instead of Assessments.
+     * @param resultSet The collection containing Assessments objects
+     * @param removeInActive boolean specifying whether to allow inatice records to be displayed in table
+     * @return Collection containing AssessmentsSearchResult
+     */
+    protected Collection getAssessmentsResultSet(InfiniteProgressPanel monitor, Collection resultSet, boolean removeInActive) {
+        int count = 0;
+        int size = resultSet.size();
+
+        Collection<AssessmentsSearchResult> newResultSet = new ArrayList<AssessmentsSearchResult>();
+
+        // interate through the results set
+        for (Iterator resultIterator = resultSet.iterator(); resultIterator.hasNext();) {
+            // check to see if the cancel button was pressed
+            if (monitor != null && monitor.isProcessCancelled()) {
+                break;
+            }
+
+            count++;
+
+            Assessments assessments = (Assessments) resultIterator.next();
+
+            // check if to allow this assessment in the result set
+            if (removeInActive && assessments.getInactive()) {
+                continue;
+            }
+
+            boolean hasLinkRecord = false; // keeps track if the assessment has any records link to it
+
+            // add any linked resources now
+            if (!assessments.getResources().isEmpty()) {
+                Set<AssessmentsResources> assessmentsResources = assessments.getResources();
+
+                for (AssessmentsResources assessmentResource : assessmentsResources) {
+                    newResultSet.add(new AssessmentsSearchResult(assessments, assessmentResource.getResource()));
+                }
+                hasLinkRecord = true;
+            }
+
+            // add any linked accessions now
+            if (!assessments.getAccessions().isEmpty()) {
+                Set<AssessmentsAccessions> assessmentsAccessions = assessments.getAccessions();
+
+                for (AssessmentsAccessions assessmentsAccession : assessmentsAccessions) {
+                    newResultSet.add(new AssessmentsSearchResult(assessments, assessmentsAccession.getAccession()));
+                }
+                hasLinkRecord = true;
+            }
+
+            // add any link digital objects now
+            if (!assessments.getDigitalObjects().isEmpty()) {
+                Set<AssessmentsDigitalObjects> assessmentsDigitalObjectses = assessments.getDigitalObjects();
+
+                for (AssessmentsDigitalObjects assessmentsDigitalObject : assessmentsDigitalObjectses) {
+                    newResultSet.add(new AssessmentsSearchResult(assessments, assessmentsDigitalObject.getDigitalObject()));
+                }
+                hasLinkRecord = true;
+            }
+
+            // if this assessment has no link records the just return assessment.
+            // such records with no link records should never exist, and this is
+            // only for testing and spoting bad records
+            if (!hasLinkRecord) {
+                newResultSet.add(new AssessmentsSearchResult(assessments));
+            }
+
+            // update the progress monitor
+            if(monitor != null) {
+                monitor.setTextLine(count + " of " + size + " record(s) loaded", 2);
+            }
+        }
+
+        return newResultSet;
     }
 
 	private void initComponents() {
@@ -458,7 +584,7 @@ public class AssessmentManagement extends GeneralAdminDialog implements ActionLi
                     buttonBar.add(button1, cc.xy(2, 1));
 
                     //---- button2 ----
-                    button2.setText("Refresh");
+                    button2.setText("List All");
                     button2.setSelectedIcon(null);
                     button2.setOpaque(false);
                     button2.addActionListener(new ActionListener() {

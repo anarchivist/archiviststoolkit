@@ -335,15 +335,17 @@ public class DatabaseConnectionUtils {
                     * it returns an empty String if two newlines appear in a row.
                     */
                     while ((line = input.readLine()) != null) {
-                        if (!line.startsWith("##")) { // skip header information
+                        if (!line.startsWith("#") && line.length() != 0) { // skip comments or blank lines
                             String[] sa = line.split("\\s*\\t\\s*");
-                            DatabaseConnectionInformation dbInfo = new DatabaseConnectionInformation();
-                            dbInfo.setDatabaseURL(sa[0]);
-                            dbInfo.setUsername(sa[1]);
-                            dbInfo.setPassword(sa[2]);
-                            dbInfo.setDatabaseType(sa[3]);
+                            if(sa.length == 4) {
+                                DatabaseConnectionInformation dbInfo = new DatabaseConnectionInformation();
+                                dbInfo.setDatabaseURL(sa[0]);
+                                dbInfo.setUsername(sa[1]);
+                                dbInfo.setPassword(sa[2]);
+                                dbInfo.setDatabaseType(sa[3]);
 
-                            savedConnections.put(sa[0], dbInfo);
+                                savedConnections.put(sa[0], dbInfo);
+                            }
                         }
                     }
                 }
@@ -351,11 +353,10 @@ public class DatabaseConnectionUtils {
                     input.close();
                 }
             }
-            catch (IOException ex) {
+            catch (Exception ex) {
                 ex.printStackTrace();
                 return null;
             }
-
         }
 
         return savedConnections;

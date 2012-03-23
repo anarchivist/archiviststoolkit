@@ -180,6 +180,10 @@ public class AssessmentsFields extends DomainEditorFields {
         panel13 = new JPanel();
         label6 = new JLabel();
         textField1 = ATBasicComponentFactory.createTextField(detailsModel.getModel(Assessments.PROPERTYNAME_WHO_DID_SURVEY));
+        label35 = new JLabel();
+        textField17 = ATBasicComponentFactory.createDateField(detailsModel.getModel(Assessments.PROPERTYNAME_DATE_OF_SURVEY));
+        label34 = new JLabel();
+        textField18 = ATBasicComponentFactory.createTextField(detailsModel.getModel(Assessments.PROPERTYNAME_USER_WHO_CREATED_RECORD));
         label7 = new JLabel();
         textField2 = ATBasicComponentFactory.createDoubleField(detailsModel, Assessments.PROPERTYNAME_AMOUNT_OF_TIME_SURVEY_TOOK);
         label8 = new JLabel();
@@ -408,6 +412,10 @@ public class AssessmentsFields extends DomainEditorFields {
                             FormFactory.LINE_GAP_ROWSPEC,
                             FormFactory.DEFAULT_ROWSPEC,
                             FormFactory.LINE_GAP_ROWSPEC,
+                            FormFactory.DEFAULT_ROWSPEC,
+                            FormFactory.LINE_GAP_ROWSPEC,
+                            FormFactory.DEFAULT_ROWSPEC,
+                            FormFactory.LINE_GAP_ROWSPEC,
                             FormFactory.DEFAULT_ROWSPEC
                         }));
 
@@ -417,30 +425,42 @@ public class AssessmentsFields extends DomainEditorFields {
                     panel13.add(label6, cc.xy(1, 1));
                     panel13.add(textField1, cc.xywh(3, 1, 7, 1));
 
+                    //---- label35 ----
+                    label35.setText("Date of survey");
+                    ATFieldInfo.assignLabelInfo(label35, Assessments.class, Assessments.PROPERTYNAME_DATE_OF_SURVEY);
+                    panel13.add(label35, cc.xy(1, 3));
+                    panel13.add(textField17, cc.xywh(3, 3, 7, 1));
+
+                    //---- label34 ----
+                    label34.setText("User who created record");
+                    ATFieldInfo.assignLabelInfo(label34, Assessments.class, Assessments.PROPERTYNAME_USER_WHO_CREATED_RECORD);
+                    panel13.add(label34, cc.xy(1, 5));
+                    panel13.add(textField18, cc.xywh(3, 5, 7, 1));
+
                     //---- label7 ----
                     label7.setText("Time it took to complete survey");
                     ATFieldInfo.assignLabelInfo(label7, Assessments.class, Assessments.PROPERTYNAME_AMOUNT_OF_TIME_SURVEY_TOOK);
-                    panel13.add(label7, cc.xywh(1, 3, 5, 1));
+                    panel13.add(label7, cc.xywh(1, 7, 5, 1));
 
                     //---- textField2 ----
                     textField2.setColumns(4);
-                    panel13.add(textField2, cc.xy(7, 3));
+                    panel13.add(textField2, cc.xy(7, 7));
 
                     //---- label8 ----
                     label8.setText("hours");
-                    panel13.add(label8, cc.xy(9, 3));
+                    panel13.add(label8, cc.xy(9, 7));
 
                     //---- checkBox2 ----
                     checkBox2.setText("Review needed");
                     checkBox2.setBackground(new Color(200, 205, 232));
                     checkBox2.setText(ATFieldInfo.getLabel(Assessments.class, Assessments.PROPERTYNAME_REVIEW_NEEDED));
-                    panel13.add(checkBox2, cc.xywh(1, 5, 5, 1));
+                    panel13.add(checkBox2, cc.xywh(1, 9, 5, 1));
 
                     //---- label9 ----
                     label9.setText("Who needs to review");
                     ATFieldInfo.assignLabelInfo(label9, Assessments.class, Assessments.PROPERTYNAME_WHO_NEEDS_TO_REVIEW);
-                    panel13.add(label9, cc.xy(1, 7));
-                    panel13.add(textField3, cc.xywh(3, 7, 7, 1));
+                    panel13.add(label9, cc.xy(1, 11));
+                    panel13.add(textField3, cc.xywh(3, 11, 7, 1));
                 }
                 panel1.add(panel13, cc.xy(5, 1));
 
@@ -1313,6 +1333,10 @@ public class AssessmentsFields extends DomainEditorFields {
     private JPanel panel13;
     private JLabel label6;
     private JTextField textField1;
+    private JLabel label35;
+    private JTextField textField17;
+    private JLabel label34;
+    private JTextField textField18;
     private JLabel label7;
     private JTextField textField2;
     private JLabel label8;
