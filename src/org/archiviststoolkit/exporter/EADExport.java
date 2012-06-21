@@ -298,7 +298,7 @@ public class EADExport {
         if (StringHelper.isNotEmpty(level)) {
             AvLevel lev = AvLevel.fromValue(level);
             archDesc.setLevel(lev);
-            if(level.equalsIgnoreCase("otherlevel"))
+            if(level.equalsIgnoreCase("otherlevel") && StringHelper.isNotEmpty(resource.getOtherLevel()))
             	archDesc.setOtherlevel(resource.getOtherLevel());
         }
         if (resource.getInternalOnly())
@@ -1869,8 +1869,13 @@ public class EADExport {
         }
 
         String level = resourceComponent.getLevel().toLowerCase();
-        if (StringHelper.isNotEmpty(level))
+        if (StringHelper.isNotEmpty(level)) {
             c.setLevel(AvLevel.fromValue(level));
+            if(level.equalsIgnoreCase("otherlevel") && StringHelper.isNotEmpty(resourceComponent.getOtherLevel())) {
+            	c.setOtherlevel(resourceComponent.getOtherLevel());
+            }
+        }
+
         c.setId(resourceComponent.getPersistentId().toString());
         List cChildren = c.getTheadAndC();
         Did did = new Did();
@@ -1941,91 +1946,142 @@ public class EADExport {
         if (c instanceof C01) {
             cChildren = ((C01)c).getTheadAndC02();
             cContent = ((C01)c).getMDescFull();
-            if(StringHelper.isNotEmpty(level))
-            ((C01)c).setLevel(AvLevel.fromValue(level));
+
+            if(StringHelper.isNotEmpty(level)) {
+                ((C01)c).setLevel(AvLevel.fromValue(level));
+                if(level.equalsIgnoreCase("otherlevel") && StringHelper.isNotEmpty(resourceComponent.getOtherLevel())) {
+            	    ((C01)c).setOtherlevel(resourceComponent.getOtherLevel());
+                }
+            }
+
             ((C01)c).setDid(did);
         }
         if (c instanceof C02) {
             cChildren = ((C02)c).getTheadAndC03();
             cContent = ((C02)c).getMDescFull();
-            if(StringHelper.isNotEmpty(level))
-            ((C02)c).setLevel(AvLevel.fromValue(level));
+
+            if(StringHelper.isNotEmpty(level)) {
+                ((C02)c).setLevel(AvLevel.fromValue(level));
+                if(level.equalsIgnoreCase("otherlevel") && StringHelper.isNotEmpty(resourceComponent.getOtherLevel())) {
+            	    ((C02)c).setOtherlevel(resourceComponent.getOtherLevel());
+                }
+            }
+
             ((C02)c).setDid(did);
         }
         if (c instanceof C03) {
             cChildren = ((C03)c).getTheadAndC04();
             cContent = ((C03)c).getMDescFull();
-            if(StringHelper.isNotEmpty(level))
-            ((C03)c).setLevel(AvLevel.fromValue(level));
+
+            if(StringHelper.isNotEmpty(level)) {
+                ((C03)c).setLevel(AvLevel.fromValue(level));
+                if(level.equalsIgnoreCase("otherlevel") && StringHelper.isNotEmpty(resourceComponent.getOtherLevel())) {
+            	    ((C03)c).setOtherlevel(resourceComponent.getOtherLevel());
+                }
+            }
+
             ((C03)c).setDid(did);
         }
         if (c instanceof C04) {
             cChildren = ((C04)c).getTheadAndC05();
             cContent = ((C04)c).getMDescFull();
-            if(StringHelper.isNotEmpty(level))
-            ((C04)c).setLevel(AvLevel.fromValue(level));
+
+            if(StringHelper.isNotEmpty(level)) {
+                ((C04)c).setLevel(AvLevel.fromValue(level));
+                if(level.equalsIgnoreCase("otherlevel") && StringHelper.isNotEmpty(resourceComponent.getOtherLevel())) {
+            	    ((C04)c).setOtherlevel(resourceComponent.getOtherLevel());
+                }
+            }
+
             ((C04)c).setDid(did);
         }
         if (c instanceof C05) {
             cChildren = ((C05)c).getTheadAndC06();
             cContent = ((C05)c).getMDescFull();
-            if(StringHelper.isNotEmpty(level))
-            ((C05)c).setLevel(AvLevel.fromValue(level));
+
+            if(StringHelper.isNotEmpty(level)) {
+                ((C05)c).setLevel(AvLevel.fromValue(level));
+                if(level.equalsIgnoreCase("otherlevel") && StringHelper.isNotEmpty(resourceComponent.getOtherLevel())) {
+            	    ((C05)c).setOtherlevel(resourceComponent.getOtherLevel());
+                }
+            }
+
             ((C05)c).setDid(did);
         }
         if (c instanceof C06) {
             cChildren = ((C06)c).getTheadAndC07();
             cContent = ((C06)c).getMDescFull();
-            if(StringHelper.isNotEmpty(level))
-            ((C06)c).setLevel(AvLevel.fromValue(level));
+            if(StringHelper.isNotEmpty(level)) {
+                ((C06)c).setLevel(AvLevel.fromValue(level));
+                if(level.equalsIgnoreCase("otherlevel") && StringHelper.isNotEmpty(resourceComponent.getOtherLevel())) {
+            	    ((C06)c).setOtherlevel(resourceComponent.getOtherLevel());
+                }
+            }
             ((C06)c).setDid(did);
         }
         if (c instanceof C07) {
             cChildren = ((C07)c).getTheadAndC08();
             cContent = ((C07)c).getMDescFull();
-            if(StringHelper.isNotEmpty(level))
-            ((C07)c).setLevel(AvLevel.fromValue(level));
+            if(StringHelper.isNotEmpty(level)) {
+                ((C07)c).setLevel(AvLevel.fromValue(level));
+                if(level.equalsIgnoreCase("otherlevel") && StringHelper.isNotEmpty(resourceComponent.getOtherLevel())) {
+            	    ((C07)c).setOtherlevel(resourceComponent.getOtherLevel());
+                }
+            }
             ((C07)c).setDid(did);
         }
         if (c instanceof C08) {
             cChildren = ((C08)c).getTheadAndC09();
             cContent = ((C08)c).getMDescFull();
-            if(StringHelper.isNotEmpty(level))
-            ((C08)c).setLevel(AvLevel.fromValue(level));
+            if(StringHelper.isNotEmpty(level)) {
+                ((C08)c).setLevel(AvLevel.fromValue(level));
+                if(level.equalsIgnoreCase("otherlevel") && StringHelper.isNotEmpty(resourceComponent.getOtherLevel())) {
+            	    ((C08)c).setOtherlevel(resourceComponent.getOtherLevel());
+                }
+            }
             ((C08)c).setDid(did);
         }
         if (c instanceof C09) {
             cChildren = ((C09)c).getTheadAndC10();
             cContent = ((C09)c).getMDescFull();
-            if(StringHelper.isNotEmpty(level))
-            ((C09)c).setLevel(AvLevel.fromValue(level));
+            if(StringHelper.isNotEmpty(level)) {
+                ((C09)c).setLevel(AvLevel.fromValue(level));
+                if(level.equalsIgnoreCase("otherlevel") && StringHelper.isNotEmpty(resourceComponent.getOtherLevel())) {
+            	    ((C09)c).setOtherlevel(resourceComponent.getOtherLevel());
+                }
+            }
             ((C09)c).setDid(did);
         }
         if (c instanceof C10) {
             cChildren = ((C10)c).getTheadAndC11();
             cContent = ((C10)c).getMDescFull();
-            if(StringHelper.isNotEmpty(level))
-            ((C10)c).setLevel(AvLevel.fromValue(level));
+            if(StringHelper.isNotEmpty(level)) {
+                ((C10)c).setLevel(AvLevel.fromValue(level));
+                if(level.equalsIgnoreCase("otherlevel") && StringHelper.isNotEmpty(resourceComponent.getOtherLevel())) {
+            	    ((C10)c).setOtherlevel(resourceComponent.getOtherLevel());
+                }
+            }
             ((C10)c).setDid(did);
         }
         if (c instanceof C11) {
             cChildren = ((C11)c).getTheadAndC12();
             cContent = ((C11)c).getMDescFull();
-            if(StringHelper.isNotEmpty(level))
-            ((C11)c).setLevel(AvLevel.fromValue(level));
-            ((C11)c).setDid(did);
-        }
-        if (c instanceof C11) {
-            cChildren = ((C11)c).getTheadAndC12();
-            cContent = ((C11)c).getMDescFull();
-            if(StringHelper.isNotEmpty(level))
-            ((C11)c).setLevel(AvLevel.fromValue(level));
+            if(StringHelper.isNotEmpty(level)) {
+                ((C11)c).setLevel(AvLevel.fromValue(level));
+                if(level.equalsIgnoreCase("otherlevel") && StringHelper.isNotEmpty(resourceComponent.getOtherLevel())) {
+            	    ((C11)c).setOtherlevel(resourceComponent.getOtherLevel());
+                }
+            }
             ((C11)c).setDid(did);
         }
         if (c instanceof C12) {
             cContent = ((C12)c).getMDescFull();
-            if(StringHelper.isNotEmpty(level))
-            ((C12)c).setLevel(AvLevel.fromValue(level));
+            if(StringHelper.isNotEmpty(level)) {
+                ((C12)c).setLevel(AvLevel.fromValue(level));
+                if(level.equalsIgnoreCase("otherlevel") && StringHelper.isNotEmpty(resourceComponent.getOtherLevel())) {
+            	    ((C12)c).setOtherlevel(resourceComponent.getOtherLevel());
+                }
+            }
             ((C12)c).setDid(did);
         }
 
